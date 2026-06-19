@@ -1,0 +1,22 @@
+{
+  "name": "quetzalcoatl",
+  "version": "1.1.0",
+  "description": "Quetzalcoatl — Meaning-First AI Project OS. /Quetzalcoatl 한 번으로 의미검증→GarryTan Office Hours→3~5개 대안→Claude-GPT 교차검증→문서·대시보드→Ship→Retro 까지 운영하는 모델 중립형 스킬.",
+  "author": {
+    "name": "CHENGHAO QUAN",
+    "url": "https://github.com/chquandogong"
+  },
+  "homepage": "https://github.com/chquandogong/Quetzalcoatl",
+  "repository": "https://github.com/chquandogong/Quetzalcoatl",
+  "license": "MIT",
+  "keywords": [
+    "quetzalcoatl",
+    "meaning-first",
+    "project-os",
+    "office-hours",
+    "feasibility",
+    "cross-validation",
+    "ai-orchestration",
+    "korean"
+  ]
+}

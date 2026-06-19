@@ -6,7 +6,7 @@ description: >
   운영 OS로 묶는다. `/Quetzalcoatl`로 스킬 전체를 호출한다. 아이디어·제품·자동화·연구·글쓰기·
   개발 과제를 바로 실행하기 전에 의미부터 검토할 때, feasibility·대안·교차검증·기획부터 배포까지가
   필요할 때 사용. Claude, Claude Code, ChatGPT, GPTs, 일반 LLM 채팅에서 쓰는 모델 중립형 스킬.
-version: 1.0.0
+version: 1.1.0
 language: ko
 compatible_with:
   - Claude / Claude Code / Claude Projects
