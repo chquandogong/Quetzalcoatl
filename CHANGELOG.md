@@ -3,6 +3,16 @@
 이 프로젝트의 주요 변경 사항을 기록한다. 형식은 [Keep a Changelog](https://keepachangelog.com/),
 버전은 [SemVer](https://semver.org/)를 따른다.
 
+## [1.3.1] - 2026-06-23
+
+### Added
+
+- **용어집 동기** — `§22 부록 A`와 `docs/appendix/GLOSSARY.md`에 **"앵커된 선호(Anchored Preference)"** 항목 추가(§4.2 규칙의 용어 정의). v1.3.0에서 deferred했던 GLOSSARY↔§22 동기화를 완결.
+
+### Note
+
+- PATCH — 새 동작 없이 기존 §4.2 개념의 용어 정의만 보강. SKILL `§22`가 배포본이므로 버전 상승.
+
 ## [1.3.0] - 2026-06-23
 
 사용자 선호를 다루는 규칙을 추가하고, 대안 비교를 독립 섹션으로 승격하며, 저장소를 전문가용으로 정비.
