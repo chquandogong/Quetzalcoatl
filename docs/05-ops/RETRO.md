@@ -1,4 +1,4 @@
-# RETRO — v1.2.0 · v1.3.0
+# RETRO — v1.2.0 · v1.3.0 · v1.4.0
 
 > 상태: 확정 · 날짜: 2026-06-23 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
 
