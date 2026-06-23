@@ -3,6 +3,17 @@
 이 프로젝트의 주요 변경 사항을 기록한다. 형식은 [Keep a Changelog](https://keepachangelog.com/),
 버전은 [SemVer](https://semver.org/)를 따른다.
 
+## [1.4.0] - 2026-06-23
+
+### Added
+
+- **§7.2 대시보드 HTML 미러 + `/dashboard` 갱신** — 정본(`DASHBOARD.md`)은 SSOT로 두고, 보기 좋은 HTML 미러를 live artifact의 같은 URL에 redeploy. 수동(`/dashboard`)·자동(자율 루프 규율) 두 경로.
+- **§2 `/dashboard` 모드 확장 · §18.3 루프** — 의미 있는 커밋 후 미러 redeploy를 연속 실행 루프에 반영.
+
+### Note
+
+- MINOR — 새 갱신 경로 추가, 기존 동작 보존. "자동"은 강제 락이 아니라 **에이전트 규율**임을 명시(§15 정직성); 세션 밖 자동은 외부 CI·공개 게이트로 분리. 미러 디자인은 스킬에 하드코딩하지 않음(주제별).
+
 ## [1.3.1] - 2026-06-23
 
 ### Added

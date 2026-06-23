@@ -10,7 +10,7 @@
       "name": "quetzalcoatl",
       "source": "./",
       "description": "/Quetzalcoatl 한 번으로 의미검증 → GarryTan Office Hours → 3~5개 대안 → Claude-GPT 교차검증 → 문서·대시보드 → Ship → Retro 까지 운영하는 모델 중립형 AI 프로젝트 운영 OS 스킬",
-      "version": "1.3.1"
+      "version": "1.4.0"
     }
   ]
 }

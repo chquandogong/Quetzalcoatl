@@ -79,3 +79,12 @@
 - **선택**: A — README 배지·`.gitattributes`·`SECURITY.md`·CI(매니페스트 버전 일치)·repo topics. 브랜치 보호는 main 직접 커밋 관례와 충돌해 제외.
 - **버린 안**: B·C 과설계(외부 기여 수요 미검증).
 - **남은 리스크**: 외부 기여가 늘면 B로 확장. 승인자: 사람.
+
+## D11 — 대시보드: 정본(SSOT) + HTML 미러, `/dashboard` 갱신
+
+- **배경**: live artifact 미러가 v1.2.0에 멈춰 사용자가 stale을 봄. "대시보드는 현재를 보여야 한다"는 지적.
+- **선택지**: (a) markdown 정본만 (b) 정본 + HTML 미러 수동/자동 redeploy (c) GitHub Pages 자동(공개).
+- **선택**: (b). 정본 `DASHBOARD.md`=SSOT, HTML 미러=같은 URL redeploy. `/dashboard` 수동 + 자율 루프 자동(규율). (c) Pages는 공개 게이트라 이번 제외(사용자 결정).
+- **이유**: "실시간 자동"은 프롬프트 스킬로 불가 — 정직하게 "규율"로 표현(§7.2·§15). 정본이 SSOT라 미러가 갈려도 안전.
+- **버린 안**: (a) 보기 나쁨. (c) 공개·이번 범위 초과.
+- **남은 리스크**: 미러 redeploy 누락 시 stale → 커밋 후 redeploy 규율. 승인자: 사람.
