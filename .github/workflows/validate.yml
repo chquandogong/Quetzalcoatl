@@ -1,0 +1,65 @@
+name: validate
+
+# 매니페스트와 스킬 frontmatter의 버전 일치 + JSON 유효성 검증.
+# v1.2.0 릴리즈 때 수동으로 확인하던 항목을 자동화한다.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  version-consistency:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract versions
+        id: v
+        run: |
+          PLUGIN=$(jq -r '.version' .claude-plugin/plugin.json)
+          MARKET=$(jq -r '.plugins[0].version' .claude-plugin/marketplace.json)
+          SKILL=$(grep -E '^version:' skills/Quetzalcoatl/SKILL.md | head -1 | sed -E 's/version:[[:space:]]*//')
+          {
+            echo "plugin=$PLUGIN"
+            echo "market=$MARKET"
+            echo "skill=$SKILL"
+          } >> "$GITHUB_OUTPUT"
+          echo "plugin.json=$PLUGIN  marketplace.json=$MARKET  SKILL.md=$SKILL"
+
+      - name: Assert versions agree
+        run: |
+          if [ "${{ steps.v.outputs.plugin }}" != "${{ steps.v.outputs.market }}" ] || \
+             [ "${{ steps.v.outputs.plugin }}" != "${{ steps.v.outputs.skill }}" ]; then
+            echo "::error::Version mismatch — plugin=${{ steps.v.outputs.plugin }} marketplace=${{ steps.v.outputs.market }} skill=${{ steps.v.outputs.skill }}"
+            exit 1
+          fi
+          echo "OK: all three agree on ${{ steps.v.outputs.plugin }}"
+
+      - name: Validate JSON manifests
+        run: |
+          jq empty .claude-plugin/plugin.json
+          jq empty .claude-plugin/marketplace.json
+          echo "OK: manifests are valid JSON."
+
+      - name: Assert SKILL.md section numbering (no gap)
+        run: |
+          # 최상위 '## N.' 섹션 번호가 연속인지 확인 (§4 누락 같은 회귀 방지).
+          # 코드펜스 안의 예시 헤더(미니 템플릿)는 제외하기 위해 펜스 토글로 스킵.
+          nums=$(awk '
+            /^```/ { infence = !infence; next }
+            !infence && /^## [0-9]+\./ { match($0, /[0-9]+/); print substr($0, RSTART, RLENGTH) }
+          ' skills/Quetzalcoatl/SKILL.md | tr "\n" " ")
+          echo "Top-level sections: $nums"
+          expected=0
+          ok=1
+          for n in $nums; do
+            if [ "$n" -ne "$expected" ]; then ok=0; fi
+            expected=$((expected + 1))
+          done
+          if [ "$ok" -ne 1 ]; then
+            echo "::error::Section numbers are not contiguous from 0: $nums"
+            exit 1
+          fi
+          echo "OK: sections contiguous ($nums)"

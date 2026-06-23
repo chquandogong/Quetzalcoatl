@@ -1,5 +1,10 @@
 # 🪶 Quetzalcoatl — Meaning-First AI Project OS
 
+[![release](https://img.shields.io/github/v/release/chquandogong/Quetzalcoatl?sort=semver)](https://github.com/chquandogong/Quetzalcoatl/releases)
+[![license](https://img.shields.io/github/license/chquandogong/Quetzalcoatl)](./LICENSE)
+![model-neutral](https://img.shields.io/badge/model-neutral-blueviolet)
+![docs](https://img.shields.io/badge/docs-dogfooded-success)
+
 `/Quetzalcoatl` 한 번으로 켜지는 **의미 우선(Meaning-First) AI 프로젝트 운영체제** 스킬.
 아이디어를 "바로 실행"하기 전에 의미·가치부터 검증하고, GarryTan식 Office Hours 압박 검토 →
 feasibility → 3~5개 대안 → Claude-GPT 교차검증 → 문서화·대시보드 → Ship → 회고까지

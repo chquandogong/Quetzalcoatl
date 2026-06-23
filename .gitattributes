@@ -1,0 +1,12 @@
+# 줄바꿈 정규화 — 모든 텍스트 파일을 LF로 통일
+* text=auto eol=lf
+
+# 명시적 텍스트 타입
+*.md    text
+*.json  text
+*.yml   text
+*.yaml  text
+
+# GitHub Linguist — 이 저장소의 본질은 마크다운(프롬프트/문서)
+docs/**     linguist-documentation
+*.md        linguist-detectable=true
