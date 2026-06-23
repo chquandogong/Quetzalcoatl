@@ -1,67 +1,65 @@
-# DASHBOARD — Quetzalcoatl v1.2.0
+# DASHBOARD — Quetzalcoatl v1.3.0
 
-> 상태: Ship 완료(Released) · 날짜: 2026-06-23 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
-> live artifact(읽기 미러): https://claude.ai/code/artifact/3a1da038-a3d6-4146-9f55-0f54e7063443 · 단일 진실 원천: 이 repo
+> 상태: Ship 진행 · 날짜: 2026-06-23 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
+> 단일 진실 원천: 이 repo (이번 사이클은 markdown 대시보드만 사용)
 
 ## 현재 상태
 
-- 단계: Build → Test → **Ship 완료**
-- 전체 판단: **배포 완료(v1.2.0 Released)**
-- 자율 수준: L2(commit/push/tag 사전승인 + GitHub Release 게시 승인)
+- 단계: 분석·결정 → Build(완료) → **Ship 진행**
+- 전체 판단: **계속 / 배포 준비**
+- 자율 수준: L2(편집·파일생성·커밋·푸시·태그 사전승인 · repo About·Release 게시는 게이트)
 
-## 핵심 목표
+## 핵심 목표 (이번 사이클)
 
-1. 5개 능력을 모순 없이 SKILL.md에 반영
-2. 자율 실행의 안전 게이트 보존을 검증
-3. 문서·git을 정의 규칙대로 적용
+1. 작업1 — 앵커된 선호 처리 규칙(§4.2)을 모델·도메인 중립으로 추가
+2. 이슈4 — 대안 비교를 §4로 승격해 최상위 번호 누락 정정
+3. 작업2 — 저장소 전문화(A: 미니멀+CI)
 
 ## 진행 현황
 
-| 단계         | 상태 | 산출물                               | 다음 액션 |
-| ------------ | ---- | ------------------------------------ | --------- |
-| Office Hours | done | OFFICE_HOURS.md                      | —         |
-| Feasibility  | done | FEASIBILITY_REPORT.md                | —         |
-| Spec         | done | SPEC.md                              | —         |
-| Design       | done | DECISION_LOG · ALTERNATIVES          | —         |
-| Build        | done | SKILL.md v1.2.0 · 매니페스트 · docs  | —         |
-| Test         | done | TEST_PLAN(RED/GREEN·적대검토)        | —         |
-| Ship         | done | 커밋·태그 v1.2.0·푸시·GitHub Release | —         |
+| 단계      | 상태  | 산출물                                      | 다음 액션             |
+| --------- | ----- | ------------------------------------------- | --------------------- |
+| 대안·결정 | done  | DECISION_LOG D8~D10 · 사용자 승인           | —                     |
+| Build     | done  | SKILL §4/§4.2 · 매니페스트 · repo 위생 파일 | —                     |
+| Test      | doing | CI(validate.yml) · 로컬 검증                | push 후 Actions 확인  |
+| Ship      | doing | 커밋·태그·Release·repo About                | 커밋→푸시→태그→게이트 |
 
 ## 작업 보드 (claimable)
 
-| 작업                        | 상태    | 소유자          | 의존    | 산출물/커밋         |
-| --------------------------- | ------- | --------------- | ------- | ------------------- |
-| SKILL.md 5개 능력 반영      | done    | 데스크탑/Claude | —       | (commit 1)          |
-| 매니페스트·README·CHANGELOG | done    | 데스크탑/Claude | SKILL   | (commit 2)          |
-| docs/ 체계 작성             | done    | 데스크탑/Claude | —       | (commit 2)          |
-| live artifact 대시보드      | done    | 데스크탑/Claude | docs    | artifact URL        |
-| 커밋·태그 v1.2.0·푸시       | done    | 데스크탑/Claude | 전부    | f621ce1 · v1.2.0    |
-| GitHub Release v1.2.0 게시  | done    | 데스크탑/Claude | 푸시    | releases/tag/v1.2.0 |
-| 플러그인 재설치(1.2.0 반영) | blocked | 사람            | Release | RUNBOOK 참조        |
+| 작업                                       | 상태         | 소유자          | 의존      | 산출물/커밋 |
+| ------------------------------------------ | ------------ | --------------- | --------- | ----------- |
+| SKILL §4 승격 + §4.2 선호 규칙 + ver 1.3.0 | done         | 데스크탑/Claude | —         | (커밋 예정) |
+| 매니페스트·CHANGELOG 1.3.0                 | done         | 데스크탑/Claude | SKILL     | (커밋 예정) |
+| docs(DECISION_LOG D8~10 · 본 대시보드)     | done         | 데스크탑/Claude | —         | (커밋 예정) |
+| repo 전문화 A(배지·gitattr·SECURITY·CI)    | done         | 데스크탑/Claude | —         | (커밋 예정) |
+| 커밋·푸시·태그 v1.3.0                      | todo         | 데스크탑/Claude | 전부      | —           |
+| repo About(topics·homepage)                | todo(게이트) | 사람/Claude     | —         | —           |
+| GitHub Release v1.3.0 게시                 | todo(게이트) | 사람/Claude     | 푸시·태그 | —           |
+| 플러그인 재설치(1.3.0 반영)                | blocked      | 사람            | Release   | RUNBOOK     |
 
 ## 재개 지점 (체크포인트)
 
-- 마지막 성공 커밋: 태그 `v1.2.0` (f621ce1) — Ship/Release 완료; 본 문서 현행화가 그 뒤 커밋
-- 다음 작업: 사람의 플러그인 재설치(1.2.0 반영) — RUNBOOK 참조
+- 마지막 성공 커밋: `v1.2.0` Ship 완료(태그 `v1.2.0`, 문서 현행화 `29e0fb6`)
+- 다음 작업: v1.3.0 커밋·푸시·태그 → 게이트(repo About · Release 게시)
 
 ## 상위 리스크
 
-| 리스크                  | 가능성 | 영향도 | 대응책                     | 상태   |
-| ----------------------- | -----: | -----: | -------------------------- | ------ |
-| 자율 실행의 게이트 약화 |   낮음 |   높음 | §1.6 보존 + RED/GREEN 검증 | 완화됨 |
-| 다중 에이전트 경쟁상태  |   중간 |   높음 | 단일 라이터/commit-as-CAS  | 완화됨 |
-| 모델 중립성 회귀        |   중간 |   중간 | 기능별 환경 동작 명시      | 완화됨 |
-| 플러그인 캐시 staleness |   높음 |   낮음 | RUNBOOK 재설치 안내        | 수용   |
+| 리스크                           | 가능성 | 영향도 | 대응책                                 | 상태   |
+| -------------------------------- | -----: | -----: | -------------------------------------- | ------ |
+| §4 승격이 기존 상호참조 깨뜨림   |   낮음 |   중간 | §5~§23 번호 불변 · CI 섹션 연속성 검사 | 완화됨 |
+| 선호 override가 게이트 우회 오용 |   낮음 |   높음 | 비가역 전환=§1.6 게이트 명시(§4.2·D8)  | 완화됨 |
+| 구체 기술을 본문에 박아 노후화   |   낮음 |   중간 | 패턴만 일반화, 예시는 docs에만(D8)     | 회피됨 |
+| 플러그인 캐시 staleness          |   높음 |   낮음 | RUNBOOK 재설치 안내                    | 수용   |
 
 ## 사람 결정 대기
 
 | 결정                       | 추천         | 사람 승인 필요 |
 | -------------------------- | ------------ | -------------- |
-| 1.2.0 배포(푸시·태그·게시) | 완료         | —(완료)        |
+| repo About 변경(topics 등) | 적용         | 예(게이트)     |
+| GitHub Release v1.3.0 게시 | 진행         | 예(게이트)     |
 | 플러그인 재설치 시점       | Release 직후 | 예             |
 
-## 링크: 문서 / 커밋 / 태그 / live artifact
+## 링크: 문서 / 커밋 / 태그
 
-- 문서: [`docs/`](../README.md) · 결정: [DECISION_LOG](../02-decisions/DECISION_LOG.md)
-- 저장소: https://github.com/chquandogong/Quetzalcoatl · 태그: `v1.2.0` · Release: https://github.com/chquandogong/Quetzalcoatl/releases/tag/v1.2.0
-- live artifact(읽기 미러): https://claude.ai/code/artifact/3a1da038-a3d6-4146-9f55-0f54e7063443
+- 문서: [`docs/`](../README.md) · 결정: [DECISION_LOG](../02-decisions/DECISION_LOG.md) D8~D10
+- 저장소: https://github.com/chquandogong/Quetzalcoatl · 이전 릴리스: `v1.2.0`
