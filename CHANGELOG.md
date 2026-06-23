@@ -1,0 +1,39 @@
+# Changelog
+
+이 프로젝트의 주요 변경 사항을 기록한다. 형식은 [Keep a Changelog](https://keepachangelog.com/),
+버전은 [SemVer](https://semver.org/)를 따른다.
+
+## [1.2.0] - 2026-06-23
+
+의미·가치 검증을 거쳐(`docs/01-discovery/`) 채택한 5개 능력 추가.
+Quetzalcoatl을 단일 세션 자문 OS에서 **지속·재개 가능한 다중 에이전트/다중 기기 실행 OS**로 확장.
+
+### Added
+
+- **§1.7 + §18 지속 자율 실행** — "승인된 계획 범위 안에서" 확인 질문 없이 끝까지 실행. 실행 허용목록(allowlist), 자율 수준 L0~L3, 연속 실행 루프, 합리화 차단표.
+- **§19 레이트리밋·하위 에이전트 회복력** — 한도/중단 시 대기 후 재개. 체크포인트 = 마지막 성공 커밋. 외부 발송·결제는 자동 재개 제외.
+- **§6 문서 체계** — 표준 디렉터리 구조(`docs/00-overview … 05-ops · appendix · assets`), 마크다운·그림·표 우선, 용어 부록(§22 부록 A).
+- **§20 Git 저장소 프로토콜** — `git init` 가드, Conventional Commits, 의미 단위 커밋, SemVer 주석 태그.
+- **§7.1 + §21 교차 에이전트/기기 핸드오프** — 대시보드를 공유 작업 표면으로. 단일 라이터/commit-as-CAS, git repo가 단일 진실 원천, live artifact는 읽기 미러.
+- **§22 부록** — 용어집(Glossary) + 문서·Git 컨벤션 요약.
+- **CHANGELOG.md / docs/** — 프로젝트 문서 체계를 스킬 자신에게 적용(dogfooding).
+
+### Changed
+
+- **§1.6 안전 게이트** 강화 — 카테고리별 경계 예시 표, "애매하면 멈춘다" 규칙.
+- **§2 사용 모드** — `/handoff`, `/resume`, `/autonomy` 추가.
+- **§14 / §15** — 자율 실행과 "과한 자동화 경계"를 정합화, 문서 체계 혼용 금지·강제되지 않는 메커니즘 과대주장 금지 추가.
+
+### Verified
+
+- 자율 실행 안전성: 독립 에이전트 RED/GREEN 행동 테스트(블래턴트·그레이존 모두 안전 게이트에서 정지 확인).
+- 설계: 독립 에이전트 적대적 검토(확신도 82) 반영 — 7개 must-fix 채택.
+- 상세: `docs/02-decisions/CROSS_VALIDATION_LOG.md`, `docs/04-quality/TEST_PLAN.md`.
+
+## [1.1.0]
+
+- Claude Code 플러그인 + 마켓플레이스로 패키징.
+
+## [1.0.0]
+
+- Quetzalcoatl — Meaning-First AI Project OS 스킬 최초 공개.
