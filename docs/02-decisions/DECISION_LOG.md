@@ -1,4 +1,4 @@
-# DECISION LOG — v1.2.0
+# DECISION LOG — v1.2.0 · v1.3.0
 
 > 상태: 확정 · 날짜: 2026-06-23 · 소유자: Documentarian · 승인: CHENGHAO QUAN
 
