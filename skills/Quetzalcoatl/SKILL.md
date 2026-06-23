@@ -7,7 +7,7 @@ description: >
   개발 과제를 바로 실행하기 전에 의미부터 검토할 때, feasibility·대안·교차검증·기획부터 배포까지가
   필요할 때 사용. 여러 세션·기기·에이전트로 나눠 이어서(핸드오프) 작업하거나, 묻지 않고 자율로
   끝까지 실행·재개해야 할 때도 쓴다. Claude, Claude Code, ChatGPT, GPTs, 일반 LLM 채팅용 모델 중립형 스킬.
-version: 1.4.0
+version: 1.4.1
 language: ko
 compatible_with:
   - Claude / Claude Code / Claude Projects
@@ -1043,6 +1043,7 @@ flowchart TD
 - Decision Log 업데이트:
 - Runbook 업데이트:
 - Dashboard 업데이트:
+- Living 문서 동기화: README · USAGE · docs/README · RUNBOOK · SECURITY · 대시보드 미러 (버전·현재성 일치; 스냅샷 문서는 동결)
 
 ## 최종 판단
 

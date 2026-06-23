@@ -3,6 +3,16 @@
 이 프로젝트의 주요 변경 사항을 기록한다. 형식은 [Keep a Changelog](https://keepachangelog.com/),
 버전은 [SemVer](https://semver.org/)를 따른다.
 
+## [1.4.1] - 2026-06-23
+
+### Added
+
+- **§12 Ship 체크리스트에 「Living 문서 동기화」 항목** — 배포 시 README·USAGE·docs/README·RUNBOOK·SECURITY·대시보드 미러의 버전·현재성을 맞추고 **스냅샷 문서는 동결**하도록 명시. v1.4.0 후속 정비 RETRO의 실행 액션(반복된 living-doc stale 재발 방지).
+
+### Note
+
+- PATCH — 기존 §12 프로토콜에 체크 항목 1개 추가(새 모드·능력 없음). 본 릴리스가 그 항목을 **dogfooding**(같은 배포에서 living 문서 동기화).
+
 ## [1.4.0] - 2026-06-23
 
 ### Added
