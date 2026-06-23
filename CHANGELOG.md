@@ -30,10 +30,10 @@ Quetzalcoatl을 단일 세션 자문 OS에서 **지속·재개 가능한 다중 
 - 설계: 독립 에이전트 적대적 검토(확신도 82) 반영 — 7개 must-fix 채택.
 - 상세: `docs/02-decisions/CROSS_VALIDATION_LOG.md`, `docs/04-quality/TEST_PLAN.md`.
 
-## [1.1.0]
+## [1.1.0] - 2026-06-19
 
 - Claude Code 플러그인 + 마켓플레이스로 패키징.
 
-## [1.0.0]
+## [1.0.0] - 2026-06-19
 
 - Quetzalcoatl — Meaning-First AI Project OS 스킬 최초 공개.

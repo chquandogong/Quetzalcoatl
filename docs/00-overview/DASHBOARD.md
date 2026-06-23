@@ -1,13 +1,13 @@
 # DASHBOARD — Quetzalcoatl v1.2.0
 
-> 상태: Ship 진행 · 날짜: 2026-06-23 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
+> 상태: Ship 완료(Released) · 날짜: 2026-06-23 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
 > live artifact(읽기 미러): https://claude.ai/code/artifact/3a1da038-a3d6-4146-9f55-0f54e7063443 · 단일 진실 원천: 이 repo
 
 ## 현재 상태
 
-- 단계: Build → Test(완료) → **Ship**
-- 전체 판단: **계속 / 배포 가능**
-- 자율 수준: L2(이번 작업: commit/push/tag 사전승인)
+- 단계: Build → Test → **Ship 완료**
+- 전체 판단: **배포 완료(v1.2.0 Released)**
+- 자율 수준: L2(commit/push/tag 사전승인 + GitHub Release 게시 승인)
 
 ## 핵심 목표
 
@@ -17,30 +17,31 @@
 
 ## 진행 현황
 
-| 단계         | 상태  | 산출물                              | 다음 액션      |
-| ------------ | ----- | ----------------------------------- | -------------- |
-| Office Hours | done  | OFFICE_HOURS.md                     | —              |
-| Feasibility  | done  | FEASIBILITY_REPORT.md               | —              |
-| Spec         | done  | SPEC.md                             | —              |
-| Design       | done  | DECISION_LOG · ALTERNATIVES         | —              |
-| Build        | done  | SKILL.md v1.2.0 · 매니페스트 · docs | —              |
-| Test         | done  | TEST_PLAN(RED/GREEN·적대검토)       | —              |
-| Ship         | doing | 커밋·태그·푸시·artifact             | 커밋→태그→푸시 |
+| 단계         | 상태 | 산출물                               | 다음 액션 |
+| ------------ | ---- | ------------------------------------ | --------- |
+| Office Hours | done | OFFICE_HOURS.md                      | —         |
+| Feasibility  | done | FEASIBILITY_REPORT.md                | —         |
+| Spec         | done | SPEC.md                              | —         |
+| Design       | done | DECISION_LOG · ALTERNATIVES          | —         |
+| Build        | done | SKILL.md v1.2.0 · 매니페스트 · docs  | —         |
+| Test         | done | TEST_PLAN(RED/GREEN·적대검토)        | —         |
+| Ship         | done | 커밋·태그 v1.2.0·푸시·GitHub Release | —         |
 
 ## 작업 보드 (claimable)
 
-| 작업                        | 상태    | 소유자          | 의존  | 산출물/커밋  |
-| --------------------------- | ------- | --------------- | ----- | ------------ |
-| SKILL.md 5개 능력 반영      | done    | 데스크탑/Claude | —     | (commit 1)   |
-| 매니페스트·README·CHANGELOG | done    | 데스크탑/Claude | SKILL | (commit 2)   |
-| docs/ 체계 작성             | done    | 데스크탑/Claude | —     | (commit 2)   |
-| live artifact 대시보드      | doing   | 데스크탑/Claude | docs  | —            |
-| 커밋·태그 v1.2.0·푸시       | todo    | 데스크탑/Claude | 전부  | —            |
-| 플러그인 재설치(1.2.0 반영) | blocked | 사람            | 푸시  | RUNBOOK 참조 |
+| 작업                        | 상태    | 소유자          | 의존    | 산출물/커밋         |
+| --------------------------- | ------- | --------------- | ------- | ------------------- |
+| SKILL.md 5개 능력 반영      | done    | 데스크탑/Claude | —       | (commit 1)          |
+| 매니페스트·README·CHANGELOG | done    | 데스크탑/Claude | SKILL   | (commit 2)          |
+| docs/ 체계 작성             | done    | 데스크탑/Claude | —       | (commit 2)          |
+| live artifact 대시보드      | done    | 데스크탑/Claude | docs    | artifact URL        |
+| 커밋·태그 v1.2.0·푸시       | done    | 데스크탑/Claude | 전부    | f621ce1 · v1.2.0    |
+| GitHub Release v1.2.0 게시  | done    | 데스크탑/Claude | 푸시    | releases/tag/v1.2.0 |
+| 플러그인 재설치(1.2.0 반영) | blocked | 사람            | Release | RUNBOOK 참조        |
 
 ## 재개 지점 (체크포인트)
 
-- 마지막 성공 커밋: 태그 `v1.2.0`에 고정 (Ship 단위)
+- 마지막 성공 커밋: 태그 `v1.2.0` (f621ce1) — Ship/Release 완료; 본 문서 현행화가 그 뒤 커밋
 - 다음 작업: 사람의 플러그인 재설치(1.2.0 반영) — RUNBOOK 참조
 
 ## 상위 리스크
@@ -54,13 +55,13 @@
 
 ## 사람 결정 대기
 
-| 결정                  | 추천           | 사람 승인 필요 |
-| --------------------- | -------------- | -------------- |
-| 1.2.0 배포(푸시·태그) | 진행(사전승인) | 예(사전승인됨) |
-| 플러그인 재설치 시점  | 푸시 직후      | 예             |
+| 결정                       | 추천         | 사람 승인 필요 |
+| -------------------------- | ------------ | -------------- |
+| 1.2.0 배포(푸시·태그·게시) | 완료         | —(완료)        |
+| 플러그인 재설치 시점       | Release 직후 | 예             |
 
 ## 링크: 문서 / 커밋 / 태그 / live artifact
 
 - 문서: [`docs/`](../README.md) · 결정: [DECISION_LOG](../02-decisions/DECISION_LOG.md)
-- 저장소: https://github.com/chquandogong/Quetzalcoatl · 태그: `v1.2.0`
+- 저장소: https://github.com/chquandogong/Quetzalcoatl · 태그: `v1.2.0` · Release: https://github.com/chquandogong/Quetzalcoatl/releases/tag/v1.2.0
 - live artifact(읽기 미러): https://claude.ai/code/artifact/3a1da038-a3d6-4146-9f55-0f54e7063443
