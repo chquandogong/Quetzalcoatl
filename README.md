@@ -83,7 +83,8 @@ Quetzalcoatl/
 │   ├── 03-spec/            # SPEC
 │   ├── 04-quality/         # RISK_REGISTER · TEST_PLAN
 │   ├── 05-ops/             # RUNBOOK · RETRO
-│   └── appendix/           # GLOSSARY · CONVENTIONS
+│   ├── appendix/           # GLOSSARY · CONVENTIONS
+│   └── assets/             # 대시보드 HTML 미러(렌더)
 ├── CHANGELOG.md
 ├── README.md
 └── LICENSE

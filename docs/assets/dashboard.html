@@ -1,0 +1,997 @@
+<title>Quetzalcoatl · v1.4.0 Dashboard</title>
+<style>
+  :root {
+    --ground: #0c2e2b;
+    --ground-2: #08201e;
+    --panel: #11403a;
+    --panel-2: #0e3631;
+    --line: #1e544d;
+    --gold-line: #5e4a24;
+    --text: #f2e9d8;
+    --muted: #9dbdb4;
+    --faint: #6e938b;
+    --turq: #2fb6a3;
+    --jade: #3fd0b0;
+    --gold: #e0a33e;
+    --crimson: #e0644a;
+    --display:
+      "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia,
+      serif;
+    --body:
+      system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo",
+      "Noto Sans KR", "Malgun Gothic", sans-serif;
+    --mono:
+      ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo,
+      Consolas, monospace;
+  }
+  .page {
+    background:
+      radial-gradient(
+        120% 80% at 88% -10%,
+        rgba(224, 163, 62, 0.1),
+        transparent 55%
+      ),
+      linear-gradient(
+        180deg,
+        #123b35 0%,
+        var(--ground) 46%,
+        var(--ground-2) 100%
+      );
+    color: var(--text);
+    font-family: var(--body);
+    min-height: 100vh;
+    padding: clamp(18px, 4vw, 52px);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 2.6vw, 30px);
+  }
+  a {
+    color: var(--jade);
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(63, 208, 176, 0.45);
+  }
+  a:focus-visible,
+  .lnk:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: linear-gradient(
+      180deg,
+      rgba(18, 59, 53, 0.6),
+      rgba(8, 32, 30, 0.55)
+    );
+    padding: clamp(26px, 4vw, 46px);
+  }
+  .hero__cv {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 1;
+  }
+  .hero__shade {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      rgba(8, 32, 30, 0.85) 0%,
+      rgba(8, 32, 30, 0.5) 40%,
+      rgba(8, 32, 30, 0) 66%
+    );
+  }
+  .hero__in {
+    position: relative;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .eyebrow b {
+    color: var(--turq);
+    font-weight: 600;
+  }
+  .hero__title {
+    font-family: var(--display);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    font-size: clamp(40px, 8vw, 82px);
+    line-height: 0.98;
+    margin: 0;
+    color: var(--text);
+    text-shadow: 0 2px 24px rgba(8, 32, 30, 0.55);
+  }
+  .hero__verline {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+  .hero__ver {
+    font-family: var(--mono);
+    font-size: clamp(20px, 3.2vw, 30px);
+    color: var(--jade);
+    letter-spacing: 0.02em;
+  }
+  .hero__sub {
+    margin: 18px 0 0;
+    max-width: 54ch;
+    color: var(--text);
+    font-size: clamp(15px, 1.7vw, 18px);
+  }
+  .hero__sub .land {
+    color: var(--gold);
+  }
+  .hero__sub .sky {
+    color: var(--turq);
+  }
+  .hero__meta {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--faint);
+    margin-top: 22px;
+    letter-spacing: 0.02em;
+    display: flex;
+    gap: 10px 16px;
+    flex-wrap: wrap;
+  }
+  .hero__meta b {
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ---------- CHIPS ---------- */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 2px;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .chip--rel {
+    color: #1a2b14;
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+  .chip--done {
+    color: var(--jade);
+    border-color: rgba(63, 208, 176, 0.42);
+    background: rgba(63, 208, 176, 0.06);
+  }
+  .chip--open {
+    color: var(--text);
+    border-style: dashed;
+    border-color: var(--gold-line);
+  }
+  .chip--risk {
+    color: var(--crimson);
+    border-color: rgba(224, 100, 74, 0.5);
+    background: rgba(224, 100, 74, 0.07);
+  }
+  .chip--watch {
+    color: var(--gold);
+    border-color: rgba(224, 163, 62, 0.4);
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    display: inline-block;
+  }
+
+  /* ---------- PANELS ---------- */
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: clamp(18px, 2.4vw, 26px);
+  }
+  .panel--alt {
+    background: var(--panel-2);
+  }
+  .ph {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0 0 16px;
+    flex-wrap: wrap;
+  }
+  .ph__no {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+  .ph__t {
+    font-family: var(--display);
+    font-size: clamp(19px, 2.4vw, 24px);
+    font-weight: 600;
+    margin: 0;
+    color: var(--text);
+  }
+  .ph__t small {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--faint);
+    text-transform: uppercase;
+    margin-left: 4px;
+    font-weight: 400;
+  }
+  .grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(16px, 2vw, 24px);
+  }
+
+  /* ---------- VERDICT + RAIL ---------- */
+  .verdict {
+    background: linear-gradient(
+      120deg,
+      rgba(47, 182, 163, 0.1),
+      rgba(8, 32, 30, 0) 60%
+    );
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--gold);
+    border-radius: 6px;
+    padding: clamp(18px, 2.6vw, 28px);
+  }
+  .verdict__lab {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .verdict__v {
+    font-family: var(--display);
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 600;
+    margin: 6px 0 4px;
+    color: var(--gold);
+  }
+  .verdict__d {
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 74ch;
+  }
+  .rail {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    margin-top: 24px;
+  }
+  .rail__step {
+    flex: 1 1 0;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-bottom: 3px solid var(--turq);
+    border-radius: 4px 4px 0 0;
+    padding: 12px 12px 14px;
+    min-width: 0;
+  }
+  .rail__step:nth-child(1) {
+    min-height: 78px;
+  }
+  .rail__step:nth-child(2) {
+    min-height: 100px;
+  }
+  .rail__step:nth-child(3) {
+    min-height: 122px;
+  }
+  .rail__step:nth-child(4) {
+    min-height: 148px;
+    border-bottom-color: var(--gold);
+    background: linear-gradient(
+      180deg,
+      rgba(224, 163, 62, 0.12),
+      var(--panel-2)
+    );
+  }
+  .rail__no {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    letter-spacing: 0.1em;
+  }
+  .rail__nm {
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 600;
+    margin: 4px 0 8px;
+  }
+  .rail__step:nth-child(4) .rail__nm {
+    color: var(--gold);
+  }
+
+  /* ---------- LISTS ---------- */
+  .goals {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+  .goals li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 11px;
+    align-items: start;
+  }
+  .goals .mk {
+    color: var(--jade);
+    font-family: var(--mono);
+    font-weight: 700;
+    line-height: 1.45;
+  }
+  .kv {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .kv li {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .kv .k {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .kv .v {
+    color: var(--text);
+    font-size: 14.5px;
+  }
+  .kv .v .em {
+    color: var(--faint);
+  }
+
+  /* ---------- TABLES ---------- */
+  .tblwrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 4px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 540px;
+    font-size: 13.5px;
+  }
+  thead th {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    text-align: left;
+    font-weight: 600;
+    padding: 0 14px 10px;
+    border-bottom: 1px solid var(--gold-line);
+  }
+  tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(30, 84, 77, 0.55);
+    vertical-align: top;
+    color: var(--text);
+  }
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+  td .mono {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+  td .owner {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--faint);
+  }
+
+  /* ---------- FOOTER ---------- */
+  .foot {
+    border-top: 1px solid var(--gold-line);
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+  }
+  .lnk {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 12px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--text);
+    text-decoration: none;
+    background: var(--panel-2);
+  }
+  .lnk:hover {
+    border-color: var(--turq);
+    color: var(--jade);
+  }
+  .lnk .ar {
+    color: var(--gold);
+  }
+  .ssot {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--faint);
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+  }
+  .ssot b {
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  @media (max-width: 720px) {
+    .grid2 {
+      grid-template-columns: 1fr;
+    }
+    .rail {
+      flex-wrap: wrap;
+    }
+    .rail__step {
+      flex: 1 1 44%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      scroll-behavior: auto;
+    }
+  }
+</style>
+
+<div class="page">
+  <main class="wrap">
+    <!-- HERO -->
+    <header class="hero">
+      <canvas class="hero__cv" id="serpent" aria-hidden="true"></canvas>
+      <div class="hero__shade"></div>
+      <div class="hero__in">
+        <div class="eyebrow">
+          Meaning-First AI Project OS &nbsp;·&nbsp; <b>의도(땅) ⇄ 실행(하늘)</b>
+        </div>
+        <h1 class="hero__title">Quetzalcoatl</h1>
+        <div class="hero__verline">
+          <span class="hero__ver">v1.4.0</span>
+          <span class="chip chip--rel"><span class="dot"></span>Released</span>
+        </div>
+        <p class="hero__sub">
+          깃털 달린 뱀 — 사람의 <span class="land">의도(땅)</span>와 AI의
+          <span class="sky">실행력(하늘)</span>을 잇는 프로젝트 운영 OS. 바로
+          만들지 않고, 의미를 먼저 검증한다.
+        </p>
+        <div class="hero__meta">
+          <span><b>상태</b> Ship 완료</span><span><b>날짜</b> 2026-06-23</span>
+          <span><b>소유자</b> CHENGHAO QUAN</span><span><b>자율</b> L2</span>
+          <span><b>SSOT</b> DASHBOARD.md</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- VERDICT + STAGE RAIL -->
+    <section class="verdict">
+      <div class="verdict__lab">전체 판단</div>
+      <div class="verdict__v">배포 완료</div>
+      <p class="verdict__d">
+        v1.3.1 · v1.4.0 Release 게시 · 플러그인 1.4.0 재설치 · 현 세션 1.4.0
+        로드 확인 — v1.4.0 사이클 종료.
+      </p>
+      <div class="rail" aria-label="진행 파이프라인">
+        <div class="rail__step">
+          <div class="rail__no">01</div>
+          <div class="rail__nm">분석</div>
+          <span class="chip chip--done"><span class="dot"></span>done</span>
+        </div>
+        <div class="rail__step">
+          <div class="rail__no">02</div>
+          <div class="rail__nm">Build</div>
+          <span class="chip chip--done"><span class="dot"></span>done</span>
+        </div>
+        <div class="rail__step">
+          <div class="rail__no">03</div>
+          <div class="rail__nm">Test</div>
+          <span class="chip chip--done"><span class="dot"></span>done</span>
+        </div>
+        <div class="rail__step">
+          <div class="rail__no">04</div>
+          <div class="rail__nm">Ship</div>
+          <span class="chip chip--rel"><span class="dot"></span>released</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- GOALS + SUCCESS -->
+    <div class="grid2">
+      <section class="panel">
+        <div class="ph">
+          <span class="ph__no">①</span>
+          <h2 class="ph__t">핵심 목표 <small>v1.4.0 · 달성</small></h2>
+        </div>
+        <ul class="goals">
+          <li>
+            <span class="mk">✓</span
+            ><span
+              >대시보드 보기 좋은 <strong>HTML 미러</strong> + 같은 URL
+              redeploy</span
+            >
+          </li>
+          <li>
+            <span class="mk">✓</span
+            ><span
+              ><strong>/dashboard 스킬화</strong> — 수동 + 자율 자동(규율)</span
+            >
+          </li>
+          <li>
+            <span class="mk">✓</span
+            ><span
+              >정본 <strong>SSOT 유지</strong> · “자동”의 한계 정직 (§7.2)</span
+            >
+          </li>
+        </ul>
+      </section>
+      <section class="panel panel--alt">
+        <div class="ph">
+          <span class="ph__no">②</span>
+          <h2 class="ph__t">성공 기준 <small>충족</small></h2>
+        </div>
+        <ul class="kv">
+          <li>
+            <span class="k">정량</span
+            ><span class="v"
+              >3중 버전 1.4.0 · 섹션 §0~§23 연속 · CI
+              <code>validate</code> green</span
+            >
+          </li>
+          <li>
+            <span class="k">정성</span
+            ><span class="v"
+              >정본=SSOT + 보기 좋은 미러 · 과대주장 없음 (§15)</span
+            >
+          </li>
+          <li>
+            <span class="k">사용자 반응</span
+            ><span class="v"
+              >디자인 피드백 대기 <span class="em">(열림)</span></span
+            >
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- WORK BOARD -->
+    <section class="panel">
+      <div class="ph">
+        <span class="ph__no">③</span>
+        <h2 class="ph__t">작업 보드 <small>claimable · 전부 완료</small></h2>
+      </div>
+      <div class="tblwrap">
+        <table>
+          <thead>
+            <tr>
+              <th>작업</th>
+              <th>상태</th>
+              <th>소유자</th>
+              <th>산출물 / 커밋</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>보기 좋은 HTML 대시보드 미러</td>
+              <td><span class="chip chip--done">done</span></td>
+              <td><span class="owner">데스크탑/Claude</span></td>
+              <td><span class="mono">artifact</span></td>
+            </tr>
+            <tr>
+              <td>/dashboard 스킬화 (§7.2·§2·§18.3)</td>
+              <td><span class="chip chip--done">done</span></td>
+              <td><span class="owner">데스크탑/Claude</span></td>
+              <td><span class="mono">SKILL v1.4.0</span></td>
+            </tr>
+            <tr>
+              <td>버전 · CHANGELOG · docs</td>
+              <td><span class="chip chip--done">done</span></td>
+              <td><span class="owner">데스크탑/Claude</span></td>
+              <td><span class="mono">4cb9481</span></td>
+            </tr>
+            <tr>
+              <td>커밋 · 태그 v1.4.0 · 푸시</td>
+              <td><span class="chip chip--done">done</span></td>
+              <td><span class="owner">데스크탑/Claude</span></td>
+              <td><span class="mono">tag v1.4.0</span></td>
+            </tr>
+            <tr>
+              <td>GitHub Release v1.3.1 · v1.4.0 게시</td>
+              <td><span class="chip chip--done">done</span></td>
+              <td><span class="owner">데스크탑/Claude</span></td>
+              <td><span class="mono">releases (latest)</span></td>
+            </tr>
+            <tr>
+              <td>플러그인 1.4.0 재설치</td>
+              <td><span class="chip chip--done">done</span></td>
+              <td><span class="owner">데스크탑/Claude</span></td>
+              <td><span class="mono">현 세션 1.4.0</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- RISKS + QUALITY -->
+    <div class="grid2">
+      <section class="panel">
+        <div class="ph">
+          <span class="ph__no">④</span>
+          <h2 class="ph__t">상위 리스크</h2>
+        </div>
+        <div class="tblwrap">
+          <table style="min-width: 420px">
+            <thead>
+              <tr>
+                <th>리스크</th>
+                <th>가능성/영향</th>
+                <th>상태</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  미러·정본 분기
+                  <span class="em" style="color: var(--faint)"
+                    >(갱신 누락)</span
+                  >
+                  <div class="mono" style="margin-top: 5px">
+                    대응: 작업 직후 redeploy 규율 — 이번에 위반·정정
+                  </div>
+                </td>
+                <td><span class="mono">중간 / 낮음</span></td>
+                <td><span class="chip chip--watch">관찰</span></td>
+              </tr>
+              <tr>
+                <td>
+                  “자동”을 강제 락으로 오해
+                  <div class="mono" style="margin-top: 5px">
+                    대응: §7.2/§15에 규율≠강제 명시
+                  </div>
+                </td>
+                <td><span class="mono">낮음 / 중간</span></td>
+                <td><span class="chip chip--done">완화됨</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel panel--alt">
+        <div class="ph">
+          <span class="ph__no">⑤</span>
+          <h2 class="ph__t">품질 지표</h2>
+        </div>
+        <ul class="kv">
+          <li>
+            <span class="k">테스트</span
+            ><span class="v"
+              >CI <code>validate</code> green — 3중 버전 · JSON · 섹션
+              연속성</span
+            >
+          </li>
+          <li>
+            <span class="k">알려진 이슈</span
+            ><span class="v"
+              >미러 갱신 수동 → 누락 시 stale
+              <span class="em">(이번 발생·정정)</span></span
+            >
+          </li>
+          <li>
+            <span class="k">교차검증</span
+            ><span class="v"
+              >단일 모델
+              <span class="em">(GPT 미접속, §5.6) — 후속 권장</span></span
+            >
+          </li>
+          <li>
+            <span class="k">비용</span
+            ><span class="v">문서·프롬프트 ~0 (§15)</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- CHECKPOINT + NEXT -->
+    <div class="grid2">
+      <section class="panel">
+        <div class="ph">
+          <span class="ph__no">⑥</span>
+          <h2 class="ph__t">재개 지점 &amp; 결정 대기</h2>
+        </div>
+        <ul class="kv">
+          <li>
+            <span class="k">체크포인트</span
+            ><span class="v"
+              ><span class="mono" style="color: var(--jade)">4cb9481</span> ·
+              태그 <span class="mono">v1.4.0</span> · Release
+              <span class="mono">latest</span></span
+            >
+          </li>
+          <li>
+            <span class="k">다음 작업</span
+            ><span class="v">없음 — v1.4.0 사이클 완료</span>
+          </li>
+          <li>
+            <span class="k">사람 결정 대기</span
+            ><span class="v"
+              >대시보드 디자인 피드백
+              <span class="chip chip--open" style="margin-left: 4px"
+                >선택</span
+              ></span
+            >
+          </li>
+        </ul>
+      </section>
+      <section class="panel panel--alt">
+        <div class="ph">
+          <span class="ph__no">⑦</span>
+          <h2 class="ph__t">다음 액션</h2>
+        </div>
+        <ul class="goals">
+          <li>
+            <span class="mk" style="color: var(--gold)">✓</span
+            ><span
+              ><s style="color: var(--faint)">Claude Code 재시작</s> →
+              <strong>완료</strong> (현 세션 1.4.0 확인)</span
+            >
+          </li>
+          <li>
+            <span class="mk" style="color: var(--muted)">2</span
+            ><span
+              >대시보드 디자인 피드백 반영
+              <span class="em" style="color: var(--faint)">(선택)</span></span
+            >
+          </li>
+          <li>
+            <span class="mk" style="color: var(--muted)">3</span
+            ><span
+              >다음 개선 사이클 시작 시 새 목표 블록 추가
+              <span class="em" style="color: var(--faint)">(선택)</span></span
+            >
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="foot">
+      <div class="links">
+        <a class="lnk" href="https://github.com/chquandogong/Quetzalcoatl"
+          ><span class="ar">→</span> repo</a
+        >
+        <a
+          class="lnk"
+          href="https://github.com/chquandogong/Quetzalcoatl/releases/tag/v1.4.0"
+          ><span class="ar">→</span> Release v1.4.0</a
+        >
+        <a
+          class="lnk"
+          href="https://github.com/chquandogong/Quetzalcoatl/tree/main/docs"
+          ><span class="ar">→</span> docs/</a
+        >
+        <span class="lnk"><span class="ar">◆</span> DECISION_LOG D8~D11</span>
+      </div>
+      <p class="ssot">
+        <b>이 페이지는 DASHBOARD.md(SSOT)의 읽기용 미러입니다.</b> 정본과 갈리면
+        정본이 이깁니다 (§21.3). · 자동 갱신은 강제 락이 아니라 에이전트
+        규율입니다 (§7.2 / §15).
+      </p>
+    </footer>
+  </main>
+</div>
+
+<script>
+  (function () {
+    var cvs = document.getElementById("serpent");
+    if (!cvs || !cvs.getContext) return;
+    var ctx = cvs.getContext("2d"),
+      reduce = false;
+    try {
+      reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    } catch (e) {}
+    var W = 0,
+      H = 0,
+      dpr = 1,
+      pts = [],
+      N = 170;
+    var jade = [63, 208, 176],
+      turq = [47, 182, 163],
+      gold = [224, 163, 62];
+    function lp(a, b, t) {
+      return a + (b - a) * t;
+    }
+    function mix(c1, c2, t) {
+      return (
+        "rgb(" +
+        Math.round(lp(c1[0], c2[0], t)) +
+        "," +
+        Math.round(lp(c1[1], c2[1], t)) +
+        "," +
+        Math.round(lp(c1[2], c2[2], t)) +
+        ")"
+      );
+    }
+    function col(t) {
+      return t < 0.5
+        ? mix(jade, turq, t / 0.5)
+        : mix(turq, gold, (t - 0.5) / 0.5);
+    }
+    function build() {
+      pts = [];
+      var midY = H * 0.54,
+        amp = H * 0.22,
+        waves = 2.0,
+        ph = -0.5;
+      for (var i = 0; i <= N; i++) {
+        var t = i / N,
+          x = t * W * 1.06 - W * 0.03;
+        var y =
+          midY +
+          Math.sin(t * Math.PI * 2 * waves + ph) *
+            amp *
+            (0.45 + 0.55 * Math.sin(t * Math.PI));
+        pts.push({ x: x, y: y, t: t });
+      }
+    }
+    function size() {
+      var r = cvs.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = Math.max(1, r.width);
+      H = Math.max(1, r.height);
+      cvs.width = Math.round(W * dpr);
+      cvs.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      build();
+    }
+    function stars() {
+      var s = [
+        [0.8, 0.2, 2.6],
+        [0.9, 0.4, 1.6],
+        [0.71, 0.15, 1.4],
+        [0.63, 0.31, 1.2],
+        [0.95, 0.58, 2.0],
+        [0.85, 0.7, 1.3],
+      ];
+      ctx.fillStyle = "#E8C879";
+      ctx.shadowColor = "rgba(224,163,62,0.85)";
+      ctx.shadowBlur = 6;
+      for (var i = 0; i < s.length; i++) {
+        ctx.globalAlpha = 0.7;
+        ctx.beginPath();
+        ctx.arc(s[i][0] * W, s[i][1] * H, s[i][2], 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.shadowBlur = 0;
+      ctx.globalAlpha = 1;
+    }
+    function draw(p) {
+      ctx.clearRect(0, 0, W, H);
+      stars();
+      var lead = Math.max(1, Math.floor(p * N));
+      /* feather barbs */
+      for (var i = 1; i <= lead; i++) {
+        var a = pts[i - 1],
+          b = pts[Math.min(i, N)];
+        var dx = b.x - a.x,
+          dy = b.y - a.y,
+          len = Math.sqrt(dx * dx + dy * dy) || 1,
+          nx = -dy / len,
+          ny = dx / len;
+        var barb = 10 + 34 * Math.sin(a.t * Math.PI),
+          fade = 0.18 + 0.5 * Math.sin(a.t * Math.PI);
+        ctx.strokeStyle = col(a.t);
+        ctx.globalAlpha = fade;
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.moveTo(a.x - nx * barb * 0.4, a.y - ny * barb * 0.4);
+        ctx.lineTo(a.x + nx * barb, a.y + ny * barb);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(a.x + nx * barb * 0.4, a.y + ny * barb * 0.4);
+        ctx.lineTo(a.x - nx * barb, a.y - ny * barb);
+        ctx.stroke();
+      }
+      /* spine: single gradient path + glow */
+      var grad = ctx.createLinearGradient(pts[0].x, 0, pts[N].x, 0);
+      grad.addColorStop(0, "#46D9B8");
+      grad.addColorStop(0.5, "#2FB6A3");
+      grad.addColorStop(1, "#F0B450");
+      ctx.strokeStyle = grad;
+      ctx.globalAlpha = 1;
+      ctx.lineWidth = 3.4;
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
+      ctx.shadowColor = "rgba(63,208,176,0.85)";
+      ctx.shadowBlur = 12;
+      ctx.beginPath();
+      ctx.moveTo(pts[0].x, pts[0].y);
+      for (var j = 1; j <= lead; j++) {
+        ctx.lineTo(pts[j].x, pts[j].y);
+      }
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+      /* glowing head (morning star) */
+      var hd = pts[Math.min(lead, N)];
+      var g = ctx.createRadialGradient(hd.x, hd.y, 0, hd.x, hd.y, 38);
+      g.addColorStop(0, "rgba(245,200,110,0.98)");
+      g.addColorStop(0.5, "rgba(224,163,62,0.5)");
+      g.addColorStop(1, "rgba(224,163,62,0)");
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(hd.x, hd.y, 38, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    var start = null,
+      DUR = 1900;
+    function frame(ts) {
+      if (start === null) start = ts;
+      var p = Math.min(1, (ts - start) / DUR);
+      draw(1 - Math.pow(1 - p, 3));
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    size();
+    if (reduce) draw(1);
+    else requestAnimationFrame(frame);
+    var rt;
+    window.addEventListener("resize", function () {
+      clearTimeout(rt);
+      rt = setTimeout(function () {
+        size();
+        draw(1);
+      }, 150);
+    });
+  })();
+</script>

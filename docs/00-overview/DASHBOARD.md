@@ -78,4 +78,4 @@
 - 문서: [`docs/`](../README.md) · 결정: [DECISION_LOG](../02-decisions/DECISION_LOG.md) D8~D11
 - 저장소: https://github.com/chquandogong/Quetzalcoatl · 태그 `v1.4.0`
 - Release: https://github.com/chquandogong/Quetzalcoatl/releases/tag/v1.4.0 (latest)
-- 보기 좋은 미러(읽기용): live artifact · 정본이 SSOT(§7.2)
+- 보기 좋은 미러(읽기용): live artifact · 소스 [`docs/assets/dashboard.html`](../assets/dashboard.html) · `/dashboard`로 redeploy · 정본이 SSOT(§7.2)
