@@ -1,4 +1,4 @@
-<title>Quetzalcoatl · v1.4.0 Dashboard</title>
+<title>Quetzalcoatl · v1.4.1 Dashboard</title>
 <style>
   :root {
     --ground: #0c2e2b;
@@ -503,7 +503,7 @@
         </div>
         <h1 class="hero__title">Quetzalcoatl</h1>
         <div class="hero__verline">
-          <span class="hero__ver">v1.4.0</span>
+          <span class="hero__ver">v1.4.1</span>
           <span class="chip chip--rel"><span class="dot"></span>Released</span>
         </div>
         <p class="hero__sub">
@@ -512,7 +512,7 @@
           만들지 않고, 의미를 먼저 검증한다.
         </p>
         <div class="hero__meta">
-          <span><b>상태</b> Ship 완료 + 후속 정비</span
+          <span><b>상태</b> Ship · 후속 정비 · v1.4.1</span
           ><span><b>날짜</b> 2026-06-23</span>
           <span><b>소유자</b> CHENGHAO QUAN</span><span><b>자율</b> L2</span>
           <span><b>SSOT</b> DASHBOARD.md</span>
@@ -523,11 +523,11 @@
     <!-- VERDICT + STAGE RAIL -->
     <section class="verdict">
       <div class="verdict__lab">전체 판단</div>
-      <div class="verdict__v">배포 완료 + 후속 정비 완료</div>
+      <div class="verdict__v">배포 완료 · v1.4.1 게시</div>
       <p class="verdict__d">
-        v1.3.1 · v1.4.0 Release · 플러그인 1.4.0 · 현 세션 1.4.0 확인 — v1.4.0
-        사이클 종료. <strong>후속 정비</strong>: 문서 일관성 정합 · 자동 커밋 훅
-        수정 · 미러 강화·repo화.
+        v1.4.0 사이클 + 후속 정비 완료. <strong>v1.4.1</strong>: §12 Ship
+        체크리스트에 「living 문서 동기화」 항목 추가 — 이 배포가 그 규칙의 첫
+        dogfood(문서·미러를 1.4.1로 동기화).
       </p>
       <div class="rail" aria-label="진행 파이프라인">
         <div class="rail__step">
@@ -591,7 +591,7 @@
           <li>
             <span class="k">정량</span
             ><span class="v"
-              >3중 버전 1.4.0 · 섹션 §0~§23 연속 · CI
+              >3중 버전 1.4.1 · 섹션 §0~§23 연속 · CI
               <code>validate</code> green</span
             >
           </li>
@@ -656,7 +656,7 @@
               <td>GitHub Release v1.3.1 · v1.4.0 게시</td>
               <td><span class="chip chip--done">done</span></td>
               <td><span class="owner">데스크탑/Claude</span></td>
-              <td><span class="mono">releases (latest)</span></td>
+              <td><span class="mono">releases</span></td>
             </tr>
             <tr>
               <td>플러그인 1.4.0 재설치</td>
@@ -669,12 +669,12 @@
       </div>
     </section>
 
-    <!-- 후속 정비 -->
+    <!-- 후속 정비 + v1.4.1 -->
     <section class="panel panel--alt">
       <div class="ph">
         <span class="ph__no">✦</span>
         <h2 class="ph__t">
-          후속 정비 <small>2026-06-23 · 같은 세션 · 완료</small>
+          후속 정비 + v1.4.1 <small>2026-06-23 · 같은 세션 · 완료</small>
         </h2>
       </div>
       <div class="tblwrap">
@@ -693,9 +693,7 @@
               <td><span class="mono">6585263</span></td>
             </tr>
             <tr>
-              <td>
-                문서 일관성 전수 점검 → living v1.4.0 동기화 · 누적 현재성
-              </td>
+              <td>문서 일관성 전수 점검 → living 동기화 · 누적 현재성</td>
               <td><span class="chip chip--done">done</span></td>
               <td><span class="mono">5f45772 · 9a9f581</span></td>
             </tr>
@@ -705,14 +703,21 @@
               <td><span class="mono">전역 훅</span></td>
             </tr>
             <tr>
-              <td>미러 깃털 뱀 강화 · 같은 URL redeploy</td>
+              <td>미러 깃털 뱀 강화 · repo 추가(docs/assets/)</td>
               <td><span class="chip chip--done">done</span></td>
-              <td><span class="mono">artifact</span></td>
+              <td><span class="mono">artifact · 50e67fe</span></td>
             </tr>
             <tr>
-              <td>미러 HTML repo 추가(docs/assets/) · 링크</td>
+              <td>대시보드 후속 정비 반영 · RETRO 회고</td>
               <td><span class="chip chip--done">done</span></td>
-              <td><span class="mono">50e67fe</span></td>
+              <td><span class="mono">456dab7 · a8aaebb</span></td>
+            </tr>
+            <tr>
+              <td>
+                <strong>v1.4.1 — §12 living-doc 동기화 항목(dogfood)</strong>
+              </td>
+              <td><span class="chip chip--rel">released</span></td>
+              <td><span class="mono">dc51420 · v1.4.1</span></td>
             </tr>
           </tbody>
         </table>
@@ -743,7 +748,17 @@
                     >(갱신 누락)</span
                   >
                   <div class="mono" style="margin-top: 5px">
-                    대응: redeploy 규율 준수 · 소스 repo 추적(docs/assets/)
+                    대응: redeploy 규율 · 소스 repo 추적(docs/assets/)
+                  </div>
+                </td>
+                <td><span class="mono">낮음 / 낮음</span></td>
+                <td><span class="chip chip--done">완화됨</span></td>
+              </tr>
+              <tr>
+                <td>
+                  living-doc stale 재발
+                  <div class="mono" style="margin-top: 5px">
+                    대응: §12 체크리스트에 동기화 항목(v1.4.1)으로 강제
                   </div>
                 </td>
                 <td><span class="mono">낮음 / 낮음</span></td>
@@ -772,8 +787,8 @@
           <li>
             <span class="k">테스트</span
             ><span class="v"
-              >CI <code>validate</code> green — 최근
-              <span class="mono">9a9f581 · 50e67fe</span> 통과</span
+              >CI <code>validate</code> green — 3중 버전
+              <span class="mono">1.4.1</span> · JSON · 섹션 연속성</span
             >
           </li>
           <li>
@@ -811,14 +826,18 @@
           <li>
             <span class="k">체크포인트</span
             ><span class="v"
-              ><span class="mono" style="color: var(--jade)">50e67fe</span> ·
-              태그 <span class="mono">v1.4.0</span> · Release
+              >태그
+              <span class="mono" style="color: var(--jade)">v1.4.1</span> (§12
+              항목 + living 동기화) · Release
               <span class="mono">latest</span></span
             >
           </li>
           <li>
             <span class="k">다음 작업</span
-            ><span class="v">없음 — 사이클 + 후속 정비 완료</span>
+            ><span class="v"
+              >플러그인 1.4.1 재설치
+              <span class="em">(런타임 반영 — 사람)</span></span
+            >
           </li>
           <li>
             <span class="k">사람 결정 대기</span
@@ -836,10 +855,12 @@
         </div>
         <ul class="goals">
           <li>
-            <span class="mk" style="color: var(--gold)">✓</span
+            <span class="mk" style="color: var(--gold)">1</span
             ><span
-              ><s style="color: var(--faint)">깃털 뱀 디자인 피드백</s> →
-              <strong>반영 완료</strong> (미러 강화·redeploy·repo화)</span
+              ><strong>플러그인 1.4.1 재설치</strong>
+              <span class="em" style="color: var(--faint)"
+                >(새 세션부터 반영)</span
+              ></span
             >
           </li>
           <li>
@@ -870,8 +891,8 @@
         >
         <a
           class="lnk"
-          href="https://github.com/chquandogong/Quetzalcoatl/releases/tag/v1.4.0"
-          ><span class="ar">→</span> Release v1.4.0</a
+          href="https://github.com/chquandogong/Quetzalcoatl/releases/tag/v1.4.1"
+          ><span class="ar">→</span> Release v1.4.1</a
         >
         <a
           class="lnk"

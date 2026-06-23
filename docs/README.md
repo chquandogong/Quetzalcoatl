@@ -3,7 +3,7 @@
 > 상태: 활성 · 날짜: 2026-06-23 · 소유자: Quetzalcoatl OS(Claude Opus 4.8) · 승인: CHENGHAO QUAN
 
 이 디렉터리는 **Quetzalcoatl 스킬 자신의 개발**을 Quetzalcoatl 문서 체계(SKILL.md §6)로 관리한 것이다(dogfooding).
-현재 사이클: **v1.4.0 — 대시보드 HTML 미러 + `/dashboard` 갱신(§7.2).**
+현재 사이클: **v1.4.0**(대시보드 HTML 미러 + `/dashboard`, §7.2) — + **v1.4.1 패치**(§12 Ship 체크리스트에 「living 문서 동기화」 항목).
 직전 사이클: **v1.3.1**(용어집 동기) · **v1.3.0**(앵커된 선호 처리 §4.2 · 대안 비교 §4 승격) · **v1.2.0**(5개 능력 추가).
 
 ## 이번 사이클(v1.4.0)의 한 줄
