@@ -1,4 +1,4 @@
-<title>Quetzalcoatl · v1.4.1 Dashboard</title>
+<title>Quetzalcoatl · v1.4.2 Dashboard</title>
 <style>
   :root {
     --ground: #0c2e2b;
@@ -282,7 +282,7 @@
   .verdict__d {
     color: var(--muted);
     font-size: 14px;
-    max-width: 78ch;
+    max-width: 80ch;
   }
   .verdict__d strong {
     color: var(--text);
@@ -461,6 +461,19 @@
   .lnk .ar {
     color: var(--gold);
   }
+  .badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .badge b {
+    color: var(--jade);
+    font-weight: 600;
+  }
   .ssot {
     font-family: var(--mono);
     font-size: 11.5px;
@@ -503,10 +516,10 @@
         </div>
         <h1 class="hero__title">Quetzalcoatl</h1>
         <div class="hero__verline">
-          <span class="hero__ver">v1.4.1</span>
+          <span class="hero__ver">v1.4.2</span>
           <span class="chip chip--rel"><span class="dot"></span>Released</span>
-          <span class="chip chip--done"
-            ><span class="dot"></span>Installed</span
+          <span class="chip chip--open"
+            ><span class="dot"></span>재설치 대기</span
           >
         </div>
         <p class="hero__sub">
@@ -515,8 +528,8 @@
           만들지 않고, 의미를 먼저 검증한다.
         </p>
         <div class="hero__meta">
-          <span><b>상태</b> v1.4.1 게시·설치 완료 (유휴)</span
-          ><span><b>날짜</b> 2026-06-23</span>
+          <span><b>상태</b> v1.4.2 게시 · 재설치 대기</span
+          ><span><b>날짜</b> 2026-06-24</span>
           <span><b>소유자</b> CHENGHAO QUAN</span><span><b>자율</b> L2</span>
           <span><b>SSOT</b> DASHBOARD.md</span>
         </div>
@@ -526,11 +539,13 @@
     <!-- VERDICT + STAGE RAIL -->
     <section class="verdict">
       <div class="verdict__lab">전체 판단</div>
-      <div class="verdict__v">배포·설치 완료 (유휴)</div>
+      <div class="verdict__v">배포 완료 · v1.4.2</div>
       <p class="verdict__d">
-        v1.4.0 사이클 + 후속 정비 + <strong>v1.4.1</strong>(§12 living-doc
-        동기화 항목) 게시. 플러그인 1.4.1 설치·<code>/reload-plugins</code> 적용
-        확인 — <strong>전체 사이클 종료.</strong>
+        v1.4.0 사이클 + 후속 정비 완료.
+        <strong>실제 Claude–GPT 교차검증</strong>(§5.5, 강한 수렴) 후
+        <strong>P1 반영</strong> — §1.6 게이트 행동 전 6문 pre-check · CI
+        living-doc 드리프트 가드(규율→강제) · §4.2 반증행 · 미러 자기-배지. 남은
+        큰 건은 P2 Core Contract 분리(승인 필요).
       </p>
       <div class="rail" aria-label="진행 파이프라인">
         <div class="rail__step">
@@ -594,8 +609,8 @@
           <li>
             <span class="k">정량</span
             ><span class="v"
-              >3중 버전 1.4.1 · 섹션 §0~§23 연속 · CI
-              <code>validate</code> green</span
+              >3중 버전 1.4.2 · 섹션 §0~§23 연속 · CI green(+드리프트
+              가드)</span
             >
           </li>
           <li>
@@ -607,77 +622,19 @@
           <li>
             <span class="k">사용자 반응</span
             ><span class="v"
-              >깃털 뱀 디자인 피드백 → <strong>반영 완료</strong></span
+              >깃털 뱀 + Claude–GPT 교차검증 → <strong>반영 완료</strong></span
             >
           </li>
         </ul>
       </section>
     </div>
 
-    <!-- WORK BOARD -->
-    <section class="panel">
-      <div class="ph">
-        <span class="ph__no">③</span>
-        <h2 class="ph__t">작업 보드 <small>claimable · 전부 완료</small></h2>
-      </div>
-      <div class="tblwrap">
-        <table>
-          <thead>
-            <tr>
-              <th>작업</th>
-              <th>상태</th>
-              <th>소유자</th>
-              <th>산출물 / 커밋</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>보기 좋은 HTML 대시보드 미러</td>
-              <td><span class="chip chip--done">done</span></td>
-              <td><span class="owner">데스크탑/Claude</span></td>
-              <td><span class="mono">artifact</span></td>
-            </tr>
-            <tr>
-              <td>/dashboard 스킬화 (§7.2·§2·§18.3)</td>
-              <td><span class="chip chip--done">done</span></td>
-              <td><span class="owner">데스크탑/Claude</span></td>
-              <td><span class="mono">SKILL v1.4.0</span></td>
-            </tr>
-            <tr>
-              <td>버전 · CHANGELOG · docs</td>
-              <td><span class="chip chip--done">done</span></td>
-              <td><span class="owner">데스크탑/Claude</span></td>
-              <td><span class="mono">4cb9481</span></td>
-            </tr>
-            <tr>
-              <td>커밋 · 태그 v1.4.0 · 푸시</td>
-              <td><span class="chip chip--done">done</span></td>
-              <td><span class="owner">데스크탑/Claude</span></td>
-              <td><span class="mono">tag v1.4.0</span></td>
-            </tr>
-            <tr>
-              <td>GitHub Release v1.3.1 · v1.4.0 게시</td>
-              <td><span class="chip chip--done">done</span></td>
-              <td><span class="owner">데스크탑/Claude</span></td>
-              <td><span class="mono">releases</span></td>
-            </tr>
-            <tr>
-              <td>플러그인 1.4.0 재설치</td>
-              <td><span class="chip chip--done">done</span></td>
-              <td><span class="owner">데스크탑/Claude</span></td>
-              <td><span class="mono">현 세션 1.4.0</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- 후속 정비 + v1.4.1 -->
+    <!-- 교차검증 + v1.4.2 -->
     <section class="panel panel--alt">
       <div class="ph">
         <span class="ph__no">✦</span>
         <h2 class="ph__t">
-          후속 정비 + v1.4.1 <small>2026-06-23 · 같은 세션 · 완료</small>
+          교차검증 + v1.4.2 <small>2026-06-24 · 완료</small>
         </h2>
       </div>
       <div class="tblwrap">
@@ -691,46 +648,34 @@
           </thead>
           <tbody>
             <tr>
-              <td>정본 대시보드 정합성 정정(재시작 done 등)</td>
+              <td>실제 Claude–GPT 교차검증 로그(§5.5) — 강한 수렴</td>
               <td><span class="chip chip--done">done</span></td>
-              <td><span class="mono">6585263</span></td>
-            </tr>
-            <tr>
-              <td>문서 일관성 전수 점검 → living 동기화 · 누적 현재성</td>
-              <td><span class="chip chip--done">done</span></td>
-              <td><span class="mono">5f45772 · 9a9f581</span></td>
-            </tr>
-            <tr>
-              <td>자동 커밋 훅 수정(generic → WIP 체크포인트)</td>
-              <td><span class="chip chip--done">done</span></td>
-              <td><span class="mono">전역 훅</span></td>
-            </tr>
-            <tr>
-              <td>미러 깃털 뱀 강화 · repo 추가(docs/assets/)</td>
-              <td><span class="chip chip--done">done</span></td>
-              <td><span class="mono">artifact · 50e67fe</span></td>
-            </tr>
-            <tr>
-              <td>대시보드 후속 정비 반영 · RETRO 회고</td>
-              <td><span class="chip chip--done">done</span></td>
-              <td><span class="mono">456dab7 · a8aaebb</span></td>
+              <td><span class="mono">b648d70</span></td>
             </tr>
             <tr>
               <td>
-                <strong>v1.4.1 — §12 living-doc 동기화 항목(dogfood)</strong>
+                <strong>P1a</strong> CI living-doc 드리프트 가드(규율→강제)
+              </td>
+              <td><span class="chip chip--done">done</span></td>
+              <td><span class="mono">0269ba0</span></td>
+            </tr>
+            <tr>
+              <td>
+                <strong>P1c</strong> §1.6 게이트 행동 전 6문 pre-check · L2/L3
+                면제 없음
               </td>
               <td><span class="chip chip--rel">released</span></td>
-              <td><span class="mono">dc51420 · v1.4.1</span></td>
+              <td><span class="mono">v1.4.2</span></td>
             </tr>
             <tr>
-              <td>
-                <strong
-                  >플러그인 1.4.1 설치 ·
-                  <code>/reload-plugins</code> 적용</strong
-                >
-              </td>
-              <td><span class="chip chip--done">done</span></td>
-              <td><span class="mono">installed 1.4.1 · 33b6195</span></td>
+              <td><strong>P1b</strong> 미러 자기-배지(생성일·stale 가시화)</td>
+              <td><span class="chip chip--rel">released</span></td>
+              <td><span class="mono">v1.4.2</span></td>
+            </tr>
+            <tr>
+              <td><strong>§4.2</strong> 반증행 상시(아첨 방지)</td>
+              <td><span class="chip chip--rel">released</span></td>
+              <td><span class="mono">v1.4.2</span></td>
             </tr>
           </tbody>
         </table>
@@ -741,7 +686,7 @@
     <div class="grid2">
       <section class="panel">
         <div class="ph">
-          <span class="ph__no">④</span>
+          <span class="ph__no">③</span>
           <h2 class="ph__t">상위 리스크</h2>
         </div>
         <div class="tblwrap">
@@ -756,22 +701,10 @@
             <tbody>
               <tr>
                 <td>
-                  미러·정본 분기
-                  <span class="em" style="color: var(--faint)"
-                    >(갱신 누락)</span
-                  >
-                  <div class="mono" style="margin-top: 5px">
-                    대응: redeploy 규율 · 소스 repo 추적(docs/assets/)
-                  </div>
-                </td>
-                <td><span class="mono">낮음 / 낮음</span></td>
-                <td><span class="chip chip--done">완화됨</span></td>
-              </tr>
-              <tr>
-                <td>
                   living-doc stale 재발
                   <div class="mono" style="margin-top: 5px">
-                    대응: §12 체크리스트에 동기화 항목(v1.4.1)으로 강제
+                    대응: <strong>CI 드리프트 가드(v1.4.2)로 강제</strong> —
+                    규율→보장
                   </div>
                 </td>
                 <td><span class="mono">낮음 / 낮음</span></td>
@@ -779,13 +712,23 @@
               </tr>
               <tr>
                 <td>
-                  “자동”을 강제 락으로 오해
+                  자율이 게이트 회색화
                   <div class="mono" style="margin-top: 5px">
-                    대응: §7.2/§15에 규율≠강제 명시
+                    대응: §1.6 행동 전 6문 pre-check + L2/L3 면제 없음(v1.4.2)
                   </div>
                 </td>
                 <td><span class="mono">낮음 / 중간</span></td>
                 <td><span class="chip chip--done">완화됨</span></td>
+              </tr>
+              <tr>
+                <td>
+                  분량(1,428줄) 준수 희석
+                  <div class="mono" style="margin-top: 5px">
+                    대응: P2 Core Contract 분리(승인 필요)
+                  </div>
+                </td>
+                <td><span class="mono">중간 / 중간</span></td>
+                <td><span class="chip chip--watch">열림</span></td>
               </tr>
             </tbody>
           </table>
@@ -793,7 +736,7 @@
       </section>
       <section class="panel panel--alt">
         <div class="ph">
-          <span class="ph__no">⑤</span>
+          <span class="ph__no">④</span>
           <h2 class="ph__t">품질 지표</h2>
         </div>
         <ul class="kv">
@@ -801,36 +744,29 @@
             <span class="k">테스트</span
             ><span class="v"
               >CI <code>validate</code> green — 3중 버전
-              <span class="mono">1.4.1</span> · JSON · 섹션 연속성</span
+              <span class="mono">1.4.2</span> · JSON · 섹션 ·
+              <strong>드리프트 가드</strong></span
             >
           </li>
           <li>
-            <span class="k">배포 검증</span
+            <span class="k">교차검증</span
             ><span class="v"
-              ><span class="mono">installed_plugins.json</span> = 1.4.1 (sha
-              33b6195) · §12 항목 캐시 확인 ·
-              <code>/reload-plugins</code> 적용</span
+              >✅ <strong>실제 Claude–GPT</strong>(§5.5, b648d70) — v1.2.0
+              단일모델 한계 해소</span
             >
           </li>
           <li>
             <span class="k">렌더 검증</span
             ><span class="v"
-              >미러 headless 렌더 확인
-              <span class="em">(desktop · mobile, 반응형 정상)</span></span
+              >미러 headless
+              <span class="em">(desktop · mobile)</span> 정상</span
             >
           </li>
           <li>
             <span class="k">알려진 이슈</span
             ><span class="v"
               ><span class="mono">! claude plugin</span> CLI 무반영 → in-app
-              <code>/plugin</code> + <code>/reload-plugins</code>로 우회</span
-            >
-          </li>
-          <li>
-            <span class="k">교차검증</span
-            ><span class="v"
-              >단일 모델
-              <span class="em">(GPT 미접속, §5.6) — 후속 권장</span></span
+              <code>/plugin</code> 우회</span
             >
           </li>
         </ul>
@@ -841,7 +777,7 @@
     <div class="grid2">
       <section class="panel">
         <div class="ph">
-          <span class="ph__no">⑥</span>
+          <span class="ph__no">⑤</span>
           <h2 class="ph__t">재개 지점 &amp; 결정 대기</h2>
         </div>
         <ul class="kv">
@@ -849,55 +785,57 @@
             <span class="k">체크포인트</span
             ><span class="v"
               >태그
-              <span class="mono" style="color: var(--jade)">v1.4.1</span> (<span
-                class="mono"
-                >33b6195</span
-              >) · Release <span class="mono">latest</span> · 설치 1.4.1</span
+              <span class="mono" style="color: var(--jade)">v1.4.2</span> ·
+              Release <span class="mono">latest</span></span
             >
           </li>
           <li>
             <span class="k">다음 작업</span
             ><span class="v"
-              >없음 — 전체 사이클 완료 <span class="em">(유휴)</span></span
+              >플러그인 1.4.2 재설치
+              <span class="em">(in-app /plugin + /reload-plugins)</span></span
             >
           </li>
           <li>
             <span class="k">사람 결정 대기</span
             ><span class="v"
-              >없음
-              <span class="em">(교차검증 · 다음 사이클은 선택)</span></span
+              ><strong>P2 Core Contract 분리</strong>
+              <span class="em">(대규모 재구조 · 승인 필요)</span></span
             >
           </li>
         </ul>
       </section>
       <section class="panel panel--alt">
         <div class="ph">
-          <span class="ph__no">⑦</span>
+          <span class="ph__no">⑥</span>
           <h2 class="ph__t">다음 액션</h2>
         </div>
         <ul class="goals">
           <li>
-            <span class="mk" style="color: var(--gold)">✓</span
+            <span class="mk" style="color: var(--gold)">1</span
             ><span
-              ><s style="color: var(--faint)">플러그인 1.4.1 재설치</s> →
-              <strong>완료</strong> (in-app <code>/plugin</code> +
-              <code>/reload-plugins</code>)</span
+              ><strong>플러그인 1.4.2 재설치</strong>
+              <span class="em" style="color: var(--faint)"
+                >(in-app /plugin + /reload-plugins)</span
+              ></span
             >
           </li>
           <li>
             <span class="mk" style="color: var(--muted)">2</span
             ><span
-              >실제 Claude–GPT 교차검증
+              >P2 Core Contract 분리
               <span class="em" style="color: var(--faint)"
-                >(선택 · §5.6)</span
+                >(별도 사이클 · 승인)</span
               ></span
             >
           </li>
           <li>
             <span class="mk" style="color: var(--muted)">3</span
             ><span
-              >다음 개선 사이클 시작 시 새 목표 블록 추가
-              <span class="em" style="color: var(--faint)">(선택)</span></span
+              >P3 §21 CAS 강화 / §19 부분완료
+              <span class="em" style="color: var(--faint)"
+                >(멀티라이터 시)</span
+              ></span
             >
           </li>
         </ul>
@@ -912,20 +850,29 @@
         >
         <a
           class="lnk"
-          href="https://github.com/chquandogong/Quetzalcoatl/releases/tag/v1.4.1"
-          ><span class="ar">→</span> Release v1.4.1</a
+          href="https://github.com/chquandogong/Quetzalcoatl/releases/tag/v1.4.2"
+          ><span class="ar">→</span> Release v1.4.2</a
+        >
+        <a
+          class="lnk"
+          href="https://github.com/chquandogong/Quetzalcoatl/blob/main/docs/02-decisions/CROSS_VALIDATION_LOG.md"
+          ><span class="ar">→</span> 교차검증 로그</a
         >
         <a
           class="lnk"
           href="https://github.com/chquandogong/Quetzalcoatl/tree/main/docs"
           ><span class="ar">→</span> docs/</a
         >
-        <span class="lnk"><span class="ar">◆</span> DECISION_LOG D8~D11</span>
       </div>
+      <p class="badge">
+        <b>미러 생성: 2026-06-24</b> · 정본 <code>DASHBOARD.md</code> 기준 ·
+        날짜가 오래됐으면 stale → <code>/dashboard</code>로 재생성
+      </p>
       <p class="ssot">
         <b>이 페이지는 DASHBOARD.md(SSOT)의 읽기용 미러입니다.</b> 정본과 갈리면
         정본이 이깁니다 (§21.3). · 자동 갱신은 강제 락이 아니라 에이전트
-        규율입니다 (§7.2 / §15). · 소스: docs/assets/dashboard.html
+        규율입니다 (§7.2 / §15). · 소스: docs/assets/dashboard.html · CI
+        드리프트 가드가 버전 동기화 강제.
       </p>
     </footer>
   </main>
@@ -1019,7 +966,6 @@
       ctx.clearRect(0, 0, W, H);
       stars();
       var lead = Math.max(1, Math.floor(p * N));
-      /* feather barbs */
       for (var i = 1; i <= lead; i++) {
         var a = pts[i - 1],
           b = pts[Math.min(i, N)];
@@ -1042,7 +988,6 @@
         ctx.lineTo(a.x - nx * barb, a.y - ny * barb);
         ctx.stroke();
       }
-      /* spine: single gradient path + glow */
       var grad = ctx.createLinearGradient(pts[0].x, 0, pts[N].x, 0);
       grad.addColorStop(0, "#46D9B8");
       grad.addColorStop(0.5, "#2FB6A3");
@@ -1061,7 +1006,6 @@
       }
       ctx.stroke();
       ctx.shadowBlur = 0;
-      /* glowing head (morning star) */
       var hd = pts[Math.min(lead, N)];
       var g = ctx.createRadialGradient(hd.x, hd.y, 0, hd.x, hd.y, 38);
       g.addColorStop(0, "rgba(245,200,110,0.98)");
