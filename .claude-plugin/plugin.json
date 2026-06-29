@@ -1,6 +1,6 @@
 {
   "name": "quetzalcoatl",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Quetzalcoatl — Meaning-First AI Project OS. /Quetzalcoatl 한 번으로 의미검증→GarryTan Office Hours→3~5개 대안→Claude-GPT 교차검증→문서·대시보드→Ship→Retro 까지 운영하는 모델 중립형 스킬. v1.2.0: 지속 자율 실행·레이트리밋 회복력·문서 체계·Git 프로토콜·교차 에이전트/기기 핸드오프. v1.3.0: 앵커된 선호 처리(근거 게이트 override)·대안 비교 §4 승격. v1.4.0: 대시보드 HTML 미러·/dashboard 갱신(§7.2). v1.5.0: 강제 바인딩(규율→강제, 있을 때만)·증거기반 완료·capability matrix(외부 도구 역량). v1.6.0: /context 벤더-중립 휴대용 브리핑(§24).",
   "author": {
     "name": "CHENGHAO QUAN",
