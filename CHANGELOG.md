@@ -3,6 +3,19 @@
 이 프로젝트의 주요 변경 사항을 기록한다. 형식은 [Keep a Changelog](https://keepachangelog.com/),
 버전은 [SemVer](https://semver.org/)를 따른다.
 
+## [2.0.0] - 2026-06-29
+
+**P2 — Core Contract 분리(대규모 재구조).** 본문 비대(준수 희석) 해소를 위해 규칙과 양식을 분리. v1.4.1 실제 교차검증·Codex 리뷰가 독립 수렴한 권고.
+
+### Changed (BREAKING — 구조 재편, 동작 호환)
+
+- **본문 = Core Contract(규칙) · §22 부록 C = 템플릿(양식).** §0~§24에 인라인돼 있던 fill-in 템플릿 **21개**(Intake·Office Hours Result·Feasibility·Decision Options·교차검증 브리프 3종·Decision Log·Dashboard·Spec·Eng Review·Risk·Test·Ship·응답형식·첫응답·허용목록·Resume·Context)를 **§22 부록 C-1~C-21로 이동**하고 원위치엔 "📋 §22 부록 C-N" 포인터만 남김. 규칙·원칙·게이트(§1.6)·금지(§15)·자율(§18)·모드표·§-번호(§0~§24)·cross-ref **전부 불변**(동작 보존). 모델 중립 유지(B안: 한 파일, paste 보존, 도구명 본문 금지·R13).
+
+### Note
+
+- MAJOR — 구조 재편이라 v2.0.0. **동작은 호환**(같은 규칙·모드·게이트). 코어 전진배치로 핵심 규칙 준수↑(총 분량은 한 파일이라 거의 동일 — Option B; 토큰 절감이 아니라 규칙/양식 디인터리빙이 목적).
+- 검증: 로컬(섹션 §0~§24 연속·핵심 규칙 보존·폼 §22.C 단일화) + 실제 Claude↔GPT-5.5 교차검증(diff 기반 누락·변형 검토). P2 SPEC 동결(docs/03-spec).
+
 ## [1.6.0] - 2026-06-29
 
 mission-spec 은퇴에서 살린 단 하나의 아이디어 — 벤더-중립 휴대용 브리핑 — 을 `/context`로 이식.
