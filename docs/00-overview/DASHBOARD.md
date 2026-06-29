@@ -1,12 +1,12 @@
 # DASHBOARD — Quetzalcoatl v1.5.0
 
-> 상태: **v1.5.0 본문·docs 반영 완료 · 배포(tag/Release/재설치) 게이트 대기** · 날짜: 2026-06-29 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
+> 상태: **v1.5.0 배포 완료 (재설치 대기)** · 날짜: 2026-06-29 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
 > 정본(SSOT): 이 파일 · 보기 좋은 미러: live artifact(읽기용, §7.2)
 
 ## 현재 상태
 
-- 단계: … → **v1.4.2(교차검증 P1)** → **v1.5.0 외부 도구 진화 반영(본문 반영 완료·배포 대기)**
-- 전체 판단: **v1.5.0 본문·docs 반영 완료** — §18.7 강제 바인딩 · §12/§14 증거기반 완료 적용 · 3중 버전 1.5.0 + living-doc 동기 + CI green. **남은 것: tag/Release/재설치 = §1.6 게이트(사람)**.
+- 단계: … → **v1.4.2(교차검증 P1)** → **v1.5.0 외부 도구 진화 반영(배포 완료)**
+- 전체 판단: **v1.5.0 배포 완료** — §18.7 강제 바인딩 · §12/§14 증거기반 완료 · tag `v1.5.0` · GitHub Release(latest) · CI green · **실제 Claude–GPT 교차검증 반영**. 남은 것: 플러그인 재설치(사람).
 - 자율 수준: L2
 - 마지막 업데이트: 2026-06-29 (v1.5.0 docs)
 
@@ -53,18 +53,18 @@
 
 ## v1.5.0 — 외부 도구 진화 반영 (2026-06-29)
 
-| 작업                                                         | 상태            | 산출물/커밋             |
-| ------------------------------------------------------------ | --------------- | ----------------------- |
-| 3도구 병렬 조사(6영역) → RESEARCH_NOTES                      | done            | docs                    |
-| CAPABILITY_MATRIX(능력×환경, 도구 구체사항의 거처)           | done            | docs                    |
-| D12 결정 + 교차검증 로그(적대검토 F1~F6 반영 + GPT 프롬프트) | done            | docs                    |
-| 본문 패치 §18.7 강제 바인딩 · §12/§14 증거기반 완료          | done            | 초안+적대검토→반영 완료 |
-| 배포 — tag v1.5.0 · Release · 재설치 (버전·동기 done)        | **게이트 대기** | §1.6                    |
+| 작업                                                         | 상태 | 산출물/커밋             |
+| ------------------------------------------------------------ | ---- | ----------------------- |
+| 3도구 병렬 조사(6영역) → RESEARCH_NOTES                      | done | docs                    |
+| CAPABILITY_MATRIX(능력×환경, 도구 구체사항의 거처)           | done | docs                    |
+| D12 결정 + 교차검증 로그(적대검토 F1~F6 반영 + GPT 프롬프트) | done | docs                    |
+| 본문 패치 §18.7 강제 바인딩 · §12/§14 증거기반 완료          | done | 초안+적대검토→반영 완료 |
+| 배포 — tag v1.5.0 · GitHub Release(latest)                   | done | 재설치만 사람           |
 
 ## 재개 지점 (체크포인트)
 
-- 마지막 성공 커밋: **v1.5.0 Phase B**(본문 §18.7·증거기반 완료 + 버전 1.5.0 + living-doc 동기, CI green) · 릴리스는 아직 `v1.4.2`(latest)
-- 다음 작업: **배포 — tag v1.5.0 · GitHub Release · 미러 redeploy · 플러그인 재설치** = §1.6 게이트(사람). 실제 GPT 교차검증 권장.
+- 마지막 성공 커밋: **v1.5.0 배포 완료** — tag `v1.5.0` · GitHub Release(latest) · CI green · 실제 Claude–GPT 교차검증 반영(`d4e82e8`)
+- 다음 작업: **플러그인 재설치(사람)** — `/plugin marketplace update quetzalcoatl` → `/plugin install quetzalcoatl@quetzalcoatl` → `/reload-plugins`. (선택) 미러 live redeploy.
 
 ## 상위 리스크
 
@@ -78,25 +78,25 @@
 ## 품질 지표
 
 - **테스트**: CI `validate` green — 3중 버전 1.5.0 · JSON · 섹션 §0~§23 연속 · **living-doc 드리프트 가드**
-- **교차검증**: ✅ **실제 Claude–GPT**(§5.5, b648d70) — v1.2.0 단일모델 한계 해소
+- **교차검증**: ✅ **실제 Claude–GPT** — v1.4.1(GPT) + **v1.5.0 GPT-5.5(Codex exec, xhigh)**, §5.5. 단일모델이 놓친 §1.6 구멍 적발·반영
 - **렌더 검증**: 미러 headless(desktop·mobile) 정상
 - **알려진 이슈**: `! claude plugin` CLI 무반영 → in-app `/plugin` 우회(RUNBOOK)
 - **비용/리소스**: 문서·프롬프트 ~0 (§15)
 
 ## 사람 결정 대기
 
-- **v1.5.0 본문 패치 적용 + 배포** — §18.7·증거기반 완료(적대검토 반영 완료). 버전 범프·tag·Release·재설치 = §1.6 게이트.
-- **P2 Core Contract 분리**(~250줄 + 부록) — 대규모 재구조, 승인 필요. v1.5.0 패턴(§18.7·증거기반 완료)을 lean core로 흡수 예정.
+- **P2 Core Contract 분리**(~250줄 + 부록) — 대규모 재구조, 승인 필요. v1.5.0 패턴(§18.7·증거기반 완료)을 lean core로 흡수 예정. GPT가 P2 로드맵(capability discovery·2계층 메모리 규칙 등) 독립 검증.
+- 그 외 대기 없음(v1.5.0 배포 완료).
 
 ## 다음 액션
 
-1. **v1.5.0 본문 패치 적용 + 배포 결정**(게이트) — §18.7·증거기반 완료 / 버전 범프·living-doc 동기·tag·Release·재설치
-2. (권장) **실제 GPT 교차검증** — CROSS_VALIDATION_LOG v1.5.0의 프롬프트 복붙
+1. **플러그인 재설치(사람)** — `/plugin marketplace update` → `install` → `/reload-plugins`
+2. (선택) 미러 live artifact redeploy — 기존 URL이면 같은 URL, 없으면 새 URL(§7.2)
 3. (선택·P2) Core Contract 분리 + v1.5.0 패턴 흡수 — 별도 사이클 + 승인
 
 ## 링크: 문서 / 커밋 / 태그 / Release
 
 - 문서: [`docs/`](../README.md) · 결정: [DECISION_LOG](../02-decisions/DECISION_LOG.md) · 교차검증: [CROSS_VALIDATION_LOG](../02-decisions/CROSS_VALIDATION_LOG.md)
-- 저장소: https://github.com/chquandogong/Quetzalcoatl · 태그 `v1.4.2`(latest) · `v1.5.0` 태그는 게이트 대기
-- Release: v1.4.2 (latest) · **v1.5.0 Release는 배포 게이트에서 생성**
+- 저장소: https://github.com/chquandogong/Quetzalcoatl · 태그 `v1.5.0`(latest)
+- Release: [v1.5.0](https://github.com/chquandogong/Quetzalcoatl/releases/tag/v1.5.0) (latest)
 - 보기 좋은 미러(읽기용): live artifact · 소스 [`docs/assets/dashboard.html`](../assets/dashboard.html) · `/dashboard`로 redeploy · 정본이 SSOT(§7.2)
