@@ -1,13 +1,13 @@
 # DASHBOARD — Quetzalcoatl v2.0.1
 
-> 상태: **v2.0.1 — 로컬 미니멈 탈출 (배포 진행 · 미러 redeploy 대기)** · 날짜: 2026-06-30 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
+> 상태: **v2.0.1 released — 로컬 미니멈 탈출 (미러 동기 완료 · Claude 재설치만 대기)** · 날짜: 2026-06-30 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
 > 정본(SSOT): 이 파일 · 보기 좋은 미러: live artifact(읽기용, §7.2)
 > 이 보드는 **현재 상태**를 보여준다(작업량 아님, §7). 사이클별 상세는 아래 "릴리스 히스토리"의 링크로.
 
 ## 현재 상태
 
 - 단계: **v2.0.1 배포** — 로컬 미니멈(프레이밍 잠김) 탈출 3종. §3 Phase 1-7 점프 + §4.1 골짜기 점검 + §4.2 깊이·폭 다이얼.
-- 전체 판단: **배포 가능** — 양방향 앵커링(점) 방지에 더해 "같은 전제 안의 국소 최적"을 벗어나는 기제. 실제 GPT-5.5 적대적 교차검증(ACCEPT-WITH-CHANGES 78) 반영 — "질문만으론 흔드는 척, 대안 프레이밍을 실제 후보로 비교해야 탈출" 지적을 §3 Phase 1-7 개정으로 수용. 남은 것: 재설치 + 미러 redeploy(사람).
+- 전체 판단: **배포 가능** — 양방향 앵커링(점) 방지에 더해 "같은 전제 안의 국소 최적"을 벗어나는 기제. 실제 GPT-5.5 적대적 교차검증(ACCEPT-WITH-CHANGES 78) 반영 — "질문만으론 흔드는 척, 대안 프레이밍을 실제 후보로 비교해야 탈출" 지적을 §3 Phase 1-7 개정으로 수용. 남은 것: Claude 플러그인 재설치(슬래시 명령, 사람).
 - 자율 수준: L2 · 마지막 업데이트: 2026-06-30 (v2.0.1)
 
 ## 릴리스 히스토리 (압축 — 상세는 링크)
@@ -39,12 +39,12 @@
 - **CI**: `validate` green — 3중 버전 2.0.1 · JSON · 섹션 §0~§24 연속 · living-doc 드리프트 가드
 - **교차검증**: ✅ **실제 Claude↔GPT-5.5**(Codex exec) ×4 — v1.5.0 §1.6 구멍 · v1.6.0 R13 위반 · v2.0.0 P2 diff · v2.0.1 형식주의 위험(78)
 - **중립성**: SKILL 본문 도구명 0 · 구체 기술은 CAPABILITY_MATRIX(docs)
-- **설치**: v2.0.1 — Claude 플러그인 재설치 대기 · Codex 사본 동기 대기 · 미러 redeploy 대기
+- **설치**: v2.0.1 — Codex 사본 동기 완료 · 미러 동기 완료(같은 URL) · **Claude 플러그인 재설치만 대기**
 
 ## 재개 지점 (체크포인트)
 
-- 마지막 성공 커밋: **v2.0.1 docs 동기** — 3중 버전 2.0.1 · living-doc 동기 · tag `v2.0.1` 진행.
-- 다음 작업: push → CI green 확인 → tag/Release → 재설치(Claude + Codex) → 미러 redeploy.
+- 마지막 성공 커밋: **v2.0.1 released** — tag `v2.0.1` · GitHub Release(latest) · `bcf87d1` · CI green · 미러 동기.
+- 다음 작업: Claude 플러그인 재설치(슬래시 명령, 사람)만 남음. 그 외 유휴.
 
 ## 사람 결정 대기
 
@@ -54,11 +54,11 @@
 ## 다음 액션
 
 1. **(사람) 재설치** — Claude: `/plugin marketplace update quetzalcoatl` → `install` → `/reload-plugins`. Codex 사본 동기.
-2. **(세션) 미러 redeploy** — `DASHBOARD.md` 정본 → HTML 미러 같은 URL redeploy(§7.2).
+2. **(완료) 미러 동기** — 정본 v2.0.1 → HTML 미러 같은 URL redeploy 완료(§7.2).
 3. (후속·선택) evals · 설치 동기 자동 체크.
 
 ## 링크
 
 - 저장소: https://github.com/chquandogong/Quetzalcoatl · 태그 `v2.0.1`(latest) · [Release v2.0.1](https://github.com/chquandogong/Quetzalcoatl/releases/tag/v2.0.1)
 - 문서 지도: [`docs/`](../README.md) · [DECISION_LOG](../02-decisions/DECISION_LOG.md) · [CROSS_VALIDATION_LOG](../02-decisions/CROSS_VALIDATION_LOG.md) · [CAPABILITY_MATRIX](../appendix/CAPABILITY_MATRIX.md)
-- 보기 좋은 미러(읽기용): live artifact · 소스 [`docs/assets/dashboard.html`](../assets/dashboard.html) · 정본이 SSOT(§7.2 / §21.3)
+- 보기 좋은 미러(읽기용): [live artifact](https://claude.ai/code/artifact/3a1da038-a3d6-4146-9f55-0f54e7063443) · 소스 [`docs/assets/dashboard.html`](../assets/dashboard.html) · 정본이 SSOT(§7.2 / §21.3)

@@ -516,7 +516,7 @@
         </div>
         <h1 class="hero__title">Quetzalcoatl</h1>
         <div class="hero__verline">
-          <span class="hero__ver">v2.0.0</span>
+          <span class="hero__ver">v2.0.1</span>
           <span class="chip chip--rel"><span class="dot"></span>Released</span>
           <span class="chip chip--done"
             ><span class="dot"></span>재설치 대기</span
@@ -528,8 +528,8 @@
           만들지 않고, 의미를 먼저 검증한다.
         </p>
         <div class="hero__meta">
-          <span><b>상태</b> v2.0.0 배포 완료 · 재설치 대기</span
-          ><span><b>날짜</b> 2026-06-29</span>
+          <span><b>상태</b> v2.0.1 released · 재설치 대기</span
+          ><span><b>날짜</b> 2026-06-30</span>
           <span><b>소유자</b> CHENGHAO QUAN</span><span><b>자율</b> L2</span>
           <span><b>SSOT</b> DASHBOARD.md</span>
         </div>
@@ -539,15 +539,18 @@
     <!-- VERDICT + STAGE RAIL -->
     <section class="verdict">
       <div class="verdict__lab">전체 판단</div>
-      <div class="verdict__v">v2.0.0 배포 완료 · P2 Core Contract</div>
+      <div class="verdict__v">v2.0.1 released · 로컬 미니멈 탈출</div>
       <p class="verdict__d">
-        <strong>본문 = 규칙(Core Contract), §22 부록 C = 양식(템플릿).</strong>
-        §0~§24에 인라인돼 있던 fill-in 템플릿 21개를 §22 부록 C로 옮기고
-        원위치엔 포인터만 남겨 핵심 규칙을 전진배치(준수↑).
-        규칙·게이트·모드·§-번호·동작은
-        <strong>전부 보존</strong>(구조 재편, 동작 호환). 모델 중립 유지(한
-        파일). 실제 Claude↔GPT-5.5 교차검증(diff)이 §18.2 안전 회귀를 적발·수정.
-        P3로 본문 환경 도구명도 중립화 → 배포 완료(tag·Release latest).
+        <strong
+          >양방향 앵커링(한 점에 닻) 방지에 더해, 같은 전제를 공유한 채 한 골짜기
+          안에서만 고른 국소 최적을 벗어나는 기제를 정식화.</strong
+        >
+        §3 Phase 1-7 "프레이밍을 흔든다"(목표함수·반대로·극단·다른 사용자·시간축)
+        + §4.1 골짜기 점검(큰 결정) + §4.2 깊이·폭 다이얼. 흔들어 나온 대안
+        프레이밍은 <strong>실제 후보로 §4.1 비교표에 넣게 강제</strong>, restart는
+        사람 승인(§0). 실제 Claude↔GPT-5.5 적대적 교차검증(ACCEPT-WITH-CHANGES
+        78)이 "질문만으론 흔드는 척" 형식주의 위험을 적발 → 후보 강제로 수정.
+        v2.0.0 동작 호환(PATCH).
       </p>
       <div class="rail" aria-label="진행 파이프라인">
         <div class="rail__step">
@@ -638,6 +641,16 @@
               </td>
               <td><span class="chip chip--rel">GPT-5.5 · §18.2 회귀</span></td>
             </tr>
+            <tr>
+              <td>
+                <span class="mono" style="color: var(--jade)">v2.0.1</span>
+              </td>
+              <td>
+                <strong>로컬 미니멈 탈출</strong> — §3 Phase 1-7 프레이밍 흔들기 +
+                §4.1 골짜기 점검 + §4.2 깊이·폭 다이얼
+              </td>
+              <td><span class="chip chip--rel">GPT-5.5 · 78 형식주의</span></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -672,13 +685,23 @@
               </tr>
               <tr>
                 <td>
-                  본문 비대(~1,460줄) 준수 희석
+                  본문 비대 준수 희석
                   <div class="mono" style="margin-top: 5px">
-                    대응: <strong>P2 Core Contract 분리</strong>(승인 필요)
+                    대응: <strong>P2 Core Contract 분리(v2.0.0)</strong>
                   </div>
                 </td>
                 <td><span class="mono">중간 / 중간</span></td>
-                <td><span class="chip chip--watch">열림</span></td>
+                <td><span class="chip chip--done">완화됨</span></td>
+              </tr>
+              <tr>
+                <td>
+                  새 절차가 형식주의화
+                  <div class="mono" style="margin-top: 5px">
+                    대응: <strong>§3 Phase 1-7 — 대안 프레이밍을 실제 후보로 비교 강제</strong>(교차검증 적발)
+                  </div>
+                </td>
+                <td><span class="mono">중간 / 중간</span></td>
+                <td><span class="chip chip--done">완화됨</span></td>
               </tr>
               <tr>
                 <td>
@@ -704,15 +727,15 @@
             <span class="k">CI</span
             ><span class="v"
               ><code>validate</code> green — 3중 버전
-              <span class="mono">2.0.0</span> · JSON · 섹션 §0~§24 ·
+              <span class="mono">2.0.1</span> · JSON · 섹션 §0~§24 ·
               <strong>드리프트 가드</strong></span
             >
           </li>
           <li>
             <span class="k">교차검증</span
             ><span class="v"
-              >✅ <strong>실제 Claude↔GPT-5.5</strong>(Codex) ×2 — §1.6 구멍 ·
-              R13 위반을 단일모델 사각에서 적발</span
+              >✅ <strong>실제 Claude↔GPT-5.5</strong>(Codex) ×4 — §1.6 구멍 · R13
+              위반 · §18.2 회귀 · 형식주의(78)를 단일모델 사각에서 적발</span
             >
           </li>
           <li>
@@ -725,7 +748,7 @@
           <li>
             <span class="k">설치</span
             ><span class="v"
-              >v2.0.0 — Claude 플러그인 <span class="mono">재설치 대기</span> ·
+              >v2.0.1 — Claude 플러그인 <span class="mono">재설치 대기</span> ·
               Codex 사본 동기 완료</span
             >
           </li>
@@ -744,21 +767,18 @@
           <li>
             <span class="k">체크포인트</span
             ><span class="v"
-              >tag <span class="mono" style="color: var(--jade)">v2.0.0</span> ·
+              >tag <span class="mono" style="color: var(--jade)">v2.0.1</span> ·
               Release <span class="mono">latest</span> · 본문
-              <span class="mono">4b0fc59</span></span
+              <span class="mono">bcf87d1</span></span
             >
           </li>
           <li>
             <span class="k">단계</span
-            ><span class="v">유휴(idle) — 다음 큰 건은 P2</span>
+            ><span class="v">v2.0.1 released — 재설치 대기</span>
           </li>
           <li>
             <span class="k">사람 결정 대기</span
-            ><span class="v"
-              ><strong>P2 Core Contract 분리</strong>
-              <span class="em">(대규모 재구조 · 승인 필요)</span></span
-            >
+            ><span class="v">없음 — 재설치(슬래시 명령)만 사람</span>
           </li>
         </ul>
       </section>
@@ -771,25 +791,23 @@
           <li>
             <span class="mk" style="color: var(--gold)">1</span
             ><span
-              >(선택·승인) <strong>P2 Core Contract 분리</strong>
+              >(사람) <strong>Claude 플러그인 재설치</strong>
               <span class="em" style="color: var(--faint)"
-                >— §18.7·증거기반 완료·§24 lean 흡수</span
+                >— marketplace update → install → reload</span
               ></span
             >
           </li>
           <li>
             <span class="mk" style="color: var(--muted)">2</span
             ><span
-              >외부 도구 추가 진화 시 <strong>capability matrix만 갱신</strong>
-              <span class="em" style="color: var(--faint)"
-                >(본문 불변 · D12)</span
-              ></span
+              >이 <strong>미러 redeploy</strong> 완료 — 정본 v2.0.1 반영
+              <span class="em" style="color: var(--faint)">(§7.2)</span></span
             >
           </li>
           <li>
             <span class="mk" style="color: var(--muted)">3</span
             ><span
-              ><code>/context</code> 실사용 — 새 벤더 온보딩 브리핑 생성</span
+              >(후속·선택) evals · 설치 동기 자동 체크</span
             >
           </li>
         </ul>
@@ -804,8 +822,8 @@
         >
         <a
           class="lnk"
-          href="https://github.com/chquandogong/Quetzalcoatl/releases/tag/v2.0.0"
-          ><span class="ar">→</span> Release v2.0.0</
+          href="https://github.com/chquandogong/Quetzalcoatl/releases/tag/v2.0.1"
+          ><span class="ar">→</span> Release v2.0.1</
         >
         <a
           class="lnk"
@@ -819,7 +837,7 @@
         >
       </div>
       <p class="badge">
-        <b>미러 생성: 2026-06-29</b> · 정본 <code>DASHBOARD.md</code> 기준 ·
+        <b>미러 갱신: 2026-06-30 (v2.0.1)</b> · 정본 <code>DASHBOARD.md</code> 기준 ·
         날짜가 오래됐으면 stale → <code>/dashboard</code>로 재생성
       </p>
       <p class="ssot">
