@@ -21,6 +21,7 @@ flowchart TD
    ```
    새 세션에서 `/quetzalcoatl:Quetzalcoatl` 호출 시 최신(현재 1.6.0) 적용.
 3. **개인 스킬(심볼릭) 사용자**: `~/.claude/skills/Quetzalcoatl`가 이 repo로 심볼릭이면 즉시 반영. 사본이면 복사 갱신.
+4. **Codex 개인 스킬 사용자**: `~/.codex/skills/Quetzalcoatl`도 repo `skills/Quetzalcoatl/`를 복사 갱신(`cp`)한다 — Claude 플러그인과 **별개 설치 경로**라 둘 다 동기해야 한다(예: 2026-06-29 1.4.2→1.6.0 동기).
 
 ## 검증
 

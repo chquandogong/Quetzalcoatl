@@ -46,7 +46,7 @@
 
 ## 사람 결정 대기
 
-- **P2 Core Contract 분리**(~250줄 + 부록) — 대규모 재구조, 승인 필요. v1.5.0/v1.6.0 패턴(§18.7·증거기반 완료·§24)을 lean core로 흡수 + GPT가 짚은 누락 패턴(capability discovery·2계층 메모리 규칙 등).
+- **P2 Core Contract 분리**(~~250줄 + 부록) — 대규모 재구조, 승인 필요. v1.5.0/v1.6.0 패턴(§18.7·증거기반 완료·§24)을 lean core로 흡수 + GPT가 짚은 누락 패턴(capability discovery·2계층 메모리 규칙 등). + Codex 리뷰 제안: evals(trigger·행동 5~~10) · 설치 동기 체크.
 - 그 외 대기 없음.
 
 ## 다음 액션
