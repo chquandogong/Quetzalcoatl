@@ -86,11 +86,11 @@
 ## 사람 결정 대기
 
 - **P2 Core Contract 분리**(~250줄 + 부록) — 대규모 재구조, 승인 필요. v1.5.0 패턴(§18.7·증거기반 완료)을 lean core로 흡수 예정. GPT가 P2 로드맵(capability discovery·2계층 메모리 규칙 등) 독립 검증.
-- **v1.6.0 §24 /context 릴리스 여부** — 로컬 커밋 완료. push/tag/Release/재설치 = §1.6 게이트(보류 중). (선택) 릴리스 전 Codex GPT 교차검증.
+- **v1.6.0 §24 /context 릴리스 여부** — 로컬 커밋 완료 · **GPT-5.5 교차검증 완료(§24 개정 반영, R13 위반 수정)**. push/tag/Release/재설치 = §1.6 게이트(보류 중).
 
 ## 다음 액션
 
-1. **v1.6.0 §24 릴리스 결정(사람)** — push/tag/Release/재설치 보류 중. (선택) 릴리스 전 Codex GPT 교차검증.
+1. **v1.6.0 §24 릴리스 결정(사람)** — GPT-5.5 교차검증 완료·§24 개정 반영. push/tag/Release/재설치만 보류 중.
 2. (사람) 플러그인 재설치 — `/plugin marketplace update` → `install` → `/reload-plugins`
 3. (선택·P2) Core Contract 분리 + §18.7·§24 패턴 흡수 — 별도 사이클 + 승인
 
