@@ -3,6 +3,18 @@
 이 프로젝트의 주요 변경 사항을 기록한다. 형식은 [Keep a Changelog](https://keepachangelog.com/),
 버전은 [SemVer](https://semver.org/)를 따른다.
 
+## [1.6.0] - 2026-06-29
+
+mission-spec 은퇴에서 살린 단 하나의 아이디어 — 벤더-중립 휴대용 브리핑 — 을 `/context`로 이식.
+
+### Added
+
+- **§24 프로젝트 브리핑 (`/context`)** + §2 모드행 — 프로젝트 목표·제약·현재 단계·열린 결정·최근 변경·아키텍처를 **하나의 벤더-중립 휴대용 브리핑**으로 합성해 새 에이전트·새 벤더(Claude/Codex/Gemini/ChatGPT)를 0에서 즉시 온보딩. 도구 네이티브 메모리(CLAUDE.md·AGENTS.md·GEMINI.md)가 못 주는 **벤더 간 이식성**을 채움. `/handoff`(공유 보드 갱신)·§13.2(응답 포맷)와 구분. 기존 docs에서 출처를 끌어옴(중복 금지) + 증거 위생(비밀 제외, §12).
+
+### Note
+
+- MINOR — 새 모드 + §24, 기존 동작 보존. §24는 lean — P2 Core Contract 때 템플릿 부록으로 흡수 예정(§18.7과 동일 정책). 본문만 변경, **릴리스(tag/Release/재설치) 보류**(로컬 커밋; mission-spec 릴리스 트레드밀 교훈).
+
 ## [1.5.0] - 2026-06-29
 
 외부 에이전트 도구(Claude Code · OpenAI Codex · Google Antigravity)의 2026 상반기 진화를 조사·합성. 세 도구가 독립 수렴한 패턴을 반영하되, 구체 기술은 본문이 아닌 capability matrix(docs)에 둔다(R13·D12).
