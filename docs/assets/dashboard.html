@@ -517,11 +517,9 @@
         <h1 class="hero__title">Quetzalcoatl</h1>
         <div class="hero__verline">
           <span class="hero__ver">v2.0.0</span>
-          <span class="chip chip--rel"
-            ><span class="dot"></span>v1.6.0 latest</span
-          >
-          <span class="chip chip--open"
-            ><span class="dot"></span>v2.0.0 게이트 대기</span
+          <span class="chip chip--rel"><span class="dot"></span>Released</span>
+          <span class="chip chip--done"
+            ><span class="dot"></span>재설치 대기</span
           >
         </div>
         <p class="hero__sub">
@@ -530,7 +528,7 @@
           만들지 않고, 의미를 먼저 검증한다.
         </p>
         <div class="hero__meta">
-          <span><b>상태</b> v2.0.0 P2 — 로컬·배포 게이트 대기</span
+          <span><b>상태</b> v2.0.0 배포 완료 · 재설치 대기</span
           ><span><b>날짜</b> 2026-06-29</span>
           <span><b>소유자</b> CHENGHAO QUAN</span><span><b>자율</b> L2</span>
           <span><b>SSOT</b> DASHBOARD.md</span>
@@ -541,15 +539,15 @@
     <!-- VERDICT + STAGE RAIL -->
     <section class="verdict">
       <div class="verdict__lab">전체 판단</div>
-      <div class="verdict__v">v2.0.0 P2 Core Contract · 게이트 대기</div>
+      <div class="verdict__v">v2.0.0 배포 완료 · P2 Core Contract</div>
       <p class="verdict__d">
         <strong>본문 = 규칙(Core Contract), §22 부록 C = 양식(템플릿).</strong>
         §0~§24에 인라인돼 있던 fill-in 템플릿 21개를 §22 부록 C로 옮기고
         원위치엔 포인터만 남겨 핵심 규칙을 전진배치(준수↑).
         규칙·게이트·모드·§-번호·동작은
         <strong>전부 보존</strong>(구조 재편, 동작 호환). 모델 중립 유지(한
-        파일). 실제 Claude↔GPT-5.5 교차검증(diff 기반 누락·변형 검토) 후 배포
-        게이트. 현재 latest released = v1.6.0.
+        파일). 실제 Claude↔GPT-5.5 교차검증(diff)이 §18.2 안전 회귀를 적발·수정.
+        P3로 본문 환경 도구명도 중립화 → 배포 완료(tag·Release latest).
       </p>
       <div class="rail" aria-label="진행 파이프라인">
         <div class="rail__step">
@@ -630,6 +628,16 @@
               </td>
               <td><span class="chip chip--rel">GPT-5.5 · R13 위반</span></td>
             </tr>
+            <tr>
+              <td>
+                <span class="mono" style="color: var(--jade)">v2.0.0</span>
+              </td>
+              <td>
+                <strong>P2 Core Contract 분리</strong> — 템플릿 21개 → §22 부록
+                C + P3 본문 중립화(동작 호환)
+              </td>
+              <td><span class="chip chip--rel">GPT-5.5 · §18.2 회귀</span></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -696,7 +704,7 @@
             <span class="k">CI</span
             ><span class="v"
               ><code>validate</code> green — 3중 버전
-              <span class="mono">1.6.0</span> · JSON · 섹션 §0~§24 ·
+              <span class="mono">2.0.0</span> · JSON · 섹션 §0~§24 ·
               <strong>드리프트 가드</strong></span
             >
           </li>
@@ -717,8 +725,8 @@
           <li>
             <span class="k">설치</span
             ><span class="v"
-              >플러그인 <span class="mono">v1.6.0</span> 재설치·reload
-              완료</span
+              >v2.0.0 — Claude 플러그인 <span class="mono">재설치 대기</span> ·
+              Codex 사본 동기 완료</span
             >
           </li>
         </ul>
@@ -736,7 +744,7 @@
           <li>
             <span class="k">체크포인트</span
             ><span class="v"
-              >tag <span class="mono" style="color: var(--jade)">v1.6.0</span> ·
+              >tag <span class="mono" style="color: var(--jade)">v2.0.0</span> ·
               Release <span class="mono">latest</span> · 본문
               <span class="mono">4b0fc59</span></span
             >
@@ -796,8 +804,8 @@
         >
         <a
           class="lnk"
-          href="https://github.com/chquandogong/Quetzalcoatl/releases/tag/v1.6.0"
-          ><span class="ar">→</span> Release v1.6.0</a
+          href="https://github.com/chquandogong/Quetzalcoatl/releases/tag/v2.0.0"
+          ><span class="ar">→</span> Release v2.0.0</
         >
         <a
           class="lnk"
