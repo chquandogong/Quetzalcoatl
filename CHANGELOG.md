@@ -10,6 +10,7 @@
 ### Changed (BREAKING — 구조 재편, 동작 호환)
 
 - **본문 = Core Contract(규칙) · §22 부록 C = 템플릿(양식).** §0~§24에 인라인돼 있던 fill-in 템플릿 **21개**(Intake·Office Hours Result·Feasibility·Decision Options·교차검증 브리프 3종·Decision Log·Dashboard·Spec·Eng Review·Risk·Test·Ship·응답형식·첫응답·허용목록·Resume·Context)를 **§22 부록 C-1~C-21로 이동**하고 원위치엔 "📋 §22 부록 C-N" 포인터만 남김. 규칙·원칙·게이트(§1.6)·금지(§15)·자율(§18)·모드표·§-번호(§0~§24)·cross-ref **전부 불변**(동작 보존). 모델 중립 유지(B안: 한 파일, paste 보존, 도구명 본문 금지·R13).
+- **(P3) 본문 모델 중립화** — 환경 강등 관용구(`Claude Code/에이전트`·`ChatGPT/일반 챗`·`claude.ai`)를 일반명(`에이전트(파일·git) 환경`·`도구 없는 챗 환경`·`live artifact`)으로 치환(§7.2·§18.6·§19.4·§21.4·§22B). `Claude-GPT 교차검증`(명명 기능)·frontmatter 호환성 선언은 유지 → 본문 신규/환경 도구명 0. GPT-5.5 교차검증의 중립 지적 반영.
 
 ### Note
 
