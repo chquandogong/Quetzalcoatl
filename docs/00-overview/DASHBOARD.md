@@ -1,102 +1,62 @@
 # DASHBOARD — Quetzalcoatl v1.6.0
 
-> 상태: **v1.6.0 배포 완료 (재설치 대기)** · 날짜: 2026-06-29 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
+> 상태: **v1.6.0 배포·설치 완료** · 날짜: 2026-06-29 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
 > 정본(SSOT): 이 파일 · 보기 좋은 미러: live artifact(읽기용, §7.2)
+> 이 보드는 **현재 상태**를 보여준다(작업량 아님, §7). 사이클별 상세는 아래 "릴리스 히스토리"의 링크로.
 
 ## 현재 상태
 
-- 단계: … → **v1.5.0 외부 도구 진화 반영** → **v1.6.0 §24 /context(배포 완료)**
-- 전체 판단: **v1.6.0 배포 완료** — §24 `/context` 벤더-중립 휴대용 브리핑(mission-spec에서 이식). tag `v1.6.0` · GitHub Release(latest) · CI green · **실제 Claude↔GPT-5.5 교차검증 반영**(R13 위반 등 6건 적발·수정). 남은 것: 플러그인 재설치(사람).
-- 자율 수준: L2
-- 마지막 업데이트: 2026-06-29 (v1.6.0 배포)
+- 단계: **유휴(idle)** — v1.6.0 게시·재설치 완료. 다음 큰 건은 P2 Core Contract(승인 대기).
+- 전체 판단: **배포 완료** — `/context`(§24) 벤더-중립 휴대용 브리핑까지 안착. 본문 §0~§24 · 3중 버전 1.6.0 · CI green · tag·Release(latest).
+- 자율 수준: L2 · 마지막 업데이트: 2026-06-29 (문서 정리)
 
-## 핵심 목표 (v1.4.0) — 달성
+## 릴리스 히스토리 (압축 — 상세는 링크)
 
-1. 대시보드 보기 좋은 **HTML 미러** + 같은 URL redeploy ✅
-2. **`/dashboard` 스킬화** — 수동 + 자율 자동(규율) ✅
-3. 정본 SSOT 유지 · "자동"의 한계 정직(§7.2) ✅
+| 버전       | 날짜     | 한 줄                                                                                 | 교차검증                          |
+| ---------- | -------- | ------------------------------------------------------------------------------------- | --------------------------------- |
+| v1.0.0/.1  | 06-19    | 최초 공개 + Claude Code 플러그인·마켓플레이스 패키징                                  | —                                 |
+| v1.2.0     | 06-23    | 자율 실행·재개·문서체계·Git·핸드오프(5능력)                                           | 단일모델(GPT 미접속)              |
+| v1.3.0/.1  | 06-23    | §4.2 앵커된 선호 + 대안비교 §4 승격 + repo 전문화(CI)                                 | —                                 |
+| v1.4.0~.2  | 06-23~24 | 대시보드 HTML 미러·`/dashboard`(§7.2) · §1.6 6문 pre-check · CI 드리프트 가드         | **실제 Claude–GPT**(`b648d70`)    |
+| **v1.5.0** | 06-29    | **§18.7 강제 바인딩** + **§12/§14 증거기반 완료** + capability matrix(외부 도구 진화) | **실제 GPT-5.5** — §1.6 구멍 적발 |
+| **v1.6.0** | 06-29    | **§24 `/context`** 벤더-중립 휴대용 브리핑(mission-spec 이식)                         | **실제 GPT-5.5** — R13 위반 적발  |
 
-## 성공 기준 — 충족
-
-- **정량**: 3중 버전 1.4.2 · 섹션 §0~§23 연속 · CI `validate` green(+ 드리프트 가드) ✅
-- **정성**: 정본=SSOT + 보기 좋은 미러 · 과대주장 없음(§15) ✅
-- **사용자 반응**: 깃털 뱀 디자인 + Claude–GPT 교차검증 → **반영 완료** ✅
-
-## 진행 현황
-
-| 단계          | 상태 | 산출물                               | 다음 액션 |
-| ------------- | ---- | ------------------------------------ | --------- |
-| v1.4.0 사이클 | done | §7.2 · `/dashboard` · 미러 · Release | —         |
-| 후속 정비     | done | 문서 일관성 · 훅 · 미러 강화·repo    | —         |
-| 교차검증      | done | 실제 Claude–GPT(§5.5) · P1~P3 도출   | —         |
-| v1.4.1        | done | §12 living-doc 항목 · 설치           | —         |
-| v1.4.2        | done | 게이트 pre-check · CI 가드 · §4.2    | 재설치    |
-
-## 작업 보드 (claimable) — 전부 완료
-
-| 작업                                | 상태 | 소유자          | 산출물/커밋            |
-| ----------------------------------- | ---- | --------------- | ---------------------- |
-| v1.4.0 (§7.2 미러 + `/dashboard`)   | done | 데스크탑/Claude | tag v1.4.0 · Release   |
-| 후속 정비(문서 일관성·훅·미러·repo) | done | 데스크탑/Claude | 6585263…50e67fe        |
-| 대시보드·RETRO 반영                 | done | 데스크탑/Claude | 456dab7 · a8aaebb      |
-| v1.4.1 (§12 항목) · 설치            | done | 데스크탑/Claude | tag v1.4.1 · installed |
-
-## 교차검증 + v1.4.2 (2026-06-24) — 완료
-
-| 작업                                                        | 상태 | 산출물/커밋 |
-| ----------------------------------------------------------- | ---- | ----------- |
-| 실제 Claude–GPT 교차검증 로그(§5.5) — 강한 수렴             | done | b648d70     |
-| **P1a** CI living-doc 드리프트 가드(규율→강제)              | done | 0269ba0     |
-| **P1c** §1.6 게이트 행동 전 6문 pre-check + L2/L3 면제 없음 | done | v1.4.2      |
-| **P1b** 미러 자기-배지(생성일·stale 가시화)                 | done | v1.4.2      |
-| **§4.2** 반증행 상시(아첨 방지)                             | done | v1.4.2      |
-
-## v1.5.0 — 외부 도구 진화 반영 (2026-06-29)
-
-| 작업                                                         | 상태 | 산출물/커밋             |
-| ------------------------------------------------------------ | ---- | ----------------------- |
-| 3도구 병렬 조사(6영역) → RESEARCH_NOTES                      | done | docs                    |
-| CAPABILITY_MATRIX(능력×환경, 도구 구체사항의 거처)           | done | docs                    |
-| D12 결정 + 교차검증 로그(적대검토 F1~F6 반영 + GPT 프롬프트) | done | docs                    |
-| 본문 패치 §18.7 강제 바인딩 · §12/§14 증거기반 완료          | done | 초안+적대검토→반영 완료 |
-| 배포 — tag v1.5.0 · GitHub Release(latest)                   | done | 재설치만 사람           |
-
-## 재개 지점 (체크포인트)
-
-- 마지막 성공 커밋: **v1.5.0 배포 완료** — tag `v1.5.0` · GitHub Release(latest) · CI green · 실제 Claude–GPT 교차검증 반영(`d4e82e8`)
-- 다음 작업: **플러그인 재설치(사람)** — `/plugin marketplace update quetzalcoatl` → `/plugin install quetzalcoatl@quetzalcoatl` → `/reload-plugins`. (선택) 미러 live redeploy.
+> 상세: [CHANGELOG](../../CHANGELOG.md) · [DECISION_LOG](../02-decisions/DECISION_LOG.md) · [RETRO](../05-ops/RETRO.md) · [CROSS_VALIDATION_LOG](../02-decisions/CROSS_VALIDATION_LOG.md)
 
 ## 상위 리스크
 
-| 리스크                   | 가능성 | 영향도 | 대응책                                               | 상태   |
-| ------------------------ | -----: | -----: | ---------------------------------------------------- | ------ |
-| living-doc stale 재발    |   낮음 |   낮음 | **CI 드리프트 가드(v1.4.2)로 강제** — 규율→보장 전환 | 완화됨 |
-| 미러·정본 분기           |   낮음 |   낮음 | redeploy 규율 + 소스 repo 추적 + 미러 생성일 배지    | 완화됨 |
-| 자율이 게이트 회색화     |   낮음 |   중간 | §1.6 행동 전 6문 pre-check + L2/L3 면제 없음(v1.4.2) | 완화됨 |
-| 분량(~1,450줄) 준수 희석 |   중간 |   중간 | **P2 Core Contract 분리**(별도 사이클·승인 필요)     | 열림   |
+| 리스크                        | 가능성 | 영향도 | 대응책                                             | 상태   |
+| ----------------------------- | -----: | -----: | -------------------------------------------------- | ------ |
+| living-doc stale 재발         |   낮음 |   낮음 | CI 드리프트 가드(규율→강제)                        | 완화됨 |
+| 자율이 게이트 회색화          |   낮음 |   중간 | §1.6 행동 전 6문 pre-check · L2/L3 면제 없음       | 완화됨 |
+| 본문 비대(~1,460줄) 준수 희석 |   중간 |   중간 | **P2 Core Contract 분리**(승인 필요)               | 열림   |
+| R13 본문 도구명 재노출        |   낮음 |   중간 | 교차검증이 §24에서 실제 적발·수정 → §5 게이트 상시 | 완화됨 |
 
 ## 품질 지표
 
-- **테스트**: CI `validate` green — 3중 버전 1.6.0 · JSON · 섹션 §0~§24 연속 · **living-doc 드리프트 가드**
-- **교차검증**: ✅ **실제 Claude–GPT** — v1.4.1(GPT) + **v1.5.0 GPT-5.5(Codex exec, xhigh)**, §5.5. 단일모델이 놓친 §1.6 구멍 적발·반영
-- **렌더 검증**: 미러 headless(desktop·mobile) 정상
-- **알려진 이슈**: `! claude plugin` CLI 무반영 → in-app `/plugin` 우회(RUNBOOK)
-- **비용/리소스**: 문서·프롬프트 ~0 (§15)
+- **CI**: `validate` green — 3중 버전 1.6.0 · JSON · 섹션 §0~§24 연속 · living-doc 드리프트 가드
+- **교차검증**: ✅ **실제 Claude↔GPT-5.5**(Codex exec) ×2 — v1.5.0 §1.6 구멍 · v1.6.0 R13 위반을 단일모델 사각에서 적발·수정
+- **중립성**: SKILL 본문 도구명 0(R13) · 구체 기술은 CAPABILITY_MATRIX(docs)
+- **설치**: 플러그인 v1.6.0 재설치·reload 완료
+
+## 재개 지점 (체크포인트)
+
+- 마지막 성공 커밋: **v1.6.0 배포** — tag `v1.6.0` · GitHub Release(latest) · 본문 `4b0fc59` · CI green
+- 다음 작업: 유휴. (선택) 미러 live redeploy · (승인) P2 Core Contract.
 
 ## 사람 결정 대기
 
-- **P2 Core Contract 분리**(~250줄 + 부록) — 대규모 재구조, 승인 필요. v1.5.0 패턴(§18.7·증거기반 완료)을 lean core로 흡수 예정. GPT가 P2 로드맵(capability discovery·2계층 메모리 규칙 등) 독립 검증.
-- 그 외 대기 없음(v1.6.0 배포 완료 · 플러그인 재설치만 사람).
+- **P2 Core Contract 분리**(~250줄 + 부록) — 대규모 재구조, 승인 필요. v1.5.0/v1.6.0 패턴(§18.7·증거기반 완료·§24)을 lean core로 흡수 + GPT가 짚은 누락 패턴(capability discovery·2계층 메모리 규칙 등).
+- 그 외 대기 없음.
 
 ## 다음 액션
 
-1. **(사람) 플러그인 재설치** — `/plugin marketplace update quetzalcoatl` → `/plugin install quetzalcoatl@quetzalcoatl` → `/reload-plugins`
-2. (선택) 미러 live artifact redeploy(§7.2) — 전체 재렌더 후
-3. (선택·P2) Core Contract 분리 + §18.7·§24 패턴 흡수 — 별도 사이클 + 승인
+1. (선택) 미러 live artifact redeploy — 이 정리된 DASHBOARD 기준 재렌더(§7.2).
+2. (선택·승인) P2 Core Contract 분리 — 별도 사이클.
+3. (유지) 외부 도구 추가 진화 시 **capability matrix만 갱신**(본문 불변, D12).
 
-## 링크: 문서 / 커밋 / 태그 / Release
+## 링크
 
-- 문서: [`docs/`](../README.md) · 결정: [DECISION_LOG](../02-decisions/DECISION_LOG.md) · 교차검증: [CROSS_VALIDATION_LOG](../02-decisions/CROSS_VALIDATION_LOG.md)
-- 저장소: https://github.com/chquandogong/Quetzalcoatl · 태그 `v1.6.0`(latest)
-- Release: [v1.6.0](https://github.com/chquandogong/Quetzalcoatl/releases/tag/v1.6.0) (latest)
-- 보기 좋은 미러(읽기용): live artifact · 소스 [`docs/assets/dashboard.html`](../assets/dashboard.html) · `/dashboard`로 redeploy · 정본이 SSOT(§7.2)
+- 저장소: https://github.com/chquandogong/Quetzalcoatl · 태그 `v1.6.0`(latest) · [Release v1.6.0](https://github.com/chquandogong/Quetzalcoatl/releases/tag/v1.6.0)
+- 문서 지도: [`docs/`](../README.md) · [DECISION_LOG](../02-decisions/DECISION_LOG.md) · [CROSS_VALIDATION_LOG](../02-decisions/CROSS_VALIDATION_LOG.md) · [CAPABILITY_MATRIX](../appendix/CAPABILITY_MATRIX.md)
+- 보기 좋은 미러(읽기용): live artifact · 소스 [`docs/assets/dashboard.html`](../assets/dashboard.html) · 정본이 SSOT(§7.2 / §21.3)

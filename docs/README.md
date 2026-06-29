@@ -3,7 +3,7 @@
 > 상태: 활성 · 날짜: 2026-06-29 · 소유자: Quetzalcoatl OS(Claude Opus 4.8) · 승인: CHENGHAO QUAN
 
 이 디렉터리는 **Quetzalcoatl 스킬 자신의 개발**을 Quetzalcoatl 문서 체계(SKILL.md §6)로 관리한 것이다(dogfooding).
-현재 사이클: **v1.5.0 진행 중** — 외부 도구(Claude Code·Codex·Antigravity) 2026 상반기 진화 반영. 조사([RESEARCH_NOTES](01-discovery/RESEARCH_NOTES.md))·[CAPABILITY_MATRIX](appendix/CAPABILITY_MATRIX.md)·결정(D12) 완료; 본문 패치(§18.7 강제 바인딩·증거기반 완료)는 **배포 게이트 대기**.
+현재 사이클: **v1.6.0 배포 완료**(latest) — §24 `/context` 벤더-중립 휴대용 브리핑(mission-spec 은퇴에서 이식). 직전 **v1.5.0**: 외부 도구(Claude Code·Codex·Antigravity) 2026 상반기 진화를 §18.7 강제 바인딩·§12/§14 증거기반 완료 + [CAPABILITY_MATRIX](appendix/CAPABILITY_MATRIX.md)·[RESEARCH_NOTES](01-discovery/RESEARCH_NOTES.md)·D12로 반영. 두 릴리스 모두 **실제 Claude–GPT 교차검증** 통과(단일모델 사각 적발).
 직전 사이클: **v1.4.0**(대시보드 HTML 미러 + `/dashboard`, §7.2) + **v1.4.2 패치**(§1.6 게이트 pre-check · §4.2 반증행 · CI 드리프트 가드 · 미러 배지 — v1.4.1 교차검증 P1).
 직전 사이클: **v1.3.1**(용어집 동기) · **v1.3.0**(앵커된 선호 처리 §4.2 · 대안 비교 §4 승격) · **v1.2.0**(5개 능력 추가).
 
