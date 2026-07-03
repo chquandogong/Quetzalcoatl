@@ -64,6 +64,39 @@ jobs:
           fi
           echo "OK: sections contiguous ($nums)"
 
+      - name: Assert template pointer integrity (부록 C-N ↔ TEMPLATES.md)
+        run: |
+          # 본문의 "부록 C-N" 참조가 전부 TEMPLATES.md의 "#### C-N." 앵커에 존재하고,
+          # 앵커가 C-1부터 연속인지 검사 (v3.0.0 소스 분리 구조의 회귀 방지).
+          refs=$(grep -oE '부록 C-[0-9]+' skills/Quetzalcoatl/SKILL.md | grep -oE '[0-9]+' | sort -un)
+          anchors=$(grep -oE '^#### C-[0-9]+\.' skills/Quetzalcoatl/TEMPLATES.md | grep -oE '[0-9]+' | sort -un)
+          echo "refs: $(echo $refs | tr '\n' ' ')"
+          echo "anchors: $(echo $anchors | tr '\n' ' ')"
+          expected=1
+          for a in $anchors; do
+            if [ "$a" -ne "$expected" ]; then echo "::error::TEMPLATES.md 앵커 불연속: C-$a (기대 C-$expected)"; exit 1; fi
+            expected=$((expected + 1))
+          done
+          for r in $refs; do
+            if ! echo "$anchors" | grep -qx "$r"; then echo "::error::본문이 참조하는 C-$r 앵커가 TEMPLATES.md에 없음"; exit 1; fi
+          done
+          echo "OK: refs ⊆ anchors, anchors contiguous C-1..C-$((expected - 1))"
+
+      - name: Assert SKILL.md frontmatter length (≤ 1024 chars)
+        run: |
+          n=$(awk '/^---$/{c++; next} c==1{print}' skills/Quetzalcoatl/SKILL.md | wc -m)
+          if [ "$n" -gt 1024 ]; then echo "::error::frontmatter ${n}자 > 1024자 한도"; exit 1; fi
+          echo "OK: frontmatter ${n}자 (≤1024)"
+
+      - name: Assert paste bundle freshness (dist = SKILL + TEMPLATES)
+        run: |
+          bash scripts/build-paste-bundle.sh /tmp/bundle.md
+          if ! diff -q /tmp/bundle.md dist/Quetzalcoatl-FULL.md; then
+            echo "::error::dist/Quetzalcoatl-FULL.md가 소스와 다름 — scripts/build-paste-bundle.sh 재실행 후 커밋"
+            exit 1
+          fi
+          echo "OK: paste bundle fresh"
+
       - name: Assert living-doc version sync (drift guard)
         run: |
           # 현재성(living) 문서·미러의 "현재 버전" 표기가 SSOT(plugin.json)와 일치하는지 검사.

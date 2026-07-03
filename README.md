@@ -32,6 +32,7 @@ feasibility → 3~5개 대안 → Claude-GPT 교차검증 → 문서화·대시�
 - **벤더-중립 휴대용 브리핑 `/context` (v1.6.0)** — 프로젝트 맥락을 1회성 벤더-중립 브리핑으로 합성해 새 에이전트/벤더(Claude·Codex·Gemini·ChatGPT)에 즉시 온보딩(§24; `/handoff`와 구분 — 보드 갱신이 아니라 휴대용 산출물)
 - **Core Contract 분리 (v2.0.0)** — 본문=규칙, fill-in 템플릿 21개는 §22 부록 C로 이동(코어 전진배치·준수↑). 동작·모드·게이트·모델 중립 불변(구조 재편)
 - **로컬 미니멈 탈출 (v2.0.1)** — 양방향 앵커링(점)에 더해 "같은 전제 안의 국소 최적(프레이밍 잠김)"을 벗어나는 기제: §3 Phase 1-7 프레이밍 흔들기(점프·restart는 사람 승인) + §4.1 골짜기 점검(큰 결정) + §4.2 탐색 깊이·폭 다이얼. 실제 GPT-5.5 교차검증(78, ACCEPT-WITH-CHANGES) 반영 — "대안 프레이밍을 실제 후보로 비교해야 탈출"
+- **코어/양식 분리 + 페이스트 번들 (v3.0.0)** — `SKILL.md`=규칙(963줄), `TEMPLATES.md`=양식 C-1~C-25(필요할 때만 로드, 호출 토큰 ~40%↓), 챗 환경은 `dist/` 합본. 모든 모드 백킹 완성(`/plan` §8.2 · `/design-review` §9.2 · `/retro` §12.2) + §13 크기 라우터(간단/중간/프로젝트) + **규모 적합성(scale envelope) 원칙**(§9.2 — 규모가 자릿수로 바뀌면 UI 패러다임도 바꾼다) + CI 가드 3종(템플릿 포인터·frontmatter·번들 신선도)
 
 ## 설치 (Claude Code)
 
@@ -67,7 +68,8 @@ cp -r /tmp/quetzalcoatl-src/skills/Quetzalcoatl ~/.claude/skills/Quetzalcoatl
 
 Claude / Claude Code / Claude Projects · ChatGPT / GPTs / ChatGPT Skills ·
 일반 LLM 채팅 및 코딩 에이전트 — 모델 중립형.
-(ChatGPT 등에서는 `skills/Quetzalcoatl/SKILL.md` 전체를 프로젝트 지침에 붙여넣는다.)
+(ChatGPT 등 도구 없는 챗 환경에서는 합본 페이스트 번들
+[`dist/Quetzalcoatl-FULL.md`](./dist/Quetzalcoatl-FULL.md)를 프로젝트 지침에 붙여넣는다.)
 
 ## 구조
 
@@ -78,8 +80,13 @@ Quetzalcoatl/
 │   └── plugin.json        # 플러그인 매니페스트
 ├── skills/
 │   └── Quetzalcoatl/
-│       ├── SKILL.md        # 스킬 본문 (운영체제 전체)
+│       ├── SKILL.md        # 스킬 본문 — 규칙(Core Contract)
+│       ├── TEMPLATES.md    # 양식(템플릿 C-1~C-25) — 필요할 때만 로드
 │       └── USAGE.md        # 호출/설치 가이드
+├── dist/
+│   └── Quetzalcoatl-FULL.md  # 페이스트 번들(본문+양식 합본, 챗 환경용 — CI가 신선도 검사)
+├── scripts/
+│   └── build-paste-bundle.sh # 번들 생성
 ├── docs/                   # 이 스킬을 자신에게 적용한 프로젝트 문서 (§6 구조)
 │   ├── 00-overview/        # PROJECT_BRIEF · DASHBOARD
 │   ├── 01-discovery/       # OFFICE_HOURS · FEASIBILITY · ASSUMPTIONS

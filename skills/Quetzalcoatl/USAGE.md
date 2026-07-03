@@ -46,16 +46,20 @@ cp -r /tmp/quetzalcoatl-src/skills/Quetzalcoatl ~/.claude/skills/Quetzalcoatl
 > 스킬이 켜진 세션에서 `/dashboard`처럼 그냥 입력하면(앞의 `/`는 관례, 없어도 됨) 해당 모드로
 > 전환된다. 명령을 정확히 쓰지 않아도 의도가 비슷하면 자동 적용된다.
 
+> v3.0.0부터 `SKILL.md`는 **규칙(Core Contract)**만 담고, 양식(템플릿 C-1~C-25)은 같은 폴더의
+> `TEMPLATES.md`로 분리됐다. 에이전트 환경에서는 스킬이 필요한 템플릿만 그때그때 읽는다(호출 토큰 절감).
+
 ## ChatGPT / GPT
 
-이 스킬은 모델 중립형이다. 다음 중 하나로 사용한다.
+이 스킬은 모델 중립형이다. **도구 없는 챗 환경에는 본문+템플릿 합본인 페이스트 번들**
+[`dist/Quetzalcoatl-FULL.md`](../../dist/Quetzalcoatl-FULL.md)**를 쓴다.**
 
-1. ChatGPT 프로젝트 지침에 `SKILL.md` 내용을 붙여넣기
-2. GPT Builder의 Instructions에 붙여넣기
-3. ChatGPT Skills 업로드 기능이 있는 환경에서는 이 폴더를 zip으로 업로드
-4. 일반 채팅에서는 `SKILL.md` 전체를 첫 메시지 또는 프로젝트 설명으로 붙여넣기
+1. ChatGPT 프로젝트 지침에 번들 내용을 붙여넣기
+2. GPT Builder의 Instructions에 번들 내용을 붙여넣기
+3. ChatGPT Skills 업로드 기능이 있는 환경에서는 이 폴더(`SKILL.md`+`TEMPLATES.md`)를 zip으로 업로드
+4. 일반 채팅에서는 번들 전체를 첫 메시지 또는 프로젝트 설명으로 붙여넣기
 
-> 슬래시 명령이 없는 환경에서는 `SKILL.md` 내용을 프로젝트 지침/문맥에 붙여넣고 아래 문장으로 호출한다.
+> 슬래시 명령이 없는 환경에서는 번들 내용을 프로젝트 지침/문맥에 붙여넣고 아래 문장으로 호출한다.
 
 ## 추천 첫 호출
 
