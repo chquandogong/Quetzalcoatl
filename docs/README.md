@@ -1,17 +1,17 @@
 # Quetzalcoatl 프로젝트 문서
 
-> 상태: 활성 · 날짜: 2026-06-29 · 소유자: Quetzalcoatl OS(Claude Opus 4.8) · 승인: CHENGHAO QUAN
+> 상태: 활성 · 날짜: 2026-07-03 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
 
 이 디렉터리는 **Quetzalcoatl 스킬 자신의 개발**을 Quetzalcoatl 문서 체계(SKILL.md §6)로 관리한 것이다(dogfooding).
-현재 사이클: **v2.0.0 P2 — Core Contract 분리**(본문=규칙 / §22 부록 C=템플릿 21개; 동작 보존, 배포 게이트 대기). 직전 **v1.6.0**: §24 `/context` 벤더-중립 휴대용 브리핑(mission-spec 은퇴에서 이식). 직전 **v1.5.0**: 외부 도구(Claude Code·Codex·Antigravity) 2026 상반기 진화를 §18.7 강제 바인딩·§12/§14 증거기반 완료 + [CAPABILITY_MATRIX](appendix/CAPABILITY_MATRIX.md)·[RESEARCH_NOTES](01-discovery/RESEARCH_NOTES.md)·D12로 반영. 두 릴리스 모두 **실제 Claude–GPT 교차검증** 통과(단일모델 사각 적발).
-직전 사이클: **v1.4.0**(대시보드 HTML 미러 + `/dashboard`, §7.2) + **v1.4.2 패치**(§1.6 게이트 pre-check · §4.2 반증행 · CI 드리프트 가드 · 미러 배지 — v1.4.1 교차검증 P1).
-직전 사이클: **v1.3.1**(용어집 동기) · **v1.3.0**(앵커된 선호 처리 §4.2 · 대안 비교 §4 승격) · **v1.2.0**(5개 능력 추가).
+현재 사이클: **v3.0.0 — 소스 분리 + 완결성**: `SKILL.md`(규칙 963줄)/`TEMPLATES.md`(양식 C-1~C-25)/`dist` 페이스트 번들(D13), 모드 백킹 완성(/plan·/design-review·/retro, D15), §13 크기 라우터, **규모 적합성 scale envelope**(사용자 요청, D14), CI 가드 3종, 행동 테스트 복귀(RED/GREEN·A/B — [TEST_PLAN](04-quality/TEST_PLAN.md)).
+직전: **v2.0.1**(로컬 미니멈 탈출 — §3 Phase 1-7·§4.1 골짜기 점검·§4.2 다이얼) · **v2.0.0 P2**(Core Contract 분리, 한 파일 내) · **v1.6.0**(§24 `/context`) · **v1.5.0**(§18.7 강제 바인딩·증거기반 완료·capability matrix) — v1.4.1 이후 릴리스마다 **실제 Claude–GPT 교차검증**.
+그 이전: **v1.4.x**(대시보드 HTML 미러·§1.6 pre-check·CI 드리프트 가드) · **v1.3.x**(앵커된 선호 §4.2·§4 승격) · **v1.2.0**(5개 능력).
 
-## 이번 사이클(v1.4.0)의 한 줄
+## 이번 사이클(v3.0.0)의 한 줄
 
-정본(`DASHBOARD.md`)을 SSOT로 두고 **보기 좋은 HTML 미러를 같은 URL에 redeploy**하는 경로(§7.2)와 `/dashboard` 모드를 더했다. "자동"은 강제 락이 아니라 **에이전트 규율**임을 정직하게 명시(§15).
+규칙과 양식을 **파일로** 분리해(호출은 가볍게, 페이스트는 번들로) 구조를 완결하고, 표에만 있던 모드(/plan·/design-review·/retro)에 백킹을 만들었으며, **규모가 자릿수로 바뀌면 UI 패러다임도 바꾼다**(scale envelope)는 원칙을 더했다. 검증은 텍스트 리뷰가 아니라 **행동 테스트(RED/GREEN·A/B)**로 복귀.
 
-> 진화: **v1.2.0** 단일 세션 자문 OS → 지속·재개 가능한 다중 에이전트/다중 기기 실행 OS(아래 다이어그램) → **v1.4.0** 현재성 대시보드 미러.
+> 진화: **v1.2.0** 단일 세션 자문 OS → 지속·재개 가능한 다중 에이전트/다중 기기 실행 OS(아래 다이어그램) → **v1.4.0** 현재성 대시보드 미러 → **v3.0.0** 코어/양식 분리 구조.
 
 ```mermaid
 flowchart LR

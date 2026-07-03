@@ -6,3 +6,6 @@ Thumbs.db
 .idea/
 .vscode/
 .gstack/
+
+# session cruft
+.claude/command-log.txt

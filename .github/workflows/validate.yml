@@ -72,6 +72,11 @@ jobs:
           anchors=$(grep -oE '^#### C-[0-9]+\.' skills/Quetzalcoatl/TEMPLATES.md | grep -oE '[0-9]+' | sort -un)
           echo "refs: $(echo $refs | tr '\n' ' ')"
           echo "anchors: $(echo $anchors | tr '\n' ' ')"
+          dups=$(grep -oE '^#### C-[0-9]+\.' skills/Quetzalcoatl/TEMPLATES.md | sort | uniq -d)
+          if [ -n "$dups" ]; then echo "::error::TEMPLATES.md 중복 앵커: $dups"; exit 1; fi
+          idx=$(grep -cE '^\| C-[0-9]+ ' skills/Quetzalcoatl/SKILL.md)
+          n_anchor=$(grep -cE '^#### C-[0-9]+\.' skills/Quetzalcoatl/TEMPLATES.md)
+          if [ "$idx" -ne "$n_anchor" ]; then echo "::error::§22 색인 행 수($idx) ≠ 앵커 수($n_anchor)"; exit 1; fi
           expected=1
           for a in $anchors; do
             if [ "$a" -ne "$expected" ]; then echo "::error::TEMPLATES.md 앵커 불연속: C-$a (기대 C-$expected)"; exit 1; fi
@@ -87,6 +92,19 @@ jobs:
           n=$(awk '/^---$/{c++; next} c==1{print}' skills/Quetzalcoatl/SKILL.md | wc -m)
           if [ "$n" -gt 1024 ]; then echo "::error::frontmatter ${n}자 > 1024자 한도"; exit 1; fi
           echo "OK: frontmatter ${n}자 (≤1024)"
+
+      - name: Assert frontmatter YAML validity (name·description)
+        run: |
+          python3 - <<'PY'
+          import yaml
+          txt = open('skills/Quetzalcoatl/SKILL.md', encoding='utf-8').read()
+          fm = txt.split('---\n')[1]
+          d = yaml.safe_load(fm)
+          assert isinstance(d, dict), 'frontmatter가 매핑이 아님'
+          for k in ('name', 'description', 'version'):
+              assert d.get(k), f'필수 키 누락: {k}'
+          print('OK: frontmatter YAML valid — name/description/version 존재')
+          PY
 
       - name: Assert paste bundle freshness (dist = SKILL + TEMPLATES)
         run: |

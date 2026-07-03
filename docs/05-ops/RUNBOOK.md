@@ -28,6 +28,7 @@ flowchart TD
 
 - `grep '^version:' skills/Quetzalcoatl/SKILL.md` → `3.0.0`.
 - `bash scripts/build-paste-bundle.sh /tmp/b.md && diff /tmp/b.md dist/Quetzalcoatl-FULL.md` → 차이 없음.
+- 재설치 후 플러그인 캐시(또는 개인 스킬 폴더)에 `SKILL.md`와 **`TEMPLATES.md`가 함께** 있는지 확인 — 한 세트(v3.0.0 분리 구조).
 - 새 세션에서 `/Quetzalcoatl` → §18~§22 동작 + 템플릿 필요 모드에서 `TEMPLATES.md` 로드 확인.
 
 ## 롤백
