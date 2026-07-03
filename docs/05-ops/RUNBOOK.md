@@ -20,6 +20,7 @@ flowchart TD
    /plugin install quetzalcoatl@quetzalcoatl
    ```
    새 세션에서 `/quetzalcoatl:Quetzalcoatl` 호출 시 최신(현재 3.0.0) 적용.
+   ⚠️ **마켓플레이스 클론이 stale이면 재설치가 구버전을 다시 깐다**(2026-07-03 실제 재발 — v3.0.0 재설치 시도가 2.0.1을 재설치). 증상: 캐시에 새 버전 디렉터리가 안 생김. 조치: `git -C ~/.claude/plugins/marketplaces/quetzalcoatl merge --ff-only origin/main`으로 클론을 먼저 최신화한 뒤 `claude plugin update quetzalcoatl@quetzalcoatl`(또는 in-app `/plugin`) 재실행.
 3. **개인 스킬(심볼릭) 사용자**: `~/.claude/skills/Quetzalcoatl`가 이 repo로 심볼릭이면 즉시 반영. 사본이면 복사 갱신.
 4. **Codex 개인 스킬 사용자**: `~/.codex/skills/Quetzalcoatl`도 repo `skills/Quetzalcoatl/`를 복사 갱신(`cp`)한다 — Claude 플러그인과 **별개 설치 경로**라 둘 다 동기해야 한다(예: 2026-06-29 1.4.2→1.6.0 동기). v3.0.0부터 `SKILL.md`+`TEMPLATES.md` **두 파일**이 한 세트다(폴더째 복사).
 5. **챗 환경(ChatGPT 등) 사용자**: 페이스트 번들 `dist/Quetzalcoatl-FULL.md`를 붙여넣는다. 번들은 `scripts/build-paste-bundle.sh`로 생성하며 CI가 신선도를 검사한다.

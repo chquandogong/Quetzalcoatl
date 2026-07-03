@@ -1,13 +1,13 @@
 # DASHBOARD — Quetzalcoatl v3.0.0
 
-> 상태: **v3.0.0 released — 소스 분리 + 완결성 + 행동 테스트 복귀 (Claude 재설치만 대기)** · 날짜: 2026-07-03 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
+> 상태: **v3.0.0 released — 소스 분리 + 완결성 + 행동 테스트 복귀 (재설치 완료 — 사이클 종료)** · 날짜: 2026-07-03 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
 > 정본(SSOT): 이 파일 · 보기 좋은 미러: live artifact(읽기용, §7.2)
 > 이 보드는 **현재 상태**를 보여준다(작업량 아님, §7). 사이클별 상세는 아래 "릴리스 히스토리"의 링크로.
 
 ## 현재 상태
 
 - 단계: **v3.0.0 배포** — `SKILL.md`(규칙 963줄) / `TEMPLATES.md`(양식 C-1~C-25) / `dist` 페이스트 번들 분리(D13) + 모드 백킹 완성(D15) + §13 크기 라우터 + **규모 적합성 scale envelope**(사용자 요청, D14) + CI 가드 6종.
-- 전체 판단: **배포 가능** — 실제 GPT-5.5 diff 적대 검토(ACCEPT-WITH-CHANGES 78, 9/10 반영·1 기각) + **행동 테스트 복귀**: 프레이밍 흔들기 RED 0/4 vs GREEN 5/5(전제 깨는 후보를 표에), A/B 준수 4/4·4/4, 라우터 과잉 프로세스 0. 남은 것: Claude 플러그인 재설치(사람).
+- 전체 판단: **배포 가능** — 실제 GPT-5.5 diff 적대 검토(ACCEPT-WITH-CHANGES 78, 9/10 반영·1 기각) + **행동 테스트 복귀**: 프레이밍 흔들기 RED 0/4 vs GREEN 5/5(전제 깨는 후보를 표에), A/B 준수 4/4·4/4, 라우터 과잉 프로세스 0. Claude 플러그인 재설치 완료(캐시 3.0.0, SKILL+TEMPLATES 한 세트 확인).
 - 자율 수준: L2 · 마지막 업데이트: 2026-07-03 (v3.0.0)
 
 ## 릴리스 히스토리 (압축 — 상세는 링크)
@@ -40,21 +40,21 @@
 - **CI**: `validate` — 3중 버전 3.0.0 · JSON · 섹션 §0~§24 연속 · **포인터 무결성(중복·색인 포함)** · **frontmatter 길이+YAML** · **번들 신선도** · living-doc 드리프트 가드
 - **행동 테스트**(TEST_PLAN v3.0.0, Opus 서브에이전트): 프레이밍 흔들기 **RED 0/4 vs GREEN 5/5**(전제 깨는 후보를 비교표에) · A/B(963 vs 1,712줄) §4.2 준수 4/4·4/4(차이 미검출) · §13 라우터 2/2 lite. 대조군 메모리 오염·소표본은 정직 기록.
 - **교차검증**: ✅ 실제 Claude↔GPT-5.5 ×5 — §1.6 구멍 · R13 위반 · §18.2 회귀 · 형식주의 · **§13 의미-먼저 구멍(QZ-03)** 을 단일모델 사각에서 적발
-- **설치**: v3.0.0 — 에이전트 = `SKILL.md`+`TEMPLATES.md` 한 세트 · 챗 = `dist/Quetzalcoatl-FULL.md` · **Claude 플러그인 재설치 대기**
+- **설치**: v3.0.0 — 에이전트 = `SKILL.md`+`TEMPLATES.md` 한 세트 · 챗 = `dist/Quetzalcoatl-FULL.md` · **Claude 플러그인 3.0.0 설치 완료**(새 세션부터 적용) · Codex 사본 동기 완료
 
 ## 재개 지점 (체크포인트)
 
 - 마지막 성공 커밋: **v3.0.0 released** — tag `v3.0.0` · GitHub Release(latest) · CI green.
-- 다음 작업: Claude 플러그인 재설치(슬래시 명령, 사람)만 남음. 그 외 유휴.
+- 다음 작업: 없음 — 유휴(다음 사이클 대기).
 
 ## 사람 결정 대기
 
-- **재설치**(슬래시 명령) 외 대기 없음.
+- 대기 없음.
 - (후속·선택) 강등 규칙 행동 테스트 · 청정 대조군 격리 경로 · P3(강등 관용구 일반화) · evals 상설화.
 
 ## 다음 액션
 
-1. **(사람) 재설치** — `/plugin marketplace update quetzalcoatl` → `install` → 새 세션. 재설치 후 캐시에 `TEMPLATES.md` 포함 확인(RUNBOOK).
+1. **(완료) 재설치** — 캐시 3.0.0에 `SKILL.md`+`TEMPLATES.md` 확인. ⚠️ 마켓플레이스 클론이 stale이면 재설치가 구버전을 깐다 — `git -C ~/.claude/plugins/marketplaces/quetzalcoatl merge --ff-only origin/main` 후 update(RUNBOOK 반영).
 2. **(완료) 미러 동기** — 정본 v3.0.0 → HTML 미러 같은 URL redeploy(§7.2).
 3. (후속·선택) 강등 규칙 행동 테스트 · evals.
 
