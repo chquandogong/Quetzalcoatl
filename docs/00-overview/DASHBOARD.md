@@ -1,6 +1,6 @@
 # DASHBOARD — Quetzalcoatl v3.2.0
 
-> 상태: **v3.2.0 released — 자립 자료(종합 보고서·발표 대본·요청 시 더빙/영상) · 재설치·미러 진행** · 날짜: 2026-10-06 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
+> 상태: **v3.2.0 released — 자립 자료(종합 보고서·발표 대본·요청 시 더빙/영상) · 재설치 완료 · 미러 동기 (Release 게시만 §1.6 게이트)** · 날짜: 2026-10-06 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
 > 정본(SSOT): 이 파일 · 보기 좋은 미러: live artifact(읽기용, §7.2)
 > 이 보드는 **현재 상태**를 보여준다(작업량 아님, §7). 사이클별 상세는 아래 "릴리스 히스토리"의 링크로.
 
@@ -44,12 +44,12 @@
 - **CI**: `validate` — 3중 버전 3.2.0 · JSON · 섹션 §0~§24 연속 · 포인터 무결성(28 ⊆ 28, 중복 0, 색인 28행) · frontmatter 856자+YAML · 번들 신선도 · living-doc 드리프트 가드 — 로컬 동등 검사 전부 통과([TEST_PLAN v3.2.0](../04-quality/TEST_PLAN.md))
 - **행동 테스트**: v3.2.0·v3.1.0 **미수행**(정직 기록) · v3.0.0 기록 유지(프레이밍 RED 0/4 vs GREEN 5/5 · A/B 4/4·4/4 · 라우터 2/2)
 - **교차검증**: ✅ 실제 Claude↔GPT ×7 — §1.6 구멍 · R13 위반 · §18.2 회귀 · 형식주의 · §13 의미-먼저 구멍 · 승인 기준선 혼동 · **비용 한도≠외부 호출 승인(QZ-23)**
-- **설치**: v3.2.0 — 에이전트 = `SKILL.md`+`TEMPLATES.md`(C-1~C-28) 한 세트 · 챗 = `dist/Quetzalcoatl-FULL.md` · Claude 플러그인 **3.2.0 재설치 진행** · Codex 사본 동기 진행
+- **설치**: v3.2.0 — 에이전트 = `SKILL.md`+`TEMPLATES.md`(C-1~C-28) 한 세트 · 챗 = `dist/Quetzalcoatl-FULL.md` · Claude 플러그인 **3.2.0 설치 완료**(클론 ff-only 후 `claude plugin update` → "updated from 3.1.0 to 3.2.0", 캐시에 SKILL+TEMPLATES+USAGE 확인 — 새 세션부터 적용) · Codex 사본 동기 완료(diff 없음)
 
 ## 재개 지점 (체크포인트)
 
 - 마지막 성공 커밋: **v3.2.0 released** — tag `v3.2.0` · push 완료 · GitHub Release는 §1.6 게이트(사람 1명령).
-- 다음 작업: 플러그인 3.2.0 재설치 확인 → 미러 redeploy → 문서 동기 커밋.
+- 다음 작업: 없음 — 유휴(GitHub Release 게시·해석 확인은 사람 결정 대기).
 
 ## 사람 결정 대기
 
@@ -59,8 +59,8 @@
 
 ## 다음 액션
 
-1. 플러그인 3.2.0 재설치(클론 ff-only → `claude plugin update quetzalcoatl@quetzalcoatl`) + 캐시 확인 + Codex 사본 동기(RUNBOOK 2·4).
-2. 미러 redeploy(같은 URL, §7.2) + 문서 동기 커밋.
+1. **(완료)** 플러그인 3.2.0 재설치(클론 ff-only → `claude plugin update quetzalcoatl@quetzalcoatl`) — 캐시 확인 · Codex 사본 동기(RUNBOOK 2·4).
+2. **(완료)** 미러 redeploy(같은 URL, §7.2) + 문서 동기 커밋.
 3. (후속) §6.5 행동 테스트 · 더빙·영상 파이프라인 1회 실측 · 강등 규칙 테스트 · evals.
 
 ## 링크
