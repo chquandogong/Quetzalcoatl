@@ -1,6 +1,6 @@
 # DASHBOARD — Quetzalcoatl v3.1.0
 
-> 상태: **v3.1.0 released — 산출물 3층(확인·설명·기계) · 재설치 완료 · 미러 동기 (Release 게시만 §1.6 게이트)** · 날짜: 2026-10-06 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
+> 상태: **v3.1.0 released — 산출물 3층(확인·설명·기계) · 재설치 완료 · 미러 동기 · GitHub Release 게시 완료 (사이클 종료)** · 날짜: 2026-10-06 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
 > 정본(SSOT): 이 파일 · 보기 좋은 미러: live artifact(읽기용, §7.2)
 > 이 보드는 **현재 상태**를 보여준다(작업량 아님, §7). 사이클별 상세는 아래 "릴리스 히스토리"의 링크로.
 
@@ -47,12 +47,12 @@
 
 ## 재개 지점 (체크포인트)
 
-- 마지막 성공 커밋: **v3.1.0 released** — tag `v3.1.0` · push 완료 · GitHub Release는 §1.6 게이트(사람 1명령).
-- 다음 작업: 없음 — 유휴(GitHub Release 게시는 사람 결정 대기).
+- 마지막 성공 커밋: **v3.1.0 released** — tag `v3.1.0` · push 완료 · GitHub Release(latest) 게시 완료 — 사용자 승인 2026-10-06.
+- 다음 작업: 없음 — 유휴(다음 사이클 대기).
 
 ## 사람 결정 대기
 
-- **GitHub Release v3.1.0 게시**(§1.6 "릴리스 게시" 게이트): `gh release create v3.1.0 --latest --notes "<CHANGELOG 3.1.0 발췌>"` — 태그는 푸시됨.
+- (완료) GitHub Release v3.1.0 게시 — §1.6 게이트에서 멈춘 뒤 사용자 승인("릴리스 게시해줘")으로 게시(2026-10-06, latest).
 - **§6.4 문구 확인(A9~A11)**: 본문의 "Word"는 "워드프로세서 문서"(R13 — 교차검증 QZ-22)로, 확인층은 "원본"이 아니라 "승인 기준선"으로 보정됨 — 사용자 의도와 맞는지 확인.
 - (선택) TypeSafe 스킬용 `TYPESAFE_API_KEY` 발급·설정(console.typesafe.ai/keys) — 실제 API 호출 시에만 필요.
 
@@ -60,10 +60,10 @@
 
 1. **(완료)** 플러그인 3.1.0 재설치(클론 `merge --ff-only origin/main` → `claude plugin update quetzalcoatl@quetzalcoatl`) — 캐시 SKILL+TEMPLATES 확인 · Codex 사본 동기(RUNBOOK 2·4).
 2. **(완료)** 미러 redeploy(같은 URL, §7.2) + 문서 동기 커밋.
-3. (후속) §6.4 행동 테스트("고객 확인 + 자동화" 시나리오) · GitHub Release(사람) · 강등 규칙 테스트 · evals.
+3. (후속) §6.4 행동 테스트("고객 확인 + 자동화" 시나리오) · 강등 규칙 테스트 · evals.
 
 ## 링크
 
-- 저장소: https://github.com/chquandogong/Quetzalcoatl · 태그 `v3.1.0`(푸시됨) · [Release v3.0.0](https://github.com/chquandogong/Quetzalcoatl/releases/tag/v3.0.0)(마지막 게시본 — v3.1.0 게시는 게이트)
+- 저장소: https://github.com/chquandogong/Quetzalcoatl · 태그 `v3.1.0`(latest) · [Release v3.1.0](https://github.com/chquandogong/Quetzalcoatl/releases/tag/v3.1.0)
 - 문서 지도: [`docs/`](../README.md) · [DECISION_LOG](../02-decisions/DECISION_LOG.md) · [CROSS_VALIDATION_LOG](../02-decisions/CROSS_VALIDATION_LOG.md) · [TEST_PLAN](../04-quality/TEST_PLAN.md) · [CAPABILITY_MATRIX](../appendix/CAPABILITY_MATRIX.md)
 - 보기 좋은 미러(읽기용): [live artifact](https://claude.ai/code/artifact/3a1da038-a3d6-4146-9f55-0f54e7063443) · 소스 [`docs/assets/dashboard.html`](../assets/dashboard.html) · 정본이 SSOT(§7.2 / §21.3)
