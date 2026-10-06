@@ -1,6 +1,6 @@
 # DASHBOARD — Quetzalcoatl v3.2.0
 
-> 상태: **v3.2.0 released — 자립 자료(종합 보고서·발표 대본·요청 시 더빙/영상) · 재설치 완료 · 미러 동기 (Release 게시만 §1.6 게이트)** · 날짜: 2026-10-06 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
+> 상태: **v3.2.0 released — 자립 자료(종합 보고서·발표 대본·요청 시 더빙/영상) · 재설치 완료 · 미러 동기 · GitHub Release 게시 완료 (사이클 종료)** · 날짜: 2026-10-06 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
 > 정본(SSOT): 이 파일 · 보기 좋은 미러: live artifact(읽기용, §7.2)
 > 이 보드는 **현재 상태**를 보여준다(작업량 아님, §7). 사이클별 상세는 아래 "릴리스 히스토리"의 링크로.
 
@@ -48,12 +48,12 @@
 
 ## 재개 지점 (체크포인트)
 
-- 마지막 성공 커밋: **v3.2.0 released** — tag `v3.2.0` · push 완료 · GitHub Release는 §1.6 게이트(사람 1명령).
-- 다음 작업: 없음 — 유휴(GitHub Release 게시·해석 확인은 사람 결정 대기).
+- 마지막 성공 커밋: **v3.2.0 released** — tag `v3.2.0` · push 완료 · GitHub Release(latest) 게시 완료 — 사용자 승인 2026-10-06. **이후 릴리스 게시는 사전승인**(RUNBOOK 사전승인 목록).
+- 다음 작업: 없음 — 유휴(해석 확인 A17·A21만 사람 결정 대기).
 
 ## 사람 결정 대기
 
-- **GitHub Release v3.2.0 게시**(§1.6 "릴리스 게시" 게이트) — v3.1.0처럼 승인 시 게시. 앞으로 사전승인으로 둘지도 결정 가능.
+- (완료) GitHub Release v3.2.0 게시 — 사용자 승인 + **앞으로 릴리스 게시는 사전승인**(2026-10-06, RUNBOOK 사전승인 목록에 기록).
 - **해석 확인(A17·A21)**: 더빙은 합성 전 분량·비용을 보여 확인하는 것이 기본(§18.2 사전승인 시만 자동) · 더빙 요청의 기본 범위는 음성+영상(선호 기록).
 - (선택) TypeSafe API 키 · §18.2 허용목록에 더빙 사전승인 범위 작성.
 
@@ -65,6 +65,6 @@
 
 ## 링크
 
-- 저장소: https://github.com/chquandogong/Quetzalcoatl · 태그 `v3.2.0`(푸시됨) · [Release v3.1.0](https://github.com/chquandogong/Quetzalcoatl/releases/tag/v3.1.0)(마지막 게시본 — v3.2.0 게시는 게이트)
+- 저장소: https://github.com/chquandogong/Quetzalcoatl · 태그 `v3.2.0`(latest) · [Release v3.2.0](https://github.com/chquandogong/Quetzalcoatl/releases/tag/v3.2.0)
 - 문서 지도: [`docs/`](../README.md) · [DECISION_LOG](../02-decisions/DECISION_LOG.md) · [CROSS_VALIDATION_LOG](../02-decisions/CROSS_VALIDATION_LOG.md) · [TEST_PLAN](../04-quality/TEST_PLAN.md) · [CAPABILITY_MATRIX](../appendix/CAPABILITY_MATRIX.md)
 - 보기 좋은 미러(읽기용): [live artifact](https://claude.ai/code/artifact/3a1da038-a3d6-4146-9f55-0f54e7063443) · 소스 [`docs/assets/dashboard.html`](../assets/dashboard.html) · 정본이 SSOT(§7.2 / §21.3)

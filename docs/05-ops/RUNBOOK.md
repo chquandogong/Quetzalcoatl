@@ -13,7 +13,7 @@ flowchart TD
   A -- 개인 스킬 심볼릭 --> L[~/.claude/skills 심볼릭이면 즉시 반영]
 ```
 
-1. **커밋·태그·푸시**: 본 사이클에서 수행(아래 명령은 RETRO/CHANGELOG 참조).
+1. **커밋·태그·푸시·GitHub Release 게시**: 본 사이클에서 수행(아래 사전승인 목록). Release는 `gh release create vX.Y.Z --latest --notes-file <CHANGELOG 발췌>` — 태그 푸시만으로는 Release 페이지가 생기지 않는다.
 2. **플러그인 사용자**: 캐시 `…/quetzalcoatl/<버전>/`은 버전별 **사본**이다(심볼릭 아님). 최신(현재 3.2.0)을 받으려면 재설치/업데이트:
    ```text
    /plugin marketplace update quetzalcoatl   # 또는 marketplace add 재실행
@@ -24,6 +24,17 @@ flowchart TD
 3. **개인 스킬(심볼릭) 사용자**: `~/.claude/skills/Quetzalcoatl`가 이 repo로 심볼릭이면 즉시 반영. 사본이면 복사 갱신.
 4. **Codex 개인 스킬 사용자**: `~/.codex/skills/Quetzalcoatl`도 repo `skills/Quetzalcoatl/`를 복사 갱신(`cp`)한다 — Claude 플러그인과 **별개 설치 경로**라 둘 다 동기해야 한다(예: 2026-06-29 1.4.2→1.6.0 동기). v3.0.0부터 `SKILL.md`+`TEMPLATES.md` **두 파일**이 한 세트다(폴더째 복사).
 5. **챗 환경(ChatGPT 등) 사용자**: 페이스트 번들 `dist/Quetzalcoatl-FULL.md`를 붙여넣는다. 번들은 `scripts/build-paste-bundle.sh`로 생성하며 CI가 신선도를 검사한다.
+
+## 사전승인 목록 (§18.2 — 이 repo의 자율 사이클에서 확인 없이 실행)
+
+| 행동                                                  | 근거                                                                                                          |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| 커밋 · 주석 태그 `vX.Y.Z` · `origin main` push        | 배포 1단계(사용자 승인 문서)                                                                                  |
+| **GitHub Release 게시**(`gh release create --latest`) | **사용자 사전승인 2026-10-06**("앞으로는 사전 승인으로 둬") — 그전(v3.1.0·v3.2.0)에는 §1.6 게이트로 매번 확인 |
+| 플러그인 재설치(로컬 캐시) · Codex 사본 동기          | 배포 2·4단계, 가역                                                                                            |
+| 대시보드 미러 같은 URL redeploy                       | §7.2 규율                                                                                                     |
+
+여전히 게이트(§1.6): `git push --force`·히스토리 재작성 · 새 공개 저장소 · 유료 외부 API 호출(더빙 등, §6.5) · 삭제 · 공식 채널 게시.
 
 ## 검증
 
