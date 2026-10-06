@@ -1,4 +1,4 @@
-<title>Quetzalcoatl · v3.1.0 Dashboard</title>
+<title>Quetzalcoatl · v3.2.0 Dashboard</title>
 <style>
   :root {
     --ground: #0c2e2b;
@@ -516,10 +516,10 @@
         </div>
         <h1 class="hero__title">Quetzalcoatl</h1>
         <div class="hero__verline">
-          <span class="hero__ver">v3.1.0</span>
+          <span class="hero__ver">v3.2.0</span>
           <span class="chip chip--rel"><span class="dot"></span>Released</span>
-          <span class="chip chip--done"
-            ><span class="dot"></span>재설치 완료</span
+          <span class="chip chip--watch"
+            ><span class="dot"></span>재설치 대기</span
           >
         </div>
         <p class="hero__sub">
@@ -528,7 +528,7 @@
           만들지 않고, 의미를 먼저 검증한다.
         </p>
         <div class="hero__meta">
-          <span><b>상태</b> v3.1.0 released · 재설치 완료</span
+          <span><b>상태</b> v3.2.0 released · 재설치 대기</span
           ><span><b>날짜</b> 2026-10-06</span>
           <span><b>소유자</b> CHENGHAO QUAN</span><span><b>자율</b> L2</span>
           <span><b>SSOT</b> DASHBOARD.md</span>
@@ -540,19 +540,21 @@
     <section class="verdict">
       <div class="verdict__lab">전체 판단</div>
       <div class="verdict__v">
-        v3.1.0 released · 산출물 3층 — 정본은 사실마다 하나
+        v3.2.0 released · 자립 자료 — 보고서·대본은 정본, 덱·음성·영상은 렌더
       </div>
       <p class="verdict__d">
         <strong
-          >사용자 제안 — "Word는 고객 확인 원본, md는 사람이 보는
-          설명(구성도·흐름도), JSON은 프로그램이 읽는 task.json" — 을 §6.4 +
-          C-26으로 반영하되, 원안을 그대로 박지 않았다.</strong
+          >사용자 제안 — 종합 보고서는 md(쉬운 용어 부록 · 출처), 발표 자료는
+          상호작용 HTML 기본 · 필요 시 pptx · 충분한 대본, 더빙은 선호 음성으로
+          분량 확인 후 영상 — 을 §6.2 보강 + §6.5 신설 + C-27/C-28로
+          반영.</strong
         >
-        확인층은 '원본'이 아니라 고객이 확인한 <strong>승인 기준선</strong>(변경
-        금지 스냅샷), 편집 정본은 사실마다 하나(기계층은 선언된 범위만), 안정 ID
-        + 원천 리비전 + 내용 대조로 층을 잇고, 기계층은 스키마로 검증. 층은
-        필요할 때만(§15). 실제 GPT diff 적대 검토(ACCEPT-WITH-CHANGES 95)가 승인
-        기준선 혼동 · §7.2 모순 · 확인 파일 변조 등 12건을 적발 → 전부 반영.
+        기존 정본은 그대로 두고 보고서는 인용·요약, 대본은 발표의 정본,
+        덱·음성·영상은 파생 렌더(원천 리비전 기록). pptx에도 발표자 노트에 대본
+        전문(사용자 지적). 더빙·영상은 요청 범위(음성/영상)를 기록하고 합성 전
+        분량·비용을 사람에게 보여 확인 — 비용 한도는 승인을 대체하지
+        않는다(§1.6·§18.2). 실제 GPT 적대 검토(ACCEPT-WITH-CHANGES 97)가
+        한도≠승인 · 보고서 정본 범위 · 요청 범위 등 10건을 적발 → 전부 반영.
         MINOR. 행동 테스트는 미수행(정직 기록).
       </p>
       <div class="rail" aria-label="진행 파이프라인">
@@ -676,6 +678,16 @@
               </td>
               <td><span class="chip chip--rel">GPT · 95 기준선 혼동</span></td>
             </tr>
+            <tr>
+              <td>
+                <span class="mono" style="color: var(--jade)">v3.2.0</span>
+              </td>
+              <td>
+                <strong>자립 자료</strong> — 종합 보고서 · 발표 대본(HTML 기본 ·
+                pptx 노트) · 요청 시 더빙/영상 · C-27/C-28
+              </td>
+              <td><span class="chip chip--rel">GPT · 97 한도≠승인</span></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -767,6 +779,30 @@
                 <td><span class="mono">낮음 / 높음</span></td>
                 <td><span class="chip chip--done">완화됨</span></td>
               </tr>
+              <tr>
+                <td>
+                  더빙·영상의 외부 호출·결제·대본 반출이 "요청" 한마디로 진행
+                  <div class="mono" style="margin-top: 5px">
+                    대응: 합성 전 분량·비용을 사람에게 보여 확인 · §18.2
+                    사전승인 시만 자동(QZ-23)
+                  </div>
+                </td>
+                <td><span class="mono">낮음 / 높음</span></td>
+                <td><span class="chip chip--done">완화됨(설계)</span></td>
+              </tr>
+              <tr>
+                <td>
+                  보고서·덱이 기존 정본과 갈라짐 · 자립성이 형식으로 전락
+                  <div class="mono" style="margin-top: 5px">
+                    대응: 기존 정본 유지 · 보고서는 인용 · 원천 리비전 ·
+                    검사·결과·증거 표(QZ-24·29·30)
+                  </div>
+                </td>
+                <td><span class="mono">중간 / 중간</span></td>
+                <td>
+                  <span class="chip chip--watch">설계 완화 · 행동 미측정</span>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -781,7 +817,7 @@
             <span class="k">CI</span
             ><span class="v"
               ><code>validate</code> — 3중 버전
-              <span class="mono">3.1.0</span> · JSON · 섹션 §0~§24 ·
+              <span class="mono">3.2.0</span> · JSON · 섹션 §0~§24 ·
               <strong
                 >포인터 무결성 · frontmatter YAML · 번들 신선도 · 드리프트
                 가드</strong
@@ -791,25 +827,25 @@
           <li>
             <span class="k">행동 테스트</span
             ><span class="v"
-              >v3.1.0 <strong>미수행</strong>(정직 기록 — 다음 사이클) · v3.0.0
-              기록: 프레이밍 흔들기 RED 0/4 → GREEN 5/5 · A/B 4/4·4/4 · 라우터
-              2/2</span
+              >v3.2.0·v3.1.0 <strong>미수행</strong>(정직 기록 — 다음 사이클) ·
+              v3.0.0 기록: 프레이밍 흔들기 RED 0/4 → GREEN 5/5 · A/B 4/4·4/4 ·
+              라우터 2/2</span
             >
           </li>
           <li>
             <span class="k">교차검증</span
             ><span class="v"
-              >✅ <strong>실제 Claude↔GPT</strong>(Codex) ×6 — §1.6 구멍 · R13
-              위반 · §18.2 회귀 · 형식주의 · §13 의미-먼저 구멍 ·
-              <strong>승인 기준선 혼동 · 확인 파일 변조(QZ-11·15)</strong></span
+              >✅ <strong>실제 Claude↔GPT</strong>(Codex) ×7 — §1.6 구멍 · R13
+              위반 · §18.2 회귀 · 형식주의 · §13 의미-먼저 구멍 · 승인 기준선
+              혼동 · <strong>비용 한도≠외부 호출 승인(QZ-23)</strong></span
             >
           </li>
           <li>
             <span class="k">설치</span
             ><span class="v"
-              >v3.1.0 — 에이전트 = SKILL(989줄)+TEMPLATES(C-1~C-26) 한 세트 · 챗
-              = <code>dist</code> 번들 · Claude 플러그인
-              <span class="mono">3.1.0 설치 완료</span></span
+              >v3.2.0 — 에이전트 = SKILL+TEMPLATES(C-1~C-28) 한 세트 · 챗 =
+              <code>dist</code> 번들 · Claude 플러그인
+              <span class="mono">3.2.0 재설치 대기</span></span
             >
           </li>
         </ul>
@@ -827,22 +863,21 @@
           <li>
             <span class="k">체크포인트</span
             ><span class="v"
-              >tag <span class="mono" style="color: var(--jade)">v3.1.0</span> ·
-              Release <span class="mono">latest</span> · CI green</span
+              >tag <span class="mono" style="color: var(--jade)">v3.2.0</span> ·
+              Release <span class="mono">게이트 대기(§1.6)</span> · CI
+              green</span
             >
           </li>
           <li>
             <span class="k">단계</span
-            ><span class="v"
-              >v3.1.0 released — 재설치 완료 · 미러 동기 · Release 게시
-              완료(사이클 종료)</span
-            >
+            ><span class="v">v3.2.0 released — 재설치·미러 진행</span>
           </li>
           <li>
             <span class="k">사람 결정 대기</span
             ><span class="v"
-              >없음 — §6.4 문구는 사용자 확정(2026-10-06) · TypeSafe API 키
-              설정은 선택</span
+              >GitHub Release v3.2.0 게시(§1.6 게이트) · 해석 확인(A17·A21:
+              더빙은 합성 전 분량·비용 확인이 기본 · 더빙 요청 기본 범위 =
+              음성+영상)</span
             >
           </li>
         </ul>
@@ -856,23 +891,26 @@
           <li>
             <span class="mk" style="color: var(--gold)">1</span
             ><span
-              >(완료) <strong>Claude 플러그인 3.1.0 재설치</strong>
+              >(진행) <strong>Claude 플러그인 3.2.0 재설치</strong>
               <span class="em" style="color: var(--faint)"
-                >— 캐시 3.1.0에 SKILL+TEMPLATES 확인 · Codex 사본 동기 · 새
-                세션부터 적용</span
+                >— 클론 ff-only → plugin update → 캐시 확인 · Codex 사본
+                동기</span
               ></span
             >
           </li>
           <li>
             <span class="mk" style="color: var(--muted)">2</span
             ><span
-              >이 <strong>미러 redeploy</strong> 완료 — 정본 v3.1.0 반영
+              >이 <strong>미러 redeploy</strong> — 정본 v3.2.0 반영
               <span class="em" style="color: var(--faint)">(§7.2)</span></span
             >
           </li>
           <li>
             <span class="mk" style="color: var(--muted)">3</span
-            ><span>(후속) §6.4 행동 테스트 · 강등 규칙 테스트 · evals</span>
+            ><span
+              >(후속) §6.5 행동 테스트 · 더빙·영상 파이프라인 실측 · 강등 규칙
+              테스트 · evals</span
+            >
           </li>
         </ul>
       </section>
@@ -886,8 +924,8 @@
         >
         <a
           class="lnk"
-          href="https://github.com/chquandogong/Quetzalcoatl/releases/tag/v3.1.0"
-          ><span class="ar">→</span> Release v3.1.0</a
+          href="https://github.com/chquandogong/Quetzalcoatl/releases/tag/v3.2.0"
+          ><span class="ar">→</span> tag v3.2.0</a
         >
         <a
           class="lnk"
@@ -901,7 +939,7 @@
         >
       </div>
       <p class="badge">
-        <b>미러 갱신: 2026-10-06 (v3.1.0)</b> · 정본
+        <b>미러 갱신: 2026-10-06 (v3.2.0)</b> · 정본
         <code>DASHBOARD.md</code> 기준 · 날짜가 오래됐으면 stale →
         <code>/dashboard</code>로 재생성
       </p>
