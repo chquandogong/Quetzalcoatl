@@ -46,7 +46,7 @@ cp -r /tmp/quetzalcoatl-src/skills/Quetzalcoatl ~/.claude/skills/Quetzalcoatl
 > 스킬이 켜진 세션에서 `/dashboard`처럼 그냥 입력하면(앞의 `/`는 관례, 없어도 됨) 해당 모드로
 > 전환된다. 명령을 정확히 쓰지 않아도 의도가 비슷하면 자동 적용된다.
 
-> v3.0.0부터 `SKILL.md`는 **규칙(Core Contract)**만 담고, 양식(템플릿 C-1~C-25)은 같은 폴더의
+> v3.0.0부터 `SKILL.md`는 **규칙(Core Contract)**만 담고, 양식(템플릿 C-1~C-26)은 같은 폴더의
 > `TEMPLATES.md`로 분리됐다. 호출 시 본문만 로드되는 것은 로더의 동작이고, 필요한 템플릿을
 > 그때그때 읽는 것은 스킬의 **규율**이다(강제 아님 — SKILL §22.C·§15). 두 파일은 한 세트다.
 
