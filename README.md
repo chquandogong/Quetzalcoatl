@@ -34,6 +34,7 @@ feasibility → 3~5개 대안 → Claude-GPT 교차검증 → 문서화·대시�
 - **로컬 미니멈 탈출 (v2.0.1)** — 양방향 앵커링(점)에 더해 "같은 전제 안의 국소 최적(프레이밍 잠김)"을 벗어나는 기제: §3 Phase 1-7 프레이밍 흔들기(점프·restart는 사람 승인) + §4.1 골짜기 점검(큰 결정) + §4.2 탐색 깊이·폭 다이얼. 실제 GPT-5.5 교차검증(78, ACCEPT-WITH-CHANGES) 반영 — "대안 프레이밍을 실제 후보로 비교해야 탈출"
 - **코어/양식 분리 + 페이스트 번들 (v3.0.0)** — `SKILL.md`=규칙(963줄), `TEMPLATES.md`=양식 C-1~C-25(필요할 때만 로드, 호출 토큰 ~40%↓), 챗 환경은 `dist/` 합본. 모든 모드 백킹 완성(`/plan` §8.2 · `/design-review` §9.2 · `/retro` §12.2) + §13 크기 라우터(간단/중간/프로젝트) + **규모 적합성(scale envelope) 원칙**(§9.2 — 규모가 자릿수로 바뀌면 UI 패러다임도 바꾼다) + CI 가드 3종(템플릿 포인터·frontmatter·번들 신선도)
 - **산출물 3층 — 확인층·설명층·기계층 (v3.1.0)** — 같은 내용도 읽는 쪽(고객 확인 / 사람 설명 / 프로그램 판독)에 따라 형식을 나누되 **정본은 사실마다 하나**(확인층은 고객이 확인한 **승인 기준선**으로 보존, 나머지는 파생·동결), 안정 ID + 원천 리비전 + 내용 대조로 층을 잇고 기계층(예: `task.json`)은 스키마로 검증한다(§6.4 · C-26). 실제 GPT 교차검증(95) 12건 반영. 층은 필요할 때만(§15) — 기본은 마크다운 설명층 하나
+- **자립 자료 — 종합 보고서·발표 대본·요청 시 더빙/영상 (v3.2.0)** — 종합 보고서는 결론 먼저 + 부록(별도 조사 없이 이해되는 용어집 · 출처)인 마크다운 정본, 발표 자료는 충분한 대본을 정본으로 두고 상호작용 HTML 덱을 기본 렌더로, pptx는 필요할 때만, 음성(사용자 선호 서비스·말투)·영상은 별도 요청 시 분량·비용 확인 후(§6.2 · §6.5 · C-27 · C-28). 발표자 없이도 자료만으로 읽히게
 
 ## 설치 (Claude Code)
 
@@ -61,7 +62,7 @@ cp -r /tmp/quetzalcoatl-src/skills/Quetzalcoatl ~/.claude/skills/Quetzalcoatl
 
 세부 단계는 하위 모드로 바로 호출할 수 있다: `/office-hours`, `/feasibility`,
 `/alternatives`, `/cross-check`, `/spec`, `/plan`, `/risk-review`, `/test-plan`,
-`/dashboard`, `/ship`, `/retro`, `/handoff`, `/resume`, `/autonomy` …
+`/dashboard`, `/report`, `/present`, `/ship`, `/retro`, `/handoff`, `/resume`, `/autonomy` …
 전체 모드는 [`SKILL.md`](./skills/Quetzalcoatl/SKILL.md) §2, 자세한 사용법은
 [`USAGE.md`](./skills/Quetzalcoatl/USAGE.md) 참고.
 
@@ -82,7 +83,7 @@ Quetzalcoatl/
 ├── skills/
 │   └── Quetzalcoatl/
 │       ├── SKILL.md        # 스킬 본문 — 규칙(Core Contract)
-│       ├── TEMPLATES.md    # 양식(템플릿 C-1~C-26) — 필요할 때만 로드
+│       ├── TEMPLATES.md    # 양식(템플릿 C-1~C-28) — 필요할 때만 로드
 │       └── USAGE.md        # 호출/설치 가이드
 ├── dist/
 │   └── Quetzalcoatl-FULL.md  # 페이스트 번들(본문+양식 합본, 챗 환경용 — CI가 신선도 검사)

@@ -1,7 +1,7 @@
 {
   "name": "quetzalcoatl",
-  "version": "3.1.0",
-  "description": "Quetzalcoatl — Meaning-First AI Project OS. /Quetzalcoatl 한 번으로 의미 검증 → GarryTan Office Hours → feasibility → 3~5개 대안 → Claude-GPT 교차검증 → 문서·대시보드 → Ship → Retro까지 운영하는 모델 중립형 스킬. 승인된 계획 범위 내 지속 자율 실행(안전 게이트 유지) · 커밋 체크포인트 재개 · 교차 에이전트/기기 핸드오프 · 앵커된 선호와 로컬 미니멈 탈출 · 규모 적합성(scale envelope) · 산출물 3층(확인·설명·기계 — 정본은 사실마다 하나) · 증거기반 완료. 본문=규칙(Core Contract), 양식은 TEMPLATES.md(C-1~C-26), 챗 환경은 dist 페이스트 번들. 버전 이력은 CHANGELOG 참조.",
+  "version": "3.2.0",
+  "description": "Quetzalcoatl — Meaning-First AI Project OS. /Quetzalcoatl 한 번으로 의미 검증 → GarryTan Office Hours → feasibility → 3~5개 대안 → Claude-GPT 교차검증 → 문서·대시보드 → Ship → Retro까지 운영하는 모델 중립형 스킬. 승인된 계획 범위 내 지속 자율 실행(안전 게이트 유지) · 커밋 체크포인트 재개 · 교차 에이전트/기기 핸드오프 · 앵커된 선호와 로컬 미니멈 탈출 · 규모 적합성(scale envelope) · 산출물 3층(확인·설명·기계 — 정본은 사실마다 하나) · 자립 자료(종합 보고서·발표 대본; 덱/음성/영상은 파생 렌더) · 증거기반 완료. 본문=규칙(Core Contract), 양식은 TEMPLATES.md(C-1~C-28), 챗 환경은 dist 페이스트 번들. 버전 이력은 CHANGELOG 참조.",
   "author": {
     "name": "CHENGHAO QUAN",
     "url": "https://github.com/chquandogong"

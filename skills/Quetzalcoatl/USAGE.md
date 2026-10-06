@@ -39,14 +39,14 @@ cp -r /tmp/quetzalcoatl-src/skills/Quetzalcoatl ~/.claude/skills/Quetzalcoatl
 
 세부 단계로 바로 가고 싶으면 하위 모드를 쓴다: `/office-hours`, `/feasibility`,
 `/alternatives`, `/cross-check`, `/spec`, `/plan`, `/risk-review`, `/test-plan`,
-`/dashboard`, `/ship`, `/retro`, `/handoff`, `/resume`, `/autonomy` … (전체는 `SKILL.md` §2)
+`/dashboard`, `/report`, `/present`, `/ship`, `/retro`, `/handoff`, `/resume`, `/autonomy` … (전체는 `SKILL.md` §2)
 
 > ⚠️ 하위 모드는 **Claude Code에 등록된 별도 슬래시 명령이 아니라** `SKILL.md` §2에 정의된
 > "모드"다. 따라서 슬래시 자동완성 메뉴에는 마스터(`/quetzalcoatl:Quetzalcoatl`)만 보인다.
 > 스킬이 켜진 세션에서 `/dashboard`처럼 그냥 입력하면(앞의 `/`는 관례, 없어도 됨) 해당 모드로
 > 전환된다. 명령을 정확히 쓰지 않아도 의도가 비슷하면 자동 적용된다.
 
-> v3.0.0부터 `SKILL.md`는 **규칙(Core Contract)**만 담고, 양식(템플릿 C-1~C-26)은 같은 폴더의
+> v3.0.0부터 `SKILL.md`는 **규칙(Core Contract)**만 담고, 양식(템플릿 C-1~C-28)은 같은 폴더의
 > `TEMPLATES.md`로 분리됐다. 호출 시 본문만 로드되는 것은 로더의 동작이고, 필요한 템플릿을
 > 그때그때 읽는 것은 스킬의 **규율**이다(강제 아님 — SKILL §22.C·§15). 두 파일은 한 세트다.
 
