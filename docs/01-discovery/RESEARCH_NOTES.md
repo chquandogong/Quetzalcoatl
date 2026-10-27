@@ -90,3 +90,31 @@ Claude Code · OpenAI Codex · Google Antigravity의 **컷오프(2026-01) 이후
 - Claude Code: https://code.claude.com/docs/en/changelog · /whats-new · /memory · /hooks · /sub-agents · /workflows · /agent-view · https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code
 - OpenAI Codex: https://developers.openai.com/codex/{memories,hooks,subagents,permissions,changelog} · https://developers.openai.com/codex/concepts/sandboxing/auto-review · https://alignment.openai.com/auto-review/ · https://developers.openai.com/blog/run-long-horizon-tasks-with-codex
 - Google Antigravity: https://antigravity.google/docs/{home,artifacts,implementation-plan,walkthrough,hooks,subagents,sidecars,permissions,rules-workflows} · https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/ · https://ai.google.dev/gemini-api/docs/antigravity-agent
+
+---
+
+# RESEARCH NOTES — Pstack · Tstack 조사 (2026-10-27, v3.3.0 입력)
+
+> 상태: **스냅샷(동결)** · 날짜: 2026-10-27 · 소유자: Researcher · 승인: CHENGHAO QUAN
+> 조사: Claude(Quetzalcoatl) — 사용자 제공 분석 문서(「Pstack · Tstack 분석 — 실제 동작 검증과 PR 완료 흐름을 우리 작업에 적용하기」, SUNSHINE STUDIO, 조사 기준 2026-10-27)를 **1차 자료(저장소 원문)로 검증**한 뒤 8건을 정정한 "검증 반영판"을 입력으로 씀. 도구·제품명은 여기(docs)에만 둔다(R13).
+
+## 출처 (확인일 2026-10-27)
+
+| 출처                                                                                                  | 확인한 것                                                                                                                                                                                                                                                                           | 신뢰도 |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| GitHub `cursor/plugins` — `pstack/` · `harness/pstack/claude-code/` (커밋 `e73df471`, 2026-10-23 UTC) | Pstack = 스킬 58개 + 가이드 10장의 범용 엔지니어링 스킬 묶음(Cursor용, Claude Code 어댑터는 Cursor 전용 기능을 생략). MIT(`pstack/LICENSE`, 저장소 루트에는 라이선스 파일 없음). "검증표(기능 지도)"·"실행하지 않은 검증표는 초안"·"드라이런은 관측으로 확인" 패턴의 원천.          | 높음   |
+| GitHub `t3dotgg/tstack` (커밋 `7de017b3`, 2026-10-25 UTC; MIT)                                        | 스킬 9개(full-send · full-stop · council · sol-loop · file-pr · takeover · babysit-pr · modernize · leaving-pr-comments). 요구: 인증된 `gh`, `python3`(pr-wait), 다른 공급자 서브에이전트; T3 Code 기능(`delegate_task`·`watch_pull_request`)은 있으면 쓰고 없으면 기본 도구.       | 높음   |
+| 같은 저장소 — full-send / full-stop "Testing permission" 절(커밋 `30c48051`, 2026-10-24 UTC)          | "테스트 요청 한마디 = 권한": 프로젝트의 ask-first·테스트 위임 규칙을 그 작업에 한해 덮어씀(컴퓨터 사용·브라우저 자동화·시뮬레이터·실기기·앱 실행·스크린샷). 프로덕션 변경·데이터 삭제 제외, 하네스 승인 프롬프트는 우회 안 함. → **§1.6·§18.2와 충돌 → v3.3.0 불인정 조항의 근거.** | 높음   |
+| 같은 저장소 — sol-loop                                                                                | 검토자 1명(GPT), 기본 3라운드 · 보안/권한/인증/데이터 손실/상태·동시성은 최대 5 · "Timeout, error, or no reply is not approval" · "Budget end is not approval" · "Do not substitute a model". → §5.2 8~10의 근거(숫자는 템플릿 예시에만).                                           | 높음   |
+| 같은 저장소 — file-pr · babysit-pr                                                                    | 완료 상태 구분(검증됨 / PR 열림 / 병합됨)과 검증 뒤 변경(리베이스·충돌 해결) 시 재검증 — §12.1·C-16의 근거.                                                                                                                                                                         | 높음   |
+| 로컬 gstack 1.60.1.0 (`~/.claude/skills/gstack`)                                                      | QA 스킬은 **브라우저 표면만**(재현·수정·재검증; API는 브라우저 내 fetch). CLI·기기 검증 절차 없음 → 분석 문서의 "검증 표면" 과장 정정(8건 중 1건).                                                                                                                                  | 높음   |
+| 분석 문서 출처 [1] (LinkedIn 게시물)                                                                  | **미확인** — 로그인 필요, 검색으로도 원문 미확보. 문서에는 URL 자리만 남김.                                                                                                                                                                                                         | 미확인 |
+
+## 정정 8건 (분석 문서 → 검증 반영판)
+
+1. Pstack 범위를 "검증 흐름"으로만 소개 → 58개 스킬·10장 가이드의 범용 묶음이며 표는 그중 검증·완료 흐름만 다룬다고 명시. 2. gstack QA의 "검증 표면" 표현 → 브라우저 재현·재검증 절차로 정정(CLI·기기 없음). 3. 적용 권고에 "CLI·기기·시뮬레이션 표면은 프로젝트 검증 스킬이 직접 구동" 추가. 4. full-stop 참고 시 테스트 권한 조항 손질 필요 명시. 5. Tstack의 T3 Code 의존(있으면 쓰고 없으면 대체) 추가. 6. **테스트 권한 조항 vs Quetzalcoatl §1.6·§18.2 충돌 + 조치** 단락 신설. 7. 출처 [1] URL 미확인 표시 · [11] 라이선스 위치(`pstack/LICENSE`, 루트 없음). 8. 버전 기록에 테스트 권한 조항 커밋(`30c48051`) 추가.
+
+## 이 조사가 스킬에 주는 함의 → [ALTERNATIVES v3.3.0](../02-decisions/ALTERNATIVES.md) · [D18](../02-decisions/DECISION_LOG.md)
+
+- 가져온 것(도구 중립 패턴으로): 검증표(표면·실행·기능 지도·증거·유지·"미실행=초안"·비례성) · 프록시≠증거 · 완료 상태 구분 · 외부 포괄 권한 불인정 · 라운드 예산·원장·모델 대체 금지.
+- 가져오지 않은 것: `/verify` 모드(모드 비대) · 라운드 숫자의 본문 고정(근거 없는 수치) · 특정 도구 이름(브라우저 자동화 스킬·PR CLI — CAPABILITY_MATRIX로).
