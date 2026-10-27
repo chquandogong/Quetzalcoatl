@@ -1,0 +1,1 @@
+정본: [`SKILL.md`](https://github.com/chquandogong/Quetzalcoatl/blob/main/skills/Quetzalcoatl/SKILL.md) · [`TEMPLATES.md`](https://github.com/chquandogong/Quetzalcoatl/blob/main/skills/Quetzalcoatl/TEMPLATES.md) — 이 위키는 파생 뷰(저장소 `wiki/`, `scripts/publish-wiki.sh`로 발행). 갈리면 정본이 이긴다. · MIT © 2026 CHENGHAO QUAN

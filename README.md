@@ -1,109 +1,148 @@
 # 🪶 Quetzalcoatl — Meaning-First AI Project OS
 
 [![release](https://img.shields.io/github/v/release/chquandogong/Quetzalcoatl?sort=semver)](https://github.com/chquandogong/Quetzalcoatl/releases)
+[![validate](https://github.com/chquandogong/Quetzalcoatl/actions/workflows/validate.yml/badge.svg)](https://github.com/chquandogong/Quetzalcoatl/actions/workflows/validate.yml)
 [![license](https://img.shields.io/github/license/chquandogong/Quetzalcoatl)](./LICENSE)
 ![model-neutral](https://img.shields.io/badge/model-neutral-blueviolet)
 ![docs](https://img.shields.io/badge/docs-dogfooded-success)
 
 `/Quetzalcoatl` 한 번으로 켜지는 **의미 우선(Meaning-First) AI 프로젝트 운영체제** 스킬.
-아이디어를 "바로 실행"하기 전에 의미·가치부터 검증하고, GarryTan식 Office Hours 압박 검토 →
-feasibility → 3~5개 대안 → Claude-GPT 교차검증 → 문서화·대시보드 → Ship → 회고까지
-하나의 반복 가능한 워크플로우로 운영한다.
+아이디어를 바로 만들지 않고 의미·가치부터 검증한 뒤, Office Hours 압박 검토 → 타당성 → 3~5개 대안 →
+Claude-GPT 교차검증 → 문서·대시보드 → 명세·계획 → 구현 → **검증표** → 배포 → 회고까지 하나의 반복 가능한
+워크플로우로 운영한다. Claude · Claude Code · ChatGPT/GPTs · 일반 LLM 에이전트에서 같은 규칙으로 동작하는 **모델 중립형**이다.
 
 > AI 시대의 실력은 AI에게 일을 많이 시키는 능력이 아니라,
 > AI가 올바른 일을 올바른 기준으로 하게 만드는 능력이다.
 
-## 무엇을 하나
+📖 **[Wiki](https://github.com/chquandogong/Quetzalcoatl/wiki)** — 원칙 · 워크플로우 · 모드 · 검증표 · 자율과 게이트 · FAQ
 
-- **의미 검증 먼저, 실행은 나중** — 왜 중요한가, 누구에게 가치인가, 안 하면 무엇이 남는가
-- **GarryTan Office Hours** — 진짜 문제와 가장 작은 쐐기(wedge)를 찾는 압박 검토
-- **Feasibility** — Desirability / Feasibility / Viability / Risk 4축 점수화
-- **3~5개 대안 비교** — 되돌리기 어려운 결정에는 항상 대안과 기준표
-- **Claude-GPT 교차검증** — 모델 합의가 아니라 근거로 판단
-- **문서화 & 대시보드** — 결정 로그, 리스크 레지스터, 진행 대시보드
-- **사람 승인 게이트** — 외부 발송·결제·배포·삭제 등 비가역 작업은 사람이 결정
-- **지속 자율 실행 (v1.2.0)** — 승인된 계획 범위 안에서 확인 질문 없이 끝까지 실행(안전 게이트는 유지)
-- **레이트리밋·재개 회복력 (v1.2.0)** — 한도/중단에도 커밋 체크포인트에서 무손실 재개
-- **체계적 문서·Git (v1.2.0)** — 표준 디렉터리 구조, Conventional Commits, SemVer 태그
-- **교차 에이전트/기기 핸드오프 (v1.2.0)** — 대시보드를 공유 작업 표면으로(데스크탑 ↔ 모바일)
-- **앵커된 선호 처리 (v1.3.0)** — 사용자 선호를 기본값으로 존중하되, 근거가 이기면 투명하게 뒤집는다(§4.2 — 맹종도 독단도 아닌 중도)
-- **대시보드 HTML 미러 + `/dashboard` (v1.4.0)** — 정본(`DASHBOARD.md`)은 SSOT, 보기 좋은 HTML 미러를 같은 URL에 redeploy(읽기용 · §7.2)
-- **강제 바인딩 + 증거기반 완료 (v1.5.0)** — 환경이 제공하면 게이트·체크포인트·하위 범위를 승인 훅 등에 바인딩(규율→강제, 있을 때만; 없으면 규율), 완료는 증거로 증명(§18.7·§12·§14). 외부 도구(Claude Code·Codex·Antigravity) 역량은 [capability matrix](./docs/appendix/CAPABILITY_MATRIX.md)로 관리
-- **벤더-중립 휴대용 브리핑 `/context` (v1.6.0)** — 프로젝트 맥락을 1회성 벤더-중립 브리핑으로 합성해 새 에이전트/벤더(Claude·Codex·Gemini·ChatGPT)에 즉시 온보딩(§24; `/handoff`와 구분 — 보드 갱신이 아니라 휴대용 산출물)
-- **Core Contract 분리 (v2.0.0)** — 본문=규칙, fill-in 템플릿 21개는 §22 부록 C로 이동(코어 전진배치·준수↑). 동작·모드·게이트·모델 중립 불변(구조 재편)
-- **로컬 미니멈 탈출 (v2.0.1)** — 양방향 앵커링(점)에 더해 "같은 전제 안의 국소 최적(프레이밍 잠김)"을 벗어나는 기제: §3 Phase 1-7 프레이밍 흔들기(점프·restart는 사람 승인) + §4.1 골짜기 점검(큰 결정) + §4.2 탐색 깊이·폭 다이얼. 실제 GPT-5.5 교차검증(78, ACCEPT-WITH-CHANGES) 반영 — "대안 프레이밍을 실제 후보로 비교해야 탈출"
-- **코어/양식 분리 + 페이스트 번들 (v3.0.0)** — `SKILL.md`=규칙(963줄), `TEMPLATES.md`=양식 C-1~C-25(필요할 때만 로드, 호출 토큰 ~40%↓), 챗 환경은 `dist/` 합본. 모든 모드 백킹 완성(`/plan` §8.2 · `/design-review` §9.2 · `/retro` §12.2) + §13 크기 라우터(간단/중간/프로젝트) + **규모 적합성(scale envelope) 원칙**(§9.2 — 규모가 자릿수로 바뀌면 UI 패러다임도 바꾼다) + CI 가드 3종(템플릿 포인터·frontmatter·번들 신선도)
-- **산출물 3층 — 확인층·설명층·기계층 (v3.1.0)** — 같은 내용도 읽는 쪽(고객 확인 / 사람 설명 / 프로그램 판독)에 따라 형식을 나누되 **정본은 사실마다 하나**(확인층은 고객이 확인한 **승인 기준선**으로 보존, 나머지는 파생·동결), 안정 ID + 원천 리비전 + 내용 대조로 층을 잇고 기계층(예: `task.json`)은 스키마로 검증한다(§6.4 · C-26). 실제 GPT 교차검증(95) 12건 반영. 층은 필요할 때만(§15) — 기본은 마크다운 설명층 하나
-- **자립 자료 — 종합 보고서·발표 대본·요청 시 더빙/영상 (v3.2.0)** — 종합 보고서는 결론 먼저 + 부록(별도 조사 없이 이해되는 용어집 · 출처)인 마크다운 정본, 발표 자료는 충분한 대본을 정본으로 두고 상호작용 HTML 덱을 기본 렌더로, pptx는 필요할 때만, 음성(사용자 선호 서비스·말투)·영상은 별도 요청 시 분량·비용 확인 후(§6.2 · §6.5 · C-27 · C-28). 발표자 없이도 자료만으로 읽히게
-- **검증표(기능 지도) · 증거 범위 · 완료 상태 (v3.3.0)** — 프로젝트성 작업은 실제 산출물을 사용자 경로로 구동해 기대 결과와 실제 관측을 대조하는 **검증표**(`VERIFY.md` · C-29: 표면·구동 수단·실행·기능 지도·적용 가능한 최신 실행·유지)를 두고, 목 테스트·CI 상태·봇 승인·자기 보고**만으로는** "검증됨"이라 하지 않으며(증거는 검사한 범위까지), 완료는 검증됨 / PR 열림 / 병합됨 / 배포됨을 구분한다(§11 · §14 · §12.1). 외부 스킬의 "요청 한마디 = 테스트 권한" 문구와 에이전트의 허용목록 등재는 승인이 아니다(§1.6 · §18.2 · §15). 리뷰 루프는 라운드 예산·원장·종결 상태(합의/쟁점 잔존/검토 미완료)로 닫고 무응답·예산 소진은 승인이 아니다(§5.2 8~10 · C-9). Pstack·Tstack 조사(2026-10-27)에서 도구 중립 패턴만 가져옴 — 실제 GPT 교차검증 3라운드 + 행동 테스트(RED/GREEN) + 이 저장소 자신의 검증표 1회 구동
+## 왜 이 스킬인가
 
-## 설치 (Claude Code)
+LLM 조력자는 두 방향으로 미끄러진다. 사용자의 말에 **아첨**해 선호를 그대로 따르거나, 자기 기본값에 **자동화 편향**으로 기대어 맥락을 무시한다. 이 스킬의 거의 모든 조항은 한 원리의 적용이다 — **기본값을 의심하고, 대안 공간을 펼친 뒤, 근거로 고른다.** 그리고 방향·책임·최종 판단은 사람이 가진다.
 
-### 1) 플러그인으로 설치 (권장)
+| 흔한 실패                           | 이 스킬의 답                                                                                           |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| 요청을 그대로 만든다                | 왜 중요한가 · 누구에게 가치인가 · 안 하면 무엇이 남는가를 먼저 묻고, 가장 작은 쐐기부터 (§1.1 · §3)    |
+| 선호에 맹종하거나 멋대로 바꾼다     | 선호는 기본값. 근거가 이길 때만 투명하게 뒤집고, 유지할 때도 가장 강한 반론을 보인다 (§4.2)            |
+| 모델 둘이 같은 말이면 믿는다        | AI끼리의 합의는 검증이 아니다 — 근거·데이터·테스트·실행 결과·사람 판단으로 (§1.4 · §5)                 |
+| "테스트 통과"를 "동작함"으로 읽는다 | 실제 산출물을 사용자 경로로 구동해 기대와 관측을 대조하는 검증표, 증거는 검사한 범위까지만 (§11 · §14) |
+| 자율 실행이 위험한 일까지 한다      | 자율은 확인 질문을 줄일 뿐 — 외부 발송·결제·삭제·배포·공개는 사람 승인 게이트 (§1.6 · §18)             |
+| 결정이 대화 속에 묻힌다             | 결정 로그 · 가정 · 리스크 · 대시보드로 판단을 추적 가능하게 (§6 · §7)                                  |
+
+## 설치
+
+**Claude Code 플러그인 (권장)**
 
 ```text
 /plugin marketplace add chquandogong/Quetzalcoatl
 /plugin install quetzalcoatl@quetzalcoatl
 ```
 
-### 2) 개인 스킬로 설치 (수동)
+새 세션에서 `/quetzalcoatl:Quetzalcoatl`로 호출한다. 플러그인 캐시는 버전별 사본이라 업데이트는 `marketplace update` 후 재설치 → 세션 재시작이다.
 
-```bash
-git clone https://github.com/chquandogong/Quetzalcoatl /tmp/quetzalcoatl-src
-cp -r /tmp/quetzalcoatl-src/skills/Quetzalcoatl ~/.claude/skills/Quetzalcoatl
-```
+**개인 스킬 (Claude Code · Codex CLI)** — `skills/Quetzalcoatl/` 폴더(`SKILL.md` + `TEMPLATES.md`)를 `~/.claude/skills/` 또는 `~/.codex/skills/`에 복사하면 `/Quetzalcoatl`로 호출된다.
 
-세션을 새로 시작하면 `/Quetzalcoatl`로 호출된다.
+**도구 없는 챗 환경 (ChatGPT · GPTs)** — 본문과 양식을 합친 페이스트 번들 [`dist/Quetzalcoatl-FULL.md`](./dist/Quetzalcoatl-FULL.md)를 프로젝트 지침에 붙여넣는다.
 
-## 사용
+자세한 절차와 문제 해결은 [`USAGE.md`](./skills/Quetzalcoatl/USAGE.md) · [Wiki › 설치](https://github.com/chquandogong/Quetzalcoatl/wiki/Installation).
+
+## 첫 호출
 
 ```text
-/Quetzalcoatl 아래 아이디어를 의미 검토부터 배포까지 운영해줘. [아이디어]
+/quetzalcoatl:Quetzalcoatl 아래 아이디어를 의미 검토 → Office Hours → feasibility →
+대안 3~5개 → Claude-GPT 교차검증 프롬프트 → 대시보드 초안 순서로 처리해줘.
+
+[아이디어]
 ```
 
-세부 단계는 하위 모드로 바로 호출할 수 있다: `/office-hours`, `/feasibility`,
-`/alternatives`, `/cross-check`, `/spec`, `/plan`, `/risk-review`, `/test-plan`,
-`/dashboard`, `/report`, `/present`, `/ship`, `/retro`, `/handoff`, `/resume`, `/autonomy` …
-전체 모드는 [`SKILL.md`](./skills/Quetzalcoatl/SKILL.md) §2, 자세한 사용법은
-[`USAGE.md`](./skills/Quetzalcoatl/USAGE.md) 참고.
-
-## 호환성
-
-Claude / Claude Code / Claude Projects · ChatGPT / GPTs / ChatGPT Skills ·
-일반 LLM 채팅 및 코딩 에이전트 — 모델 중립형.
-(ChatGPT 등 도구 없는 챗 환경에서는 합본 페이스트 번들
-[`dist/Quetzalcoatl-FULL.md`](./dist/Quetzalcoatl-FULL.md)를 프로젝트 지침에 붙여넣는다.)
-
-## 구조
-
+```text
+/quetzalcoatl:Quetzalcoatl 이 계획대로 묻지 말고 끝까지 진행해. 외부 발송·결제·삭제는 멈추고 보고해.
 ```
+
+```text
+/quetzalcoatl:Quetzalcoatl /test-plan — 핵심 기능 검증표를 만들고 실제로 구동해서 증거와 함께 보고해. 그다음 /ship.
+```
+
+첫 응답은 목표 · 핵심 질문 · 검증할 전제 · 대안 · 첫 단계의 **미니 템플릿**으로 시작한다. 작은 일에는 작은 형식만 쓴다(§13 크기 라우터) — 단 의미 먼저와 안전 게이트는 어떤 크기에서도 생략되지 않는다.
+
+## 어떻게 돌아가나
+
+```mermaid
+flowchart LR
+  I[Intake] --> O["Office Hours<br/>(진짜 문제·최소 쐐기·프레이밍 흔들기)"]
+  O --> F[Feasibility] --> G{Decision Gate}
+  G --> A["대안 3~5개<br/>+ 교차검증"]
+  A --> D["문서·대시보드"] --> S["Spec · Plan"]
+  S --> B["구현<br/>(자율 실행, 게이트 유지)"]
+  B --> V["검증표<br/>VERIFY.md"] --> P["Ship"] --> R["Retro"]
+```
+
+| 영역           | 핵심                                                                                                            | 절              |
+| -------------- | --------------------------------------------------------------------------------------------------------------- | --------------- |
+| 절대 원칙      | 의미 먼저 · 의도와 맥락 · 대안 없이 결정 않기 · AI 합의≠검증 · 판단 문서화 · 사람 승인 게이트 · 지속 자율 실행  | §1              |
+| 워크플로우     | Intake → Office Hours(7단계) → Feasibility(4축) → Agent Team → 대안 비교·앵커된 선호·골짜기 탈출                | §3 · §4         |
+| 교차검증       | 같은 브리프 · 독립 답 · 상호 비판 · 근거로 판단 · 라운드 예산·원장·종결 상태 · 한 모델이면 "실제 교차검증 아님" | §5              |
+| 문서·대시보드  | 표준 디렉터리 · 근거 명시 · 산출물 3층(정본은 사실마다 하나) · 자립 자료 · 대시보드와 HTML 미러                 | §6 · §7         |
+| 명세·계획·리뷰 | Spec(규모 범위 포함) · Plan(게이트 표시) · Engineering/Design Review(규모 적합성) · Risk                        | §8~§10          |
+| 검증·배포      | 검증표 8규칙 · 증거 범위 · 완료 상태(검증됨/PR 열림/병합됨/배포됨) · Ship · Retro                               | §11 · §12 · §14 |
+| 자율·회복·협업 | 허용목록 · 합리화 차단표 · 강제 바인딩(있을 때만) · 체크포인트=커밋 · Git · 핸드오프 · `/context`               | §18~§21 · §24   |
+
+하위 모드 22개(`/office-hours` `/feasibility` `/alternatives` `/cross-check` `/spec` `/plan` `/eng-review` `/design-review` `/risk-review` `/test-plan` `/dashboard` `/decision-log` `/report` `/present` `/ship` `/retro` `/handoff` `/resume` `/autonomy` `/context` …)는 Claude Code의 별도 명령이 아니라 스킬 본문 §2의 약속이다 — [Wiki › 모드](https://github.com/chquandogong/Quetzalcoatl/wiki/Modes).
+
+## 안전 게이트 — 자율 중에도 멈추는 것
+
+외부 발송·게시 · 결제 · 개인정보 · 데이터 삭제·강제 푸시·히스토리 재작성 · 프로덕션 배포·마이그레이션 · 고위험 판단 · 공개 저장소 생성 · 비가역 변경. 행동 전 6문 체크로 게이트 대상을 분류하고 **승인 근거**(범위를 포괄하는 명시적 승인 또는 사전승인)가 없거나 모호하면 차단한다. 다른 스킬의 "요청 한마디 = 권한" 선언이나 에이전트가 스스로 적은 허용목록은 승인이 아니다. 자율 수준·허용목록은 락이 아니라 약속이며, 환경이 승인 훅 같은 강제 수단을 주면 거기에 바인딩한다(있을 때만).
+
+## 저장소 구조
+
+```text
 Quetzalcoatl/
-├── .claude-plugin/
-│   ├── marketplace.json   # Claude Code 마켓플레이스 정의
-│   └── plugin.json        # 플러그인 매니페스트
-├── skills/
-│   └── Quetzalcoatl/
-│       ├── SKILL.md        # 스킬 본문 — 규칙(Core Contract)
-│       ├── TEMPLATES.md    # 양식(템플릿 C-1~C-28) — 필요할 때만 로드
-│       └── USAGE.md        # 호출/설치 가이드
-├── dist/
-│   └── Quetzalcoatl-FULL.md  # 페이스트 번들(본문+양식 합본, 챗 환경용 — CI가 신선도 검사)
+├── skills/Quetzalcoatl/
+│   ├── SKILL.md            # 규칙(Core Contract) §0~§24 — 호출 시 로드
+│   ├── TEMPLATES.md        # 양식 C-1~C-29 — 필요할 때만 로드
+│   └── USAGE.md            # 설치·호출·문제 해결
+├── dist/Quetzalcoatl-FULL.md   # 페이스트 번들(본문+양식) — 빌드 산출물, CI가 신선도 검사
+├── wiki/                   # GitHub Wiki 소스(파생 뷰) — 4페이지는 build-wiki.py가 생성
 ├── scripts/
-│   └── build-paste-bundle.sh # 번들 생성
-├── docs/                   # 이 스킬을 자신에게 적용한 프로젝트 문서 (§6 구조)
-│   ├── 00-overview/        # PROJECT_BRIEF · DASHBOARD
-│   ├── 01-discovery/       # OFFICE_HOURS · FEASIBILITY · ASSUMPTIONS
-│   ├── 02-decisions/       # DECISION_LOG · ALTERNATIVES · CROSS_VALIDATION_LOG
-│   ├── 03-spec/            # SPEC
-│   ├── 04-quality/         # RISK_REGISTER · TEST_PLAN
-│   ├── 05-ops/             # RUNBOOK · RETRO
-│   ├── appendix/           # GLOSSARY · CONVENTIONS
-│   └── assets/             # 대시보드 HTML 미러(렌더)
-├── CHANGELOG.md
-├── README.md
-└── LICENSE
+│   ├── build-paste-bundle.sh   # 번들 생성
+│   ├── validate-local.sh       # CI와 동등한 구조 검사 11항목 + living-doc 가드
+│   ├── build-wiki.py           # wiki 생성 페이지(모드·템플릿·용어집·릴리스 이력)
+│   └── publish-wiki.sh         # wiki/ → GitHub Wiki 발행
+├── docs/                   # 이 스킬을 자신에게 적용한 프로젝트 기록(§6 구조, dogfooding)
+│   ├── 00-overview/  01-discovery/  02-decisions/  03-spec/  04-quality/  05-ops/  appendix/  assets/
+│   └── 04-quality/VERIFY.md    # 저장소 자신의 검증표(C-29) + verify-runs/ 실행 기록
+├── .claude-plugin/         # plugin.json · marketplace.json
+├── .github/workflows/validate.yml
+├── CHANGELOG.md · SECURITY.md · LICENSE
 ```
 
-## 라이선스
+## 개발과 검증
 
-MIT — [`LICENSE`](./LICENSE) 참고.
+이 저장소는 스킬을 자기 자신에게 적용한다. 릴리스 사이클은 다음 순서다.
+
+1. 결정 기록(대안표 → `DECISION_LOG`) → `SKILL.md`·`TEMPLATES.md` 편집 → 번들 재생성.
+2. `bash scripts/validate-local.sh` — 3중 버전 · 섹션 연속 · 템플릿 포인터 무결성 · frontmatter · 번들 신선도 · wiki 생성 페이지 신선도 · living-doc 드리프트 가드(CI `validate`와 동등).
+3. **실제 Claude↔GPT 교차검증** — 커밋 직후 diff와 본문을 첨부한 적대 검토 브리프를 다른 모델(로컬 Codex CLI)에 넘기고, 결함마다 원장(수정/반박/보류)을 남긴다. 라운드형이면 예산과 종결 상태를 기록한다.
+4. 행동 테스트(RED/GREEN, 서브에이전트)와 검증표 자기 적용 — 결과는 미수행까지 정직하게 [`TEST_PLAN`](./docs/04-quality/TEST_PLAN.md)에.
+5. 태그 `vX.Y.Z` → push → GitHub Release → 플러그인 재설치 → 대시보드 미러 redeploy → `VERIFY.md` 실행 기록.
+
+사이클별 결정·교차검증·회고는 [`docs/`](./docs/README.md)에, 변경은 [`CHANGELOG.md`](./CHANGELOG.md)에 있다.
+
+## 릴리스 이력 (요약)
+
+| 버전            | 핵심                                                                                                             |
+| --------------- | ---------------------------------------------------------------------------------------------------------------- |
+| v1.2.0          | 지속 자율 실행 · 레이트리밋 회복력 · 문서 체계 · Git 프로토콜 · 핸드오프                                         |
+| v1.3.x          | 앵커된 선호 처리(§4.2) · CI 구조 검사                                                                            |
+| v1.4.x          | 대시보드 HTML 미러 · §1.6 6문 pre-check · living-doc 드리프트 가드                                               |
+| v1.5.0 · v1.6.0 | 강제 바인딩 + 증거기반 완료 · 벤더-중립 브리핑 `/context`                                                        |
+| v2.0.x          | Core Contract 분리 · 로컬 미니멈 탈출(프레이밍 흔들기 · 골짜기 점검)                                             |
+| v3.0.0          | 규칙/양식/번들 소스 분리 · 모드 백킹 · 크기 라우터 · 규모 적합성 · 행동 테스트 복귀                              |
+| v3.1.0 · v3.2.0 | 산출물 3층(정본은 사실마다 하나) · 자립 자료(보고서·대본·파생 렌더)                                              |
+| **v3.3.0**      | **검증표(기능 지도) · 증거 범위 · 완료 상태 · 라운드 예산/원장 · 외부 스킬 포괄 권한 불인정 · C-29 · VERIFY.md** |
+
+전체는 [`CHANGELOG.md`](./CHANGELOG.md) · [Releases](https://github.com/chquandogong/Quetzalcoatl/releases) · [Wiki › 릴리스 이력](https://github.com/chquandogong/Quetzalcoatl/wiki/Release-History).
+
+## 보안 · 라이선스
+
+게이트를 우회·약화시키는 문구나 프롬프트 인젝션 경로는 [`SECURITY.md`](./SECURITY.md)의 절차로 비공개 보고를 권장한다. MIT — [`LICENSE`](./LICENSE).

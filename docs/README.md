@@ -2,18 +2,22 @@
 
 > 상태: 활성 · 날짜: 2026-10-27 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
 
-이 디렉터리는 **Quetzalcoatl 스킬 자신의 개발**을 Quetzalcoatl 문서 체계(SKILL.md §6)로 관리한 것이다(dogfooding).
-현재 사이클: **v3.3.0 — 검증표(기능 지도) 프로토콜**: 외부 스킬 스택 둘(Pstack·Tstack)의 분석을 1차 자료로 검증한 뒤, 그들이 잘한 세 칸 — 증거를 어떻게 만드는가(검증표 `VERIFY.md` · C-29) · 무엇만으로는 증거가 아닌가(목 테스트·CI·봇 승인·자기 보고 — 증거 범위) · 완료가 어느 상태인가(검증됨/PR 열림/병합됨/배포됨) — 를 **§11 확장 + §14 · §12.1 · §5.2 8~10 + C-29**로 반영하고, 외부 스킬의 포괄 테스트 권한·에이전트의 허용목록 등재는 승인이 아님을 명문화(§1.6·§18.2·§15, D18). 실제 GPT 교차검증 3라운드(REJECT 94 → 반영 → …) + **행동 테스트 복귀**(RED/GREEN) + 이 저장소 자신에 검증표 1회 구동([VERIFY.md](04-quality/VERIFY.md)).
-직전: **v3.2.0 — 자립 자료(종합 보고서·발표 대본·요청 시 더빙/영상)**: 사용자 제안을 **§6.2 보강 + §6.5 신설 + C-27/C-28**로 반영 — 덱·음성·영상은 대본 md의 파생 렌더, 서비스명은 본문 밖(R13, D17).
-직전: **v3.1.0 — 산출물 3층(확인층·설명층·기계층)**: 사용자 제안(Word=고객 확인 원본 / md=사람 설명 / JSON=프로그램 판독 `task.json`)을 **§6.4 + C-26**으로 반영하되, **정본은 사실마다 하나**(확인층=고객이 확인한 **승인 기준선**·동결 · 기계층은 선언된 범위만 정본 · 안정 ID+리비전+내용 대조 · 스키마 검증 · 층은 필요할 때만)로 보정(D16) — 실제 GPT 교차검증(95) 12건 반영.
-직전: **v3.0.0**(소스 분리 — `SKILL.md`/`TEMPLATES.md`/`dist` 번들 D13 · 모드 백킹 D15 · §13 라우터 · 규모 적합성 D14 · 행동 테스트 복귀 — [TEST_PLAN](04-quality/TEST_PLAN.md)) · **v2.0.1**(로컬 미니멈 탈출 — §3 Phase 1-7·§4.1 골짜기 점검·§4.2 다이얼) · **v2.0.0 P2**(Core Contract 분리, 한 파일 내) · **v1.6.0**(§24 `/context`) · **v1.5.0**(§18.7 강제 바인딩·증거기반 완료·capability matrix) — v1.4.1 이후 릴리스마다 **실제 Claude–GPT 교차검증**.
-그 이전: **v1.4.x**(대시보드 HTML 미러·§1.6 pre-check·CI 드리프트 가드) · **v1.3.x**(앵커된 선호 §4.2·§4 승격) · **v1.2.0**(5개 능력).
+이 디렉터리는 **Quetzalcoatl 스킬 자신의 개발**을 Quetzalcoatl의 문서 체계(SKILL.md §6)로 기록한 것이다(dogfooding). 사이클마다 결정(D)·가정(A)·리스크(R)·교차검증(QZ)·테스트·회고가 한 절씩 쌓인다. 개념 설명은 [Wiki](https://github.com/chquandogong/Quetzalcoatl/wiki), 변경 요약은 [CHANGELOG](../CHANGELOG.md).
 
-## 이번 사이클(v3.3.0)의 한 줄
+## 현재 사이클 — v3.3.0 검증표(기능 지도) 프로토콜 (2026-10-27)
 
-"테스트 통과"는 "동작함"이 아니다 — 프로젝트성 작업은 실제 산출물을 사용자 경로로 구동해 기대와 관측을 대조하는 검증표를 두고(§11 · C-29), 증거는 검사한 범위까지만 말하며(§14), 완료는 어느 상태인지 적고(§12.1), 외부 스킬의 권한 문구는 사람의 승인을 대신하지 못한다(§1.6 · §18.2). 실행해 보지 않은 규칙을 OS에 넣지 않기 위해 이번엔 행동 테스트와 자기 적용을 릴리스 조건으로 뒀다.
+"테스트 통과"는 "동작함"이 아니다. 프로젝트성 작업은 실제 산출물을 사용자 경로로 구동해 기대와 관측을 대조하는 검증표를 두고(§11 · C-29), 증거는 검사한 범위까지만 말하며(§14), 완료는 어느 상태인지 적고(§12.1), 외부 스킬의 권한 문구는 사람의 승인을 대신하지 못한다(§1.6 · §18.2). 이번 사이클은 **행동 테스트(RED/GREEN)와 검증표 자기 적용을 릴리스 조건**으로 뒀고, 실제 GPT 교차검증을 라운드형 4회로 돌렸다(D18).
 
-> 진화: **v1.2.0** 단일 세션 자문 OS → 지속·재개 가능한 다중 에이전트/다중 기기 실행 OS(아래 다이어그램) → **v1.4.0** 현재성 대시보드 미러 → **v3.0.0** 코어/양식 분리 구조 → **v3.1.0** 독자별 3층 산출물(정본은 사실마다 하나) → **v3.2.0** 자립 자료(보고서·대본·파생 렌더) → **v3.3.0** 검증표·증거 범위·완료 상태(행동 테스트 복귀).
+| 사이클 | 한 줄                                                                                                                                                            | 결정    |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| v3.3.0 | 검증표 · 증거 범위 · 완료 상태 · 라운드 예산/원장 · 외부 권한 불인정 · C-29 · VERIFY.md                                                                          | D18     |
+| v3.2.0 | 자립 자료 — 종합 보고서·발표 대본은 정본, 덱·음성·영상은 파생 렌더 · C-27/C-28                                                                                   | D17     |
+| v3.1.0 | 산출물 3층(확인층·설명층·기계층) — 정본은 사실마다 하나, 확인층은 승인 기준선 · C-26                                                                             | D16     |
+| v3.0.0 | 규칙/양식/번들 소스 분리 · 모드 백킹 · 크기 라우터 · 규모 적합성 · 행동 테스트 복귀                                                                              | D13~D15 |
+| v2.0.x | Core Contract 분리 · 로컬 미니멈 탈출(프레이밍 흔들기·골짜기 점검·다이얼)                                                                                        | —       |
+| v1.x   | 자율 실행·회복력·문서·Git·핸드오프(v1.2.0) → 앵커된 선호(v1.3) → 미러·pre-check·드리프트 가드(v1.4) → 강제 바인딩·증거기반 완료·역량 표(v1.5) → `/context`(v1.6) | D1~D12  |
+
+v1.4.1 이후 모든 릴리스는 **실제 Claude–GPT 교차검증**을 거쳤다.
 
 ```mermaid
 flowchart LR
@@ -26,25 +30,25 @@ flowchart LR
 
 ## 문서 지도
 
-| 단계 | 문서                                                         | 내용                      |
-| ---- | ------------------------------------------------------------ | ------------------------- |
-| 개요 | [PROJECT_BRIEF](00-overview/PROJECT_BRIEF.md)                | 문제·목표·성공/실패 기준  |
-| 개요 | [DASHBOARD](00-overview/DASHBOARD.md)                        | 진행·작업 보드·재개 지점  |
-| 발견 | [OFFICE_HOURS](01-discovery/OFFICE_HOURS.md)                 | 의미 압박 검토            |
-| 발견 | [FEASIBILITY_REPORT](01-discovery/FEASIBILITY_REPORT.md)     | 타당성 점수화             |
-| 발견 | [ASSUMPTIONS](01-discovery/ASSUMPTIONS.md)                   | 가정과 검증 상태          |
-| 발견 | [RESEARCH_NOTES](01-discovery/RESEARCH_NOTES.md)             | 조사 근거·출처(도구 진화) |
-| 결정 | [DECISION_LOG](02-decisions/DECISION_LOG.md)                 | 주요 결정                 |
-| 결정 | [ALTERNATIVES](02-decisions/ALTERNATIVES.md)                 | 대안 비교                 |
-| 결정 | [CROSS_VALIDATION_LOG](02-decisions/CROSS_VALIDATION_LOG.md) | 교차검증/적대 검토        |
-| 명세 | [SPEC](03-spec/SPEC.md)                                      | 요구사항·수용 기준        |
-| 품질 | [RISK_REGISTER](04-quality/RISK_REGISTER.md)                 | 리스크                    |
-| 품질 | [TEST_PLAN](04-quality/TEST_PLAN.md)                         | 테스트·결과               |
-| 품질 | [VERIFY](04-quality/VERIFY.md)                               | 검증표(C-29 자기 적용)    |
-| 운영 | [RUNBOOK](05-ops/RUNBOOK.md)                                 | 배포·롤백                 |
-| 운영 | [RETRO](05-ops/RETRO.md)                                     | 회고                      |
-| 부록 | [GLOSSARY](appendix/GLOSSARY.md)                             | 용어                      |
-| 부록 | [CONVENTIONS](appendix/CONVENTIONS.md)                       | 문서·Git 규칙             |
-| 부록 | [CAPABILITY_MATRIX](appendix/CAPABILITY_MATRIX.md)           | 환경별 역량·강제 매핑     |
+| 단계 | 문서                                                         | 내용                                                                                            |
+| ---- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| 개요 | [PROJECT_BRIEF](00-overview/PROJECT_BRIEF.md)                | 문제·목표·성공/실패 기준 · 현재 상태(living)                                                    |
+| 개요 | [DASHBOARD](00-overview/DASHBOARD.md)                        | 현재 상태 · 릴리스 히스토리 · 리스크 · 품질 지표 · 재개 지점 · 결정 대기 (SSOT, HTML 미러는 뷰) |
+| 발견 | [OFFICE_HOURS](01-discovery/OFFICE_HOURS.md)                 | 의미 압박 검토                                                                                  |
+| 발견 | [FEASIBILITY_REPORT](01-discovery/FEASIBILITY_REPORT.md)     | 타당성 점수화                                                                                   |
+| 발견 | [ASSUMPTIONS](01-discovery/ASSUMPTIONS.md)                   | 가정과 검증 상태 (A1~A27)                                                                       |
+| 발견 | [RESEARCH_NOTES](01-discovery/RESEARCH_NOTES.md)             | 조사 근거·출처 (외부 도구 진화 · Pstack/Tstack)                                                 |
+| 결정 | [DECISION_LOG](02-decisions/DECISION_LOG.md)                 | 주요 결정 (D1~D18)                                                                              |
+| 결정 | [ALTERNATIVES](02-decisions/ALTERNATIVES.md)                 | 대안 비교표                                                                                     |
+| 결정 | [CROSS_VALIDATION_LOG](02-decisions/CROSS_VALIDATION_LOG.md) | 실제 Claude–GPT 교차검증 · 원장(QZ-1~61)                                                        |
+| 명세 | [SPEC](03-spec/SPEC.md)                                      | 요구사항·수용 기준                                                                              |
+| 품질 | [RISK_REGISTER](04-quality/RISK_REGISTER.md)                 | 리스크 (R1~R17)                                                                                 |
+| 품질 | [TEST_PLAN](04-quality/TEST_PLAN.md)                         | 구조 검사 · 행동 테스트(RED/GREEN) · 미수행 기록                                                |
+| 품질 | [VERIFY](04-quality/VERIFY.md)                               | 저장소 자신의 검증표(C-29) · 실행 기록 `verify-runs/`                                           |
+| 운영 | [RUNBOOK](05-ops/RUNBOOK.md)                                 | 배포·사전승인 목록·검증·롤백                                                                    |
+| 운영 | [RETRO](05-ops/RETRO.md)                                     | 사이클별 회고                                                                                   |
+| 부록 | [GLOSSARY](appendix/GLOSSARY.md)                             | 보조 용어(정본은 SKILL §22 부록 A)                                                              |
+| 부록 | [CONVENTIONS](appendix/CONVENTIONS.md)                       | 문서·Git 규칙(단일 기준)                                                                        |
+| 부록 | [CAPABILITY_MATRIX](appendix/CAPABILITY_MATRIX.md)           | 환경별 역량·강제 수단·검증 구동 수단(본문은 도구 중립, 구체는 여기)                             |
 
-규칙은 [appendix/CONVENTIONS.md](appendix/CONVENTIONS.md)를 단일 기준으로 따른다(혼용 금지).
+규칙은 [appendix/CONVENTIONS.md](appendix/CONVENTIONS.md)를 단일 기준으로 따른다(혼용 금지). 저장소 밖 독자용 설명은 `wiki/`(GitHub Wiki의 소스)에 둔다.

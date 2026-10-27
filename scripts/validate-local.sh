@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# CI(.github/workflows/validate.yml)와 동등한 구조 검사를 로컬에서 실행한다 — VERIFY.md V-2의 구동 수단.
+# CI(.github/workflows/validate.yml)와 동등한 구조 검사를 로컬에서 실행한다 — VERIFY.md V-2의 구동 수단. (wiki 생성 페이지 신선도 포함)
 # 사용: bash scripts/validate-local.sh [--no-living]   (--no-living: 릴리스 커밋 전, living-doc 드리프트 가드 생략)
 set -uo pipefail
 cd "$(dirname "$0")/.."
@@ -33,6 +33,8 @@ for k in ('name', 'description', 'version'): assert d.get(k), k
 PY
 
 tmp=$(mktemp); bash scripts/build-paste-bundle.sh "$tmp" >/dev/null; diff -q "$tmp" dist/Quetzalcoatl-FULL.md >/dev/null && ok "번들 신선도 (dist = SKILL+TEMPLATES)" || err "번들 stale — scripts/build-paste-bundle.sh 재실행"; rm -f "$tmp"
+
+python3 -I scripts/build-wiki.py --check >/dev/null 2>&1 && ok "wiki 생성 페이지 신선도 (Modes·Templates·Glossary·Release-History)" || err "wiki 생성 페이지 stale — python3 scripts/build-wiki.py 재실행"
 
 if [ "${1:-}" != "--no-living" ]; then
   SSOT=$PLUGIN

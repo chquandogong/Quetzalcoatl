@@ -115,6 +115,9 @@ jobs:
           fi
           echo "OK: paste bundle fresh"
 
+      - name: Assert wiki generated pages are fresh (wiki/ = build-wiki.py output)
+        run: python3 scripts/build-wiki.py --check
+
       - name: Assert living-doc version sync (drift guard)
         run: |
           # 현재성(living) 문서·미러의 "현재 버전" 표기가 SSOT(plugin.json)와 일치하는지 검사.

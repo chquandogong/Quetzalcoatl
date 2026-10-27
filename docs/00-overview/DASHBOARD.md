@@ -51,12 +51,12 @@
 ## 재개 지점 (체크포인트)
 
 - 마지막 성공 커밋: **v3.3.0 released** — tag `v3.3.0` · push · GitHub Release(latest, 사전승인) · 플러그인 재설치 · 미러 redeploy — 상세는 [verify-runs R2](../04-quality/verify-runs/2026-10-27-v3.3.0.md).
-- 다음 작업: dogu-bt 검증표 후속(컨테이너에서 V-6~V-8 R2 · 실로봇 행은 사람) — 그 외 유휴.
+- 다음 작업: **GitHub Wiki 발행** — 사용자가 웹에서 첫 페이지를 한 번 만들면(`.wiki.git` 생성 제약, D19) `bash scripts/publish-wiki.sh`로 `wiki/` 17페이지 발행 · dogu-bt 검증표 후속(컨테이너에서 V-6~V-8 · 실로봇 행은 사람) — 그 외 유휴.
 
 ## 사람 결정 대기
 
 - (완료) 안 선택 — 사용자 결정 2026-10-27 "추천으로"(C 일괄 · 첫 적용 = 이 저장소 · 라운드 예산 숫자는 양식 예시에만, A22).
-- (완료 2026-10-27) 로보틱스 프로젝트에 C-29 적용 — 사용자 요청 → `~/dogu-bt`(A27)의 `docs/VERIFY.md` + `evidence/verify-20261027/R1.md`(커밋 `6966fb9` — 사용자 확인 "맞아" 후 push 완료 2026-10-27). 10행 중 통과 5 · 차단 2(실로봇·Studio 왕복 — 사람 현장) · 미실행 3(엔진·gtest — 개발 호스트에 ROS 없음). A27 저장소 확인·push는 사용자 확정. **남은 사람 조치**: dogu-bt CI `SUBMODULE_TOKEN` 교체(push 뒤 colcon-build가 서브모듈 인증 실패 — 코드 원인 아님, VERIFY R2) → 실패 잡 재실행 · 컨테이너에서 V-6~V-8 · 실로봇 행(V-9·V-10)은 현장.
+- (완료 2026-10-27) 로보틱스 프로젝트에 C-29 적용 — 사용자 요청 → `~/dogu-bt`(A27)의 `docs/VERIFY.md` + `evidence/verify-20261027/R1.md`(커밋 `6966fb9` — 사용자 확인 "맞아" 후 push 완료 2026-10-27). 10행 중 통과 5 · 차단 2(실로봇·Studio 왕복 — 사람 현장) · 미실행 3(엔진·gtest — 개발 호스트에 ROS 없음). A27 저장소 확인·push는 사용자 확정. **남은 사람 조치**: Quetzalcoatl 위키 첫 페이지 생성(웹 UI, 1회 — 그 뒤 발행은 스크립트) · dogu-bt CI `SUBMODULE_TOKEN` 교체(push 뒤 colcon-build가 서브모듈 인증 실패 — 코드 원인 아님, VERIFY R2) → 실패 잡 재실행 · 컨테이너에서 V-6~V-8 · 실로봇 행(V-9·V-10)은 현장.
 - (선택) 외부 스킬(Tstack류) 도입 시 그 파일의 테스트 권한 절 삭제·종속(A24 — 프로젝트 설정).
 
 ## 다음 액션
