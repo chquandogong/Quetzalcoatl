@@ -8,7 +8,7 @@
 ### Changed
 
 - 문서 전면 개정(2026-10-27, 사용자 요청 "깃 문서·위키 처음부터"): `README.md`(현재 상태 기준 — 왜·설치·첫 호출·워크플로우·게이트·구조·개발 사이클·릴리스 요약) · `skills/Quetzalcoatl/USAGE.md`(설치 3경로·호출·세션 레시피·강등·문제 해결) · `SECURITY.md`(지원 버전 v3.3.x, 외부 스킬 포괄 권한·검증표 관련 보고 대상) · `docs/README.md`(사이클 표·문서 지도).
-- **GitHub Wiki 소스 신설 `wiki/`**(파생 뷰 — 정본은 SKILL/TEMPLATES, D19): Home · 설치 · 빠른 시작 · 원칙 · 워크플로우 · 교차검증 · 문서 체계 · 명세·계획·리뷰 · 검증표 · 자율과 게이트 · 설계 의도 · FAQ + **생성 페이지 4종**(모드 · 템플릿 C-1~C-29 · 용어집 · 릴리스 이력 — `scripts/build-wiki.py`가 SKILL.md/TEMPLATES.md/CHANGELOG에서 생성) · 발행은 `scripts/publish-wiki.sh`.
+- **GitHub Wiki 소스 신설 `wiki/`**(파생 뷰 — 정본은 SKILL/TEMPLATES, D19): Home · 설치 · 빠른 시작 · 원칙 · 워크플로우 · 교차검증 · 문서 체계 · 명세·계획·리뷰 · 검증표 · 자율과 게이트 · 설계 의도 · FAQ + **생성 페이지 4종**(모드 · 템플릿 C-1~C-29 · 용어집 · 릴리스 이력 — `scripts/build-wiki.py`가 SKILL.md/TEMPLATES.md/CHANGELOG에서 생성) · 발행은 `scripts/publish-wiki.sh` — **2026-10-27 발행 완료**(사용자가 웹에서 첫 페이지 생성 후, 위키 커밋 `b3ec034`, 18페이지).
 - `scripts/validate-local.sh`·CI `validate`에 **wiki 생성 페이지 신선도** 검사 추가(규율 → 강제).
 
 ## [3.3.0] - 2026-10-27
