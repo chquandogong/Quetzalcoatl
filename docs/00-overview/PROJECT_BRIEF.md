@@ -1,6 +1,6 @@
 # PROJECT BRIEF — Quetzalcoatl
 
-> 상태: 활성 · 날짜: 2026-06-23 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
+> 상태: 활성 · 날짜: 2026-10-27 · 소유자: Quetzalcoatl OS · 승인: CHENGHAO QUAN
 > **현재성(living) 문서** — 현재 상태를 반영해 갱신한다. 사이클별 스냅샷은 `01-discovery/`·`SPEC`·`DECISION_LOG` 참조.
 
 ## 문제
@@ -17,11 +17,11 @@ LLM에게 일을 "바로" 시키면 의미·가치 검증, 대안 비교, 안전
 - **2차**: ChatGPT/일반 LLM 사용자 — 모델 중립으로 같은 규율을 텍스트로 받는다.
 - **결정권자**: 사람(§1.6 승인 게이트 보유).
 
-## 현재 상태 (v1.4.0)
+## 현재 상태 (v3.3.0 — 2026-10-27)
 
-- **배포**: 플러그인 + 마켓플레이스(`chquandogong/Quetzalcoatl`, 공개), 최신 `v1.4.0`. 호출은 `/quetzalcoatl:Quetzalcoatl`(개인 스킬은 `/Quetzalcoatl`).
-- **능력**: 의미검증 · Office Hours · feasibility · 대안 비교+앵커된 선호(§4) · 교차검증(§5) · 지속 자율 실행+허용목록(§1.7/§18) · 레이트리밋 회복력(§19) · 문서 체계(§6) · Git 프로토콜(§20) · 핸드오프(§21) · 대시보드 SSOT+HTML 미러(§7.2).
-- **dogfooding**: 이 `docs/` 체계가 스킬 자신의 개발 기록이다.
+- **배포**: 플러그인 + 마켓플레이스(`chquandogong/Quetzalcoatl`, 공개), 최신 `v3.3.0`. 호출은 `/quetzalcoatl:Quetzalcoatl`(개인 스킬은 `/Quetzalcoatl`). 소스 = `SKILL.md`(규칙 §0~§24) + `TEMPLATES.md`(양식 C-1~C-29), 챗 환경은 `dist/` 페이스트 번들.
+- **능력**: 의미검증 · Office Hours(프레이밍 흔들기) · feasibility · 대안 비교+앵커된 선호+골짜기 점검(§4) · 교차검증+라운드 예산·원장(§5) · 지속 자율 실행+허용목록+승인 근거(§1.6/§1.7/§18) · 레이트리밋 회복력(§19) · 문서 체계+산출물 3층+자립 자료(§6) · Git 프로토콜(§20) · 핸드오프(§21) · 대시보드 SSOT+HTML 미러(§7.2) · **검증표·증거 범위·완료 상태(§11·§14·§12.1 — v3.3.0)**.
+- **dogfooding**: 이 `docs/` 체계가 스킬 자신의 개발 기록이고, v3.3.0부터 [VERIFY.md](../04-quality/VERIFY.md)가 스킬 자신의 검증표다.
 
 ## 성공 기준
 
