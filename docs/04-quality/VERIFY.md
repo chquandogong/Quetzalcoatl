@@ -1,6 +1,6 @@
 # VERIFY — Quetzalcoatl 스킬 (저장소 자신에 C-29 적용 · dogfooding)
 
-> 문서 상태(기준·절차의 준비 여부): 절차 확인됨(V-1·V-2·V-7 구동) · 날짜: 2026-10-27 · 소유자: QA Evaluator · 기준 정본: [RUNBOOK 배포·검증 절](../05-ops/RUNBOOK.md) · [TEST_PLAN](TEST_PLAN.md) · [README 설치 절](../../README.md) · 실행 기록 정본: [verify-runs/2026-10-27-v3.3.0.md](verify-runs/2026-10-27-v3.3.0.md)
+> 문서 상태(기준·절차 명세의 완성 여부): 작성 완료 · 절차 구동 확인: V-1·V-2·V-7(실행 기록 R1) · 날짜: 2026-10-27 · 소유자: QA Evaluator · 기준 정본: [RUNBOOK 배포·검증 절](../05-ops/RUNBOOK.md) · [TEST_PLAN](TEST_PLAN.md) · [README 설치 절](../../README.md) · 실행 기록 정본: [verify-runs/2026-10-27-v3.3.0.md](verify-runs/2026-10-27-v3.3.0.md)
 > 실행 현황(판정 범위 = 이 호스트 · 각 실행 기록의 커밋, 행별 기록에서 집계): 대상 7건 — 통과 3 · 실패 0 · 차단 0 · 미실행 4 · 재검증 필요 0 · 최신 실행: R1 · 2026-10-27 · e379678+작업 트리(릴리스 후 R2로 갱신)
 > 범위: 이 표가 확인하는 조건 = 이 호스트(로컬 리눅스, bash·python3·jq·prettier·Claude Code 플러그인 CLI) · 대상 판 = 각 실행 기록의 커밋. 확인하지 않는 것 = 다른 OS·챗 환경(ChatGPT 등)에서의 번들 붙여넣기 동작(미검증), 스킬 규칙의 행동 효과(그건 [TEST_PLAN v3.3.0](TEST_PLAN.md)의 행동 테스트).
 
